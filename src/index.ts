@@ -1,6 +1,7 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 import dotenv = require("dotenv");
-import { replies } from './entity/replies';
+import { replies } from './interactions/replies';
+import { interactionHandlers } from './interactions/handler';
 
 // Load .env file
 dotenv.config();
@@ -41,5 +42,23 @@ client.on('messageCreate', (message) => {
         message.reply('Unknown command. Try `!help` for a list of commands.');
     }
 });
+
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isChatInputCommand()) return;
+
+    const handler = interactionHandlers[interaction.commandName];
+    if (!handler) {
+        await interaction.reply('Unknown command.');
+        return;
+    }
+
+    try {
+        await handler(interaction);
+    } catch (error) {
+        console.error(error);
+        await interaction.reply('An error occurred.');
+    }
+});
+
 
 client.login(token);
