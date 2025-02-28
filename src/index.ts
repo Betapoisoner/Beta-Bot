@@ -1,8 +1,9 @@
 import { Client, GatewayIntentBits } from 'discord.js';
-import dotenv = require("dotenv");
+
+import dotenv from 'dotenv';
+
 import { replies } from './interactions/replies';
 import { interactionHandlers } from './interactions/handler';
-
 // Load .env file
 dotenv.config();
 
