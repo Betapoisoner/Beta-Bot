@@ -43,22 +43,4 @@ client.on('messageCreate', (message) => {
     }
 });
 
-client.on('interactionCreate', async (interaction) => {
-    if (!interaction.isChatInputCommand()) return;
-
-    const handler = interactionHandlers[interaction.commandName];
-    if (!handler) {
-        await interaction.reply('Unknown command.');
-        return;
-    }
-
-    try {
-        await handler(interaction);
-    } catch (error) {
-        console.error(error);
-        await interaction.reply('An error occurred.');
-    }
-});
-
-
 client.login(token);
