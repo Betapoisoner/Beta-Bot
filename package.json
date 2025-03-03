@@ -10,7 +10,8 @@
   "type": "commonjs",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && tsc",
     "start": "node dist/index.js",
     "dev": "nodemon --watch src/**/*.ts --exec ts-node src/index.ts",
     "register": "ts-node src/registerCommands.ts",
@@ -21,7 +22,8 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.18.0",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "pg": "^8.13.3"
   },
   "devDependencies": {
     "@types/node": "^18.19.76",
