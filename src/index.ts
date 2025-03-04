@@ -1,11 +1,14 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 
 import dotenv from 'dotenv';
-
-import { interactionHandlers } from './interactions/handler';
-// Load .env file
+import logger from './utils/logger';// Load .env file
+import { replies } from './interactions/replies';
+import { dbUtils } from './db';
 dotenv.config();
 
+logger.info('Starting the Discord bot...', { event: 'botStartup' }); // Metadata for bot startup
+
+dbUtils
 // Create a new Discord client with the required intents
 const client = new Client({
     intents: [
@@ -18,23 +21,25 @@ const client = new Client({
 const token = process.env.DISCORD_TOKEN;
 
 if (!token) {
-    console.error('Missing DISCORD_TOKEN in .env file.');
-    process.exit(1);
+    logger.error('Missing DISCORD_TOKEN in .env file.', { component: 'Configuration', issue: 'Environment Variable' }); // Error level log with metadata    process.exit(1);
 }
 
 client.once('ready', () => {
-    console.log(`Logged in as ${client.user?.tag}`);
+    logger.info(`Logged in as  ${client.user?.tag}`, { event: 'loginSuccess', botUsername: `${client.user?.tag}` });
 });
 
 client.on('messageCreate', (message) => {
+    
+
     // Ignore messages from bots
     if (message.author.bot) return;
 
     // Split the message content into command and arguments
     const [command, ...args] = message.content.split(' ');
-
+    
     // Check if the command exists in the replies object
     if (replies[command]) {
+        logger.debug(`Received message: ${message.content} from ${message.author.tag}`); // Debug level log
         // Execute the corresponding reply function with arguments
         replies[command](message, args);
     } else {

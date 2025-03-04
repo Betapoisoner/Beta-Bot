@@ -42,15 +42,13 @@ export const replies: Record<string, ReplyFunction> = {
     },
 
     '!help': (message) => {
-        message.reply(`
-      Available commands:
-      - \`!hello [user]\`: Say hello to a user.
-      - \`!ping\`: Get a "Pong!" response.
-      - \`!roll [max]\`: Roll a random number (default: 1-100).
-      - \`!greet [user]\`: Greet a user or everyone.
-      - \`!add [num1] [num2]\`: Add two numbers.
-      - \`!help\`: Show this help message.
-
+        message.reply(`Available commands:
+* \`!hello [user]\`: Say hello to a user.
+* \`!ping\`: Get a "Pong!" response.
+* \`!roll [max]\`: Roll a random number (default: 1-100).
+* \`!greet [user]\`: Greet a user or everyone.
+* \`!add [num1] [num2]\`: Add two numbers.
+* \`!help\`: Show this help message.
     `);
     },
 };
