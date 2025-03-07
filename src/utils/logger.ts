@@ -23,10 +23,10 @@ const logger = winston.createLogger({
         // Log to a rotating file
         new DailyRotateFile({
             filename: 'logs/bot-%DATE%.log',
-            datePattern: 'YYYY-MM-DD',
-            zippedArchive: true, // Compress old logs
-            maxSize: '20m', // Rotate after 20MB
-            maxFiles: '30d', // Keep logs for 14 days
+            datePattern: 'DD-MM-YYYY',
+            zippedArchive: true,
+            maxSize: '20m',
+            maxFiles: '30d',
         }),
     ],
 });
