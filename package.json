@@ -6,7 +6,7 @@
     "type": "git",
     "url": "beta-bot"
   },
-  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b",
+  "packageManager": "pnpm@10.6.2",
   "type": "commonjs",
   "main": "dist/index.js",
   "scripts": {
@@ -24,12 +24,13 @@
   "dependencies": {
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
+    "envalid": "^8.0.0",
     "pg": "^8.13.3",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0"
   },
   "devDependencies": {
-    "@types/node": "^18.19.76",
+    "@types/node": "^18.19.80",
     "@types/pg": "^8.11.11",
     "@types/winston": "^2.4.4",
     "ts-node": "^10.9.2",
