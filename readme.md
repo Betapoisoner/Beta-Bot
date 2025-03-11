@@ -7,44 +7,61 @@
 
 A feature-rich Discord bot with puppet system integration, enabling users to create and manage alternate personas through intuitive chat commands. Built with modern TypeScript architecture and PostgreSQL persistence.
 
-*Add actual screenshot/video here*
+_Add actual screenshot/video here_
 
 ## Table of Contents 📚
-- [Features](#features-)
-- [Installation](#installation-)
+
+- [Features](#features-✨)
+  - [Core Functionality](#core-functionality)
+  - [Technical Features](#technical-features)
+- [Installation](#installation-🚀)
+  - [Prerequisites](#prerequisites)
 - [Configuration](#configuration-⚙️)
+  - [Discord Setup](#discord-setup)
+  - [Database Configuration](#database-configuration)
+  - [Final .env file](#final-env-file)
 - [Database Setup](#database-setup-🗄️)
+  - [1. Connect to PostgreSQL](#1-connect-to-postgresql)
+  - [2. Create database and table](#2-create-database-and-table)
 - [Usage](#usage-📖)
+  - [Development](#development)
+  - [Key Commands](#key-commands-🔑)
 - [Architecture](#architecture-🏗️)
+- [Logging](#logging-📝)
 - [Contributing](#contributing-🤝)
+  - [Workflow](#workflow)
+  - [Testing Requirements](#testing-requirements)
 - [Support](#support-🔧)
 
 ## Features ✨
 
 ### Core Functionality
+
 - 🧙 **Dynamic Puppet System**: Create/manage multiple personas with unique identifiers
-- 💬 **Contextual Messaging**: 
+- 💬 **Contextual Messaging**:
   - `puppet: Message` for standard communication
   - `puppet:: Action` for roleplay-style emotes
 - 🔄 **Webhook Integration**: Automatic message proxying with avatar support
 
 ### Technical Features
+
 - 🛡️ **Type-Safe Core**: Full TypeScript implementation with strict type checking
 - 📊 **PostgreSQL Backend**: Relational data model for persistent storage
-- 📈 **Advanced Logging**: 
+- 📈 **Advanced Logging**:
   - Daily rotating files (30 day retention)
   - Colorized console output
   - JSON format for log analysis
-- 🔒 **Security**: 
+- 🔒 **Security**:
   - Environment validation with envalid
   - Sensitive data isolation
-- ⚡ **Efficient Commands**: 
+- ⚡ **Efficient Commands**:
   - Modular command architecture
   - Automatic help generation
 
 ## Installation 🚀
 
 ### Prerequisites
+
 - [Node.js 18.x+](https://nodejs.org/en/download/)
 - [PostgreSQL 15+](https://www.postgresql.org/download/)
 - [PNPM 8.x+](https://pnpm.io/installation)
@@ -64,7 +81,9 @@ cp .env.example .env
 ```
 
 ## Configuration ⚙️
+
 ### Discord Setup
+
 1. Create application at [Discord Developer Portal](https://discord.com/developers/applications)
 
 2. Navigate to "Bot" section → "Reset Token"
@@ -77,8 +96,8 @@ APPLICATION_ID=your_application_id_here
 ```
 
 ### Database Configuration
-```ini
 
+```ini
 DB_USER=postgres
 DB_HOST=localhost
 DB_NAME=puppetdb
@@ -86,6 +105,7 @@ DB_PASSWORD=your_secure_password
 DB_PORT=5432
 LOG_LEVEL=info # debug | info | warn | error
 ```
+
 ### Final .env file:
 
 ```ini
@@ -105,6 +125,7 @@ LOG_LEVEL=debug
 ```
 
 ## Database Setup 🗄️
+
 ### 1. Connect to PostgreSQL:
 
 ```bash
@@ -128,7 +149,9 @@ CREATE TABLE puppets (
 ```
 
 ## Usage 📖
+
 ### Development
+
 ```bash
 # Development mode (watch + reload)
 pnpm dev
@@ -153,6 +176,7 @@ pnpm register
 | `!roll [max]`                       | Random number     | `!roll 20`                             |
 
 ## Architecture 🏗️
+
 ```mermaid
 graph TD
     A[Discord Client] --> B[Message Handler]
@@ -182,18 +206,20 @@ logs/
 ```
 
 ## Contributing 🤝
+
 ### Workflow
+
 1. #### Fork the repository
 
 2. #### Create feature branch: feat/feature-name
 
 3. #### Follow code style guidelines:
 
-    - #### TypeScript strict mode
+   - #### TypeScript strict mode
 
-    - ##### JSDoc comments for public methods
+   - ##### JSDoc comments for public methods
 
-    - #### Winston logging standards
+   - #### Winston logging standards
 
 4. #### Commit changes: pnpm commit (uses commitizen)
 
@@ -201,7 +227,8 @@ logs/
 
 6. #### Open Pull Request
 
-### Testing Requirements 
+### Testing Requirements
+
 - Include Jest tests for new features
 
 - Maintain 80%+ test coverage
@@ -209,6 +236,7 @@ logs/
 - Update documentation accordingly
 
 ## Support 🔧
+
 - ### Found an issue? [Open a ticket](https://github.com/betapoisoner/beta-bot/issues)
 
 ### Made with ❤️ by 𝕭𝖊𝖙𝖆 | [Contribution Guidelines](CONTRIBUTING.md) | [Code of Conduct](CODE_OF_CONDUCT.md)
