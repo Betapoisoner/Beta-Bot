@@ -16,7 +16,7 @@ db.connect()
         event: 'databaseConnectSuccess',
         databaseType: 'PostgreSQL'
     }))
-    .catch((err: any) => {
+    .catch((err: Error) => {
         logger.error('Database connection error: ' + err, {
             event: 'databaseConnectError',
             databaseType: 'PostgreSQL',
@@ -30,13 +30,26 @@ export const dbUtils: DBUtils = {
         const res = await db.query('SELECT * FROM puppets WHERE user_id = $1', [userId]);
         return res.rows;
     },
+    // Add new method for suffix lookup
+    async getPuppetBySuffix(userId: string, suffix: string): Promise<Puppet | null> {
+        const res = await db.query(
+            'SELECT * FROM puppets WHERE user_id = $1 AND suffix = $2',
+            [userId, suffix]
+        );
+        return res.rows[0] || null;
+    },
+
+    // Update create method
     async createPuppet(puppet: Omit<Puppet, 'id'>): Promise<Puppet> {
         const res = await db.query(
-            'INSERT INTO puppets(user_id, name, avatar, description) VALUES($1, $2, $3, $4) RETURNING *',
-            [puppet.user_id, puppet.name, puppet.avatar, puppet.description]
+            `INSERT INTO puppets(user_id, name, suffix, avatar, description)
+             VALUES($1, $2, $3, $4, $5) RETURNING *`,
+            [puppet.user_id, puppet.name, puppet.suffix,
+            puppet.avatar, puppet.description]
         );
         return res.rows[0];
-    }, async getPuppetByName(userId: string, name: string): Promise<Puppet | null> {
+    }
+, async getPuppetByName(userId: string, name: string): Promise<Puppet | null> {
         const res = await db.query(
             'SELECT * FROM puppets WHERE user_id = $1 AND name = $2',
             [userId, name]

@@ -56,48 +56,28 @@ export const replies: Record<string, ReplyFunction> = {
         message.reply(`Your puppets:\n${puppetList}`);
     },
 
-    '!createpuppet': async (message, args) => {
-        const [name, ...descriptionParts] = args;
-        if (!name) {
-            message.reply('Usage: !createpuppet <name> [description]');
-            return;
-        }
-
-        const newPuppet = await dbUtils.createPuppet({
-            user_id: message.author.id,
-            name,
-            description: descriptionParts.join(' ') || undefined
-        });
-
-        message.reply(`Created new puppet: ${newPuppet.name} (ID: ${newPuppet.id})`);
-    }, '!addpuppet': async (message, args) => {
-        // Get first image attachment
-        const attachment = message.attachments.find(a =>
-            a.contentType?.startsWith('image/')
-        );
-
-        if (!args[0]) {
-            return message.reply('Please provide a puppet name!');
+    '!addpuppet': async (message, args) => {
+        const [name, suffix, ...descParts] = args;
+        if (!name || !suffix) {
+            return message.reply('Usage: `!addpuppet <name> <suffix> [description]`');
         }
 
         try {
+            // Check suffix availability
+            const existing = await dbUtils.getPuppetBySuffix(message.author.id, suffix);
+            if (existing) {
+                return message.reply(`Suffix "${suffix}" already taken!`);
+            }
+
             const newPuppet = await dbUtils.createPuppet({
                 user_id: message.author.id,
-                name: args[0],
-                description: args.slice(1).join(' ') || undefined,
-                avatar: attachment?.url || undefined  // Use undefined instead of null
+                name,
+                suffix,
+                description: descParts.join(' '),
+                avatar: message.attachments.first()?.url
             });
 
-            let response = `Created puppet **${newPuppet.name}**!`;
-            if (attachment) {
-                response += ` With avatar:`;
-                await message.reply({
-                    content: response,
-                    files: [attachment.url]
-                });
-            } else {
-                await message.reply(response);
-            }
+            message.reply(`Created puppet ${newPuppet.name} with suffix "${newPuppet.suffix}"!`);
         } catch (error) {
             logger.error('Puppet command failed:', {
                 error: getErrorMessage(error),
@@ -190,9 +170,9 @@ export const replies: Record<string, ReplyFunction> = {
                     '!add <num1> <num2>': 'Add two numbers',
                 },
                 '🐭 Puppet System': {
-                    'PuppetName: Message': 'Make puppet speak normally',
-                    'PuppetName:: Action': 'Make puppet perform emote',
-                    '!addpuppet Name [desc]': 'Create new puppet',
+                    '!addpuppet <name> <suffix> [desc]': 'Create puppet with short suffix',
+                    '[suffix]: Message': 'Make puppet speak',
+                    '[suffix]:: Action': 'Make puppet emote',
                     '!mypuppets': 'List your puppets'
                 },
                 '🔧 Utilities': {

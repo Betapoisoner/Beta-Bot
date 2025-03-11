@@ -42,27 +42,26 @@ client.on('messageCreate', async (message) => {
 
     const [command, ...args] = message.content.split(' ');
     // New suffix-based handling
-    const suffixRegex = /^(.*?)(:{1,2})\s*(.*)/;
+    const suffixRegex = /^(\S+)(:{1,2})\s+(.*)/;
     const match = message.content.match(suffixRegex);
 
     if (match) {
-        const [_, puppetName, suffixType, content] = match;
+        const [_, suffix, suffixType, content] = match;
 
         try {
-            const puppet = await dbUtils.getPuppetByName(message.author.id, puppetName.trim());
-
+            const puppet = await dbUtils.getPuppetBySuffix(message.author.id, suffix);
             if (!puppet) {
-                return message.reply(`Puppet "${puppetName}" not found!`)
+                return message.reply(`No puppet with suffix "${suffix}" found!`)
                     .then(msg => setTimeout(() => msg.delete(), 5000));
             }
 
-            const isAction = suffixType === '::';
-
+            // Create and use webhook
             const webhook = await (message.channel as TextChannel).createWebhook({
                 name: puppet.name,
                 avatar: puppet.avatar || undefined
             });
 
+            const isAction = suffixType === '::';
             await webhook.send({
                 content: isAction ? `*${content}*` : content,
                 username: puppet.name,
