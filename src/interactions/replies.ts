@@ -1,4 +1,4 @@
-import { Message, EmbedBuilder, TextChannel, DiscordAPIError } from 'discord.js';
+import { Message, EmbedBuilder, TextChannel } from 'discord.js';
 import { dbUtils } from '../db';
 import logger from '../utils/logger';
 
