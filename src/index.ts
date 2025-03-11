@@ -1,14 +1,21 @@
+/**
+ * Main Discord bot entry point
+ * Handles client initialization and core event listeners
+ */
 import dotenv from 'dotenv';
 import path from 'path';
 
+// Load environment variables first
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 import logger from './utils/logger';
-import { replies } from './interactions/replies'; import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
+import { replies } from './interactions/replies';
+import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
 import { dbUtils } from './db';
 
 logger.info('Starting the Discord bot...', { event: 'botStartup' });
 
+// Configure Discord client with necessary intents
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -16,12 +23,18 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
     ],
 });
-function getErrorMessage(error: unknown): string {
-    if (error instanceof Error) return error.message;
-    return String(error);
-}
-const token = process.env.DISCORD_TOKEN;
 
+/**
+ * Safely extract error message from unknown error type
+ * @param error - Caught error object
+ * @returns Human-readable error message
+ */
+function getErrorMessage(error: unknown): string {
+    return error instanceof Error ? error.message : String(error);
+}
+
+// Validate token presence before starting
+const token = process.env.DISCORD_TOKEN;
 if (!token) {
     logger.error('Missing DISCORD_TOKEN in .env file.', {
         component: 'Configuration',
@@ -30,6 +43,7 @@ if (!token) {
     process.exit(1);
 }
 
+// Bot ready event handler
 client.once('ready', () => {
     logger.info(`Logged in as ${client.user?.tag}`, {
         event: 'loginSuccess',
@@ -37,15 +51,16 @@ client.once('ready', () => {
     });
 });
 
+// Message processing handler
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
 
-    const [command, ...args] = message.content.split(' ');
-    // New suffix-based handling
+    // Handle suffix-based puppet messages (e.g., "pup: Hello!")
     const suffixRegex = /^(\S+)(:{1,2})\s+(.*)/;
     const match = message.content.match(suffixRegex);
 
     if (match) {
+        // Process puppet message flow
         const [_, suffix, suffixType, content] = match;
 
         try {
@@ -55,7 +70,7 @@ client.on('messageCreate', async (message) => {
                     .then(msg => setTimeout(() => msg.delete(), 5000));
             }
 
-            // Create and use webhook
+            // Create temporary webhook for puppet messaging
             const webhook = await (message.channel as TextChannel).createWebhook({
                 name: puppet.name,
                 avatar: puppet.avatar || undefined
@@ -68,6 +83,7 @@ client.on('messageCreate', async (message) => {
                 avatarURL: puppet.avatar || undefined
             });
 
+            // Cleanup webhook and original message
             await webhook.delete();
             await message.delete();
 
@@ -77,7 +93,9 @@ client.on('messageCreate', async (message) => {
                 .then(msg => setTimeout(() => msg.delete(), 5000));
         }
     }
-    
+
+    // Handle traditional command messages
+    const [command, ...args] = message.content.split(' ');
     if (replies[command]) {
         logger.debug(`Received command: ${command}`, {
             user: message.author.tag,
@@ -96,4 +114,5 @@ client.on('messageCreate', async (message) => {
     }
 });
 
+// Start bot connection
 client.login(token);
