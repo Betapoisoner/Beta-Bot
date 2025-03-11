@@ -1,50 +1,99 @@
-import { Client, GatewayIntentBits } from 'discord.js';
-
 import dotenv from 'dotenv';
-import logger from './utils/logger';// Load .env file
-import { replies } from './interactions/replies';
+import path from 'path';
+
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
+import logger from './utils/logger';
+import { replies } from './interactions/replies'; import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
 import { dbUtils } from './db';
-dotenv.config();
 
-logger.info('Starting the Discord bot...', { event: 'botStartup' }); // Metadata for bot startup
+logger.info('Starting the Discord bot...', { event: 'botStartup' });
 
-dbUtils
-// Create a new Discord client with the required intents
 const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds, // Required for basic guild (server) functionality
-        GatewayIntentBits.GuildMessages, // Required for receiving message events
-        GatewayIntentBits.MessageContent, // Required for reading message content
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
     ],
 });
-
+function getErrorMessage(error: unknown): string {
+    if (error instanceof Error) return error.message;
+    return String(error);
+}
 const token = process.env.DISCORD_TOKEN;
 
 if (!token) {
-    logger.error('Missing DISCORD_TOKEN in .env file.', { component: 'Configuration', issue: 'Environment Variable' }); // Error level log with metadata    process.exit(1);
+    logger.error('Missing DISCORD_TOKEN in .env file.', {
+        component: 'Configuration',
+        issue: 'Environment Variable'
+    });
+    process.exit(1);
 }
 
 client.once('ready', () => {
-    logger.info(`Logged in as  ${client.user?.tag}`, { event: 'loginSuccess', botUsername: `${client.user?.tag}` });
+    logger.info(`Logged in as ${client.user?.tag}`, {
+        event: 'loginSuccess',
+        botUsername: client.user?.tag
+    });
 });
 
-client.on('messageCreate', (message) => {
-    
-
-    // Ignore messages from bots
+client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
 
-    // Split the message content into command and arguments
     const [command, ...args] = message.content.split(' ');
+    // New suffix-based handling
+    const suffixRegex = /^(.*?)(:{1,2})\s*(.*)/;
+    const match = message.content.match(suffixRegex);
+
+    if (match) {
+        const [_, puppetName, suffixType, content] = match;
+
+        try {
+            const puppet = await dbUtils.getPuppetByName(message.author.id, puppetName.trim());
+
+            if (!puppet) {
+                return message.reply(`Puppet "${puppetName}" not found!`)
+                    .then(msg => setTimeout(() => msg.delete(), 5000));
+            }
+
+            const isAction = suffixType === '::';
+
+            const webhook = await (message.channel as TextChannel).createWebhook({
+                name: puppet.name,
+                avatar: puppet.avatar || undefined
+            });
+
+            await webhook.send({
+                content: isAction ? `*${content}*` : content,
+                username: puppet.name,
+                avatarURL: puppet.avatar || undefined
+            });
+
+            await webhook.delete();
+            await message.delete();
+
+        } catch (error) {
+            logger.error('Puppet error:', error);
+            message.reply(`Puppet failed: ${getErrorMessage(error)}`)
+                .then(msg => setTimeout(() => msg.delete(), 5000));
+        }
+    }
     
-    // Check if the command exists in the replies object
     if (replies[command]) {
-        logger.debug(`Received message: ${message.content} from ${message.author.tag}`); // Debug level log
-        // Execute the corresponding reply function with arguments
-        replies[command](message, args);
-    } else {
-        // Handle unknown commands
-        message.reply('Unknown command. Try `!help` for a list of commands.');
+        logger.debug(`Received command: ${command}`, {
+            user: message.author.tag,
+            content: message.content
+        });
+
+        try {
+            await replies[command](message, args);
+        } catch (error) {
+            logger.error(`Error handling command ${command}: ${error}`, {
+                command,
+                error
+            });
+            message.reply('An error occurred while processing your command.');
+        }
     }
 });
 

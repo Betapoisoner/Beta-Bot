@@ -1,7 +1,11 @@
 import { cleanEnv, str, num } from 'envalid';
-import { Client } from 'pg';
+import path from 'path';
+import dotenv from 'dotenv';
 
-const env = cleanEnv(process.env, {
+// Load environment variables before validation
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
+export const env = cleanEnv(process.env, {
     DB_USER: str(),
     DB_HOST: str(),
     DB_NAME: str(),
@@ -12,10 +16,3 @@ const env = cleanEnv(process.env, {
     GUILD_ID: str({ default: '' }),
 });
 
-const db = new Client({
-    user: env.DB_USER,
-    host: env.DB_HOST,
-    database: env.DB_NAME,
-    password: env.DB_PASSWORD,
-    port: env.DB_PORT,
-});
