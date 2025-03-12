@@ -1,28 +1,35 @@
 /**
- * Winston logger configuration with rotating file transport
+ * Winston logger configuration with rotating file transport and custom levels
  * Provides structured logging for both console and file output
  */
 import winston from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
 
+const logLevels = {
+    fatal: 0,
+    error: 1,
+    warn: 2,
+    info: 3,
+    http: 4,
+    verbose: 5,
+    debug: 6,
+    silly: 7
+};
+
 const logLevel = process.env.LOG_LEVEL || 'info';
 
-/**
- * Configured Winston logger instance
- * @constant logger
- * @type {winston.Logger}
- */
-const logger = winston.createLogger({
+type CustomLogger = winston.Logger & Record<keyof typeof logLevels, winston.LeveledLogMethod>;
+
+
+const logger: CustomLogger = winston.createLogger({
+    levels: logLevels,
     level: logLevel,
     transports: [
-        // Colorized console output
         new winston.transports.Console({
             format: winston.format.combine(
                 winston.format.colorize(),
                 winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
                 winston.format.metadata({ fillExcept: ['message', 'level', 'timestamp'] }),
-
-                // Custom log format for console
                 winston.format.printf((info) => {
                     const metadata = (info.metadata || {}) as Record<string, unknown>;
                     const metaString = Object.keys(metadata).length > 0
@@ -41,7 +48,6 @@ const logger = winston.createLogger({
                 })
             )
         }),
-        // Rotating file transport for persistence
         new DailyRotateFile({
             filename: 'logs/bot-%DATE%.log',
             datePattern: 'DD-MM-YYYY',
@@ -52,8 +58,8 @@ const logger = winston.createLogger({
                 winston.format.timestamp(),
                 winston.format.json()
             )
-        }),
-    ],
-});
+        })
+    ]
+}) as CustomLogger;
 
 export default logger;
