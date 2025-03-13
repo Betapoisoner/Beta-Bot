@@ -8,17 +8,19 @@
   },
   "packageManager": "pnpm@10.6.2",
   "type": "commonjs",
-  "main": "dist/index.js",
+  "main": "dist/core/index.js",
   "scripts": {
     "prestart": "node -e \"require('mkdirp').sync('logs')\"",
     "clean": "rimraf dist",
-    "build": "pnpm clean && tsc && copyfiles .env dist/",
-    "start": "node dist/index.js",
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "dev:debug": "nodemon --exec ts-node --inspect-brk src/index.ts",
-    "register": "ts-node -r dotenv/config src/registerCommands.ts",
-    "unregister": "ts-node -r dotenv/config src/unregisterCommands.ts",
-    "lint": "tsc --noEmit && eslint src/**/*.ts"
+"build": "pnpm clean && tsc -p config/tsconfig.json && copyfiles .env dist/",
+    "postbuild": "copyfiles .env dist/",
+    "start": "node -r tsconfig-paths/register dist/core/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/core/index.ts",
+    "dev:debug": "nodemon --exec ts-node --inspect-brk -r tsconfig-paths/register src/core/index.ts",
+    "register": "ts-node -r dotenv/config -r tsconfig-paths/register src/core/discord/commands/register.ts",
+    "unregister": "ts-node -r dotenv/config -r tsconfig-paths/register src/core/discord/commands/unregister.ts",
+    "lint": "eslint src/**/*.ts",
+    "typecheck": "tsc --noEmit --project src/config/tsconfig.json"
   },
   "keywords": [],
   "author": "",
@@ -43,6 +45,7 @@
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.2"
   }
 }
