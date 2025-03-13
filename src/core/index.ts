@@ -1,3 +1,7 @@
+declare const performance: {
+    now(): number;
+};
+
 /**
  * Main Discord bot entry point
  * Handles client initialization and core event listeners
@@ -11,10 +15,12 @@ logger.debug('Environment variables loaded', {
     envKeys: Object.keys(process.env).filter(k => k.startsWith('DISCORD') || k.startsWith('DB'))
 });
 
-import logger from './utils/logger';
-import { replies } from './interactions/replies';
+import logger from './../utils/logger';
+import { replies } from '../core/discord/utils/replies';
+import { dbUtils } from '../database/services/PuppetService';
 import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
-import { dbUtils } from './db';
+import type { Puppet } from '@database/models/Puppet';
+
 
 logger.info('Initializing Discord bot client...', {
     nodeVersion: process.version,
@@ -128,8 +134,8 @@ client.on('messageCreate', async (message) => {
                 logger.warn('Puppet suffix lookup failed', {
                     userId: message.author.id,
                     suffix,
-                    storedSuffixes: await dbUtils.getUserPuppets(message.author.id).then(p => p.map(p => p.suffix))
-                });
+                    storedSuffixes: await dbUtils.getUserPuppets(message.author.id)
+                        .then((puppets: Puppet[]) => puppets.map(p => p.suffix))                });
 
                 const reply = await message.reply(`No puppet with suffix "${suffix}" found!`);
 
@@ -208,7 +214,7 @@ client.on('messageCreate', async (message) => {
             argCount: args.length,
             userId: message.author.id
         });
-
+        const startTime = performance.now();
         try {
             logger.debug('Executing command handler', {
                 command,

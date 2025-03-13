@@ -1,6 +1,8 @@
 import { Message, EmbedBuilder, TextChannel } from 'discord.js';
-import { dbUtils } from '../db';
-import logger from '../utils/logger';
+import { dbUtils } from '../../../database/services/PuppetService';
+import logger from '../../../utils/logger';
+import type { Puppet } from '@database/models/Puppet';
+
 
 function getErrorMessage(error: unknown): string {
     if (error instanceof Error) return error.message;
@@ -52,7 +54,7 @@ export const replies: Record<string, ReplyFunction> = {
             message.reply("You don't have any puppets!");
             return;
         }
-        const puppetList = puppets.map(p => `• ${p.name}: ${p.description || 'No description'}`).join('\n');
+        const puppetList = puppets.map((p: Puppet) => `• ${p.name}: ${p.description || 'No description'}`).join('\n');
         message.reply(`Your puppets:\n${puppetList}`);
     },
 

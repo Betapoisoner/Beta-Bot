@@ -3,9 +3,10 @@
  * Handles all interactions with the Puppet storage system
  */
 import { Client } from 'pg';
-import { DBUtils, Puppet } from './interfaces/db';
-import logger from './utils/logger';
-import { env } from './env_validation';
+
+import { DBUtils, Puppet } from '../models/Puppet';
+import logger from '@utils/logger';
+import { env } from '@config/env';
 
 // Configure PostgreSQL client with environment variables
 const db = new Client({

@@ -12,10 +12,9 @@
   "scripts": {
     "prestart": "node -e \"require('mkdirp').sync('logs')\"",
     "clean": "rimraf dist",
-"build": "pnpm clean && tsc -p config/tsconfig.json && copyfiles .env dist/",
     "postbuild": "copyfiles .env dist/",
-    "start": "node -r tsconfig-paths/register dist/core/index.js",
-    "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/core/index.ts",
+"build": "pnpm clean && tsc -p src/config/tsconfig.json --moduleResolution nodeNext && copyfiles .env dist/",
+"start": "node -r tsconfig-paths/register -r dotenv/config dist/core/index.js"   , "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/core/index.ts",
     "dev:debug": "nodemon --exec ts-node --inspect-brk -r tsconfig-paths/register src/core/index.ts",
     "register": "ts-node -r dotenv/config -r tsconfig-paths/register src/core/discord/commands/register.ts",
     "unregister": "ts-node -r dotenv/config -r tsconfig-paths/register src/core/discord/commands/unregister.ts",

@@ -1,7 +1,6 @@
 import { REST, Routes } from 'discord.js';
 import dotenv from 'dotenv';
-import logger from './utils/logger'; // Import the logger
-
+import logger from '@utils/logger';
 dotenv.config();
 
 const token = process.env.DISCORD_TOKEN;
