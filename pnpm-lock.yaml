@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@types/logform':
+        specifier: ^1.10.1
+        version: 1.10.1
       discord.js:
         specifier: ^14.18.0
         version: 14.18.0
@@ -17,6 +20,9 @@ importers:
       envalid:
         specifier: ^8.0.0
         version: 8.0.0
+      logform:
+        specifier: ^2.7.0
+        version: 2.7.0
       pg:
         specifier: ^8.13.3
         version: 8.13.3
@@ -237,6 +243,10 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/logform@1.10.1':
+    resolution: {integrity: sha512-7PFeU3gNsaG80dNWIl9FafSCnc4oYRXlyJ4yM38i0hMuqJaIMGSARS16QKTKfN4nZmNkA2Yy1z3h1WkJxgGbmA==}
+    deprecated: This is a stub types definition. logform provides its own type definitions, so you do not need this installed.
 
   '@types/node@18.19.80':
     resolution: {integrity: sha512-kEWeMwMeIvxYkeg1gTc01awpwLbfMRZXdIhwRcakd/KlK53jmRC26LqcbIt7fnAQTu5GzlnWmzA3H6+l1u6xxQ==}
@@ -1850,6 +1860,10 @@ snapshots:
     optional: true
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/logform@1.10.1':
+    dependencies:
+      logform: 2.7.0
 
   '@types/node@18.19.80':
     dependencies:

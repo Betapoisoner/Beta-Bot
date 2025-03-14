@@ -20,10 +20,11 @@ import { replies } from '../core/discord/utils/replies';
 import { dbUtils } from '../database/services/PuppetService';
 import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
 import type { Puppet } from '@database/models/Puppet';
+import tsPackageJson from 'typescript/package.json';
 
 logger.info('Initializing Discord bot client...', {
     nodeVersion: process.version,
-    tsVersion: require('typescript/package.json').version,
+    tsVersion: tsPackageJson.version,
 });
 
 // Configure Discord client with necessary intents
@@ -111,7 +112,7 @@ client.on('messageCreate', async (message) => {
     const match = message.content.match(suffixRegex);
 
     if (match) {
-        const [_, suffix, suffixType, rawContent] = match;
+        const [ suffix, suffixType, rawContent] = match;
         const content = rawContent.trim();
 
         logger.info('Detected suffix-based message', {

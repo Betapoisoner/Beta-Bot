@@ -153,25 +153,25 @@ CREATE TABLE puppets (
 
 ### Scripts
 
-| Command                | Description                                  |
-|------------------------|----------------------------------------------|
-| `pnpm dev`             | Development mode with hot reload             |
-| `pnpm dev:debug`       | Debug with Node inspector                    |
-| `pnpm build`           | Compile TypeScript to JS                     |
-| `pnpm start`           | Run production build                         |
-| `pnpm register`        | Register slash commands                      |
-| `pnpm unregister`      | Remove all commands                          |
-| **Code Quality**       |                                              |
-| `pnpm format`          | Format code with Prettier                    |
-| `pnpm format:check`    | Check formatting without changes             |
-| `pnpm lint`            | Run ESLint checks                            |
-| `pnpm lint:fix`        | Auto-fix ESLint issues                       |
-| `pnpm typecheck`       | TypeScript validation only                   |
-| **Database**           |                                              |
-| `pnpm migrate`         | Run database migrations (if configured)      |
-| **Maintenance**        |                                              |
-| `pnpm clean`           | Remove build artifacts                       |
-| `pnpm reinstall`       | Full clean + dependency reinstall            |
+| Command             | Description                             |
+| ------------------- | --------------------------------------- |
+| `pnpm dev`          | Development mode with hot reload        |
+| `pnpm dev:debug`    | Debug with Node inspector               |
+| `pnpm build`        | Compile TypeScript to JS                |
+| `pnpm start`        | Run production build                    |
+| `pnpm register`     | Register slash commands                 |
+| `pnpm unregister`   | Remove all commands                     |
+| **Code Quality**    |                                         |
+| `pnpm format`       | Format code with Prettier               |
+| `pnpm format:check` | Check formatting without changes        |
+| `pnpm lint`         | Run ESLint checks                       |
+| `pnpm lint:fix`     | Auto-fix ESLint issues                  |
+| `pnpm typecheck`    | TypeScript validation only              |
+| **Database**        |                                         |
+| `pnpm migrate`      | Run database migrations (if configured) |
+| **Maintenance**     |                                         |
+| `pnpm clean`        | Remove build artifacts                  |
+| `pnpm reinstall`    | Full clean + dependency reinstall       |
 
 ### Development Workflow
 
@@ -190,10 +190,11 @@ pnpm format:check
 pnpm lint
 pnpm build
 pnpm test  # If you add tests
-pnpm start             
+pnpm start
 ```
 
 ### Prebuild Hook
+
 ```json
 // From package.json
 "prebuild": "pnpm format:check && pnpm lint"

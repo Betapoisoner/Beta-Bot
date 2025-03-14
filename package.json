@@ -10,8 +10,10 @@
     "type": "commonjs",
     "main": "dist/core/index.js",
     "scripts": {
-        "prestart": "node -e \"require('mkdirp').sync('logs')\"",
+        "pre:build": "pnpm format:check  && pnpm lint",
+        "pre:start": "node -e \"require('mkdirp').sync('logs')\"",
         "clean": "rimraf dist",
+        "clean:logs": "rimraf logs",
         "build": "pnpm clean && tsc && tsc-alias && copyfiles .env dist/",
         "start": "node -r tsconfig-paths/register -r dotenv/config dist/core/index.js",
         "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register -r dotenv/config src/core/index.ts",
@@ -23,16 +25,18 @@
         "typecheck": "tsc --noEmit",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "prebuild": "pnpm format:check && pnpm lint",
-        "commit": "git add . && git cz"
+        "commit": "git add . && git cz",
+        "push": "git push"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@types/logform": "^1.10.1",
         "discord.js": "^14.18.0",
         "dotenv": "^16.4.7",
         "envalid": "^8.0.0",
+        "logform": "^2.7.0",
         "pg": "^8.13.3",
         "prettier": "^3.5.3",
         "winston": "^3.17.0",
@@ -56,7 +60,8 @@
         "tsc-alias": "^1.8.11",
         "tsconfig-paths": "^4.2.0",
         "typescript": "^5.8.2"
-    } ,"config": {
+    },
+    "config": {
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
