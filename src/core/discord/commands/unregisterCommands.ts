@@ -7,8 +7,6 @@ const token = process.env.DISCORD_TOKEN;
 const applicationId = process.env.APPLICATION_ID;
 const guildId = process.env.GUILD_ID;
 
-
-
 if (!token || !applicationId) {
     logger.error('DISCORD_TOKEN and APPLICATION_ID must be defined in .env');
     process.exit(1);

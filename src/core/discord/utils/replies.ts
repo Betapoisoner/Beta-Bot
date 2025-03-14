@@ -3,7 +3,6 @@ import { dbUtils } from '../../../database/services/PuppetService';
 import logger from '../../../utils/logger';
 import type { Puppet } from '@database/models/Puppet';
 
-
 function getErrorMessage(error: unknown): string {
     if (error instanceof Error) return error.message;
     return String(error);
@@ -76,7 +75,7 @@ export const replies: Record<string, ReplyFunction> = {
                 name,
                 suffix,
                 description: descParts.join(' '),
-                avatar: message.attachments.first()?.url
+                avatar: message.attachments.first()?.url,
             });
 
             message.reply(`Created puppet ${newPuppet.name} with suffix "${newPuppet.suffix}"!`);
@@ -85,18 +84,19 @@ export const replies: Record<string, ReplyFunction> = {
                 error: getErrorMessage(error),
                 stack: error instanceof Error ? error.stack : undefined,
                 userId: message.author.id,
-                channelId: message.channel.id
+                channelId: message.channel.id,
             });
 
             const errorMessage = `Failed to execute puppet command: ${getErrorMessage(error)}`;
 
             if (message.deletable) {
-                await message.reply(errorMessage)
-                    .then(msg => setTimeout(() => msg.delete(), 5000))
+                await message
+                    .reply(errorMessage)
+                    .then((msg) => setTimeout(() => msg.delete(), 5000))
                     .catch(logger.error);
             } else {
                 logger.warn('Could not send error response', {
-                    originalError: getErrorMessage(error)
+                    originalError: getErrorMessage(error),
                 });
             }
         }
@@ -105,8 +105,7 @@ export const replies: Record<string, ReplyFunction> = {
     '!puppet': async (message) => {
         try {
             const content = message.content.replace(/^!puppet\s*/i, '');
-            const [, puppetName, actionType, puppetContent] =
-                content.match(/(.*?)(:{1,2})\s*(.*)/) || [];
+            const [, puppetName, actionType, puppetContent] = content.match(/(.*?)(:{1,2})\s*(.*)/) || [];
 
             if (!puppetName || !puppetContent) {
                 return message.reply(`Invalid format! Use:
@@ -124,38 +123,36 @@ export const replies: Record<string, ReplyFunction> = {
             // Create and use webhook
             const webhook = await (message.channel as TextChannel).createWebhook({
                 name: puppet.name,
-                avatar: puppet.avatar || undefined
+                avatar: puppet.avatar || undefined,
             });
 
             await webhook.send({
                 content: isAction ? `*${puppetContent}*` : puppetContent,
                 username: puppet.name,
-                avatarURL: puppet.avatar || undefined
+                avatarURL: puppet.avatar || undefined,
             });
 
             // Cleanup
             await webhook.delete();
-            await message.delete().catch(error =>
-                logger.error('Failed to delete message:', error)
-            );
-
+            await message.delete().catch((error) => logger.error('Failed to delete message:', error));
         } catch (error) {
             logger.error('Puppet command failed:', {
                 error: getErrorMessage(error),
                 stack: error instanceof Error ? error.stack : undefined,
                 userId: message.author.id,
-                channelId: message.channel.id
+                channelId: message.channel.id,
             });
 
             const errorMessage = `Failed to execute puppet command: ${getErrorMessage(error)}`;
 
             if (message.deletable) {
-                await message.reply(errorMessage)
-                    .then(msg => setTimeout(() => msg.delete(), 5000))
+                await message
+                    .reply(errorMessage)
+                    .then((msg) => setTimeout(() => msg.delete(), 5000))
                     .catch(logger.error);
             } else {
                 logger.warn('Could not send error response', {
-                    originalError: getErrorMessage(error)
+                    originalError: getErrorMessage(error),
                 });
             }
         }
@@ -175,18 +172,19 @@ export const replies: Record<string, ReplyFunction> = {
                     '!addpuppet <name> <suffix> [desc]': 'Create puppet with short suffix',
                     '[suffix]: Message': 'Make puppet speak',
                     '[suffix]:: Action': 'Make puppet emote',
-                    '!mypuppets': 'List your puppets'
+                    '!mypuppets': 'List your puppets',
                 },
                 '🔧 Utilities': {
                     '!help': 'Show this help message',
-                    '!greet [user]': 'Greet a user or everyone'
-                }
+                    '!greet [user]': 'Greet a user or everyone',
+                },
             };
 
             // Then in your embed builder
             const embed = new EmbedBuilder()
                 .setColor(0x0099ff)
-                .setTitle('🌟 Bot Command Help').setDescription('**Syntax Guide:**\n`<required>` `[optional]` `[attachment]`')
+                .setTitle('🌟 Bot Command Help')
+                .setDescription('**Syntax Guide:**\n`<required>` `[optional]` `[attachment]`')
                 .setThumbnail(message.client.user?.displayAvatarURL() || null)
                 .setTimestamp()
                 .setFooter({
@@ -201,19 +199,18 @@ export const replies: Record<string, ReplyFunction> = {
                     value: Object.entries(cmds)
                         .map(([cmd, desc]) => `**\`${cmd}\`**\n${desc}`)
                         .join('\n\n'),
-                    inline: true
+                    inline: true,
                 });
             }
 
-
             await message.reply({
                 embeds: [embed],
-                allowedMentions: { repliedUser: false }
+                allowedMentions: { repliedUser: false },
             });
 
             logger.info('Help command executed', {
                 user: message.author.tag,
-                channel: message.channel.id
+                channel: message.channel.id,
             });
         } catch (error) {
             logger.error('Failed to send help command:', error);

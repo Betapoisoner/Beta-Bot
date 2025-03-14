@@ -5,7 +5,8 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.x-blue)](https://www.postgresql.org/)
 [![Discord.js](https://img.shields.io/badge/Discord.js-14.x-blue)](https://discord.js.org/)
 
-A feature-rich Discord bot with puppet system integration, enabling users to create and manage alternate personas through intuitive chat commands. Built with modern TypeScript architecture and PostgreSQL persistence.
+A feature-rich Discord bot with puppet system integration, enabling users to create and manage alternate personas
+through intuitive chat commands. Built with modern TypeScript architecture and PostgreSQL persistence.
 
 _Add actual screenshot/video here_
 
@@ -76,7 +77,7 @@ cd beta-bot
 pnpm install
 
 # Configure environment
-cp .env.example .env
+cp config/.env.example .env
 # Edit .env with your credentials
 ```
 
@@ -150,18 +151,52 @@ CREATE TABLE puppets (
 
 ## Usage 📖
 
-### Development
+### Scripts
+
+| Command                | Description                                  |
+|------------------------|----------------------------------------------|
+| `pnpm dev`             | Development mode with hot reload             |
+| `pnpm dev:debug`       | Debug with Node inspector                    |
+| `pnpm build`           | Compile TypeScript to JS                     |
+| `pnpm start`           | Run production build                         |
+| `pnpm register`        | Register slash commands                      |
+| `pnpm unregister`      | Remove all commands                          |
+| **Code Quality**       |                                              |
+| `pnpm format`          | Format code with Prettier                    |
+| `pnpm format:check`    | Check formatting without changes             |
+| `pnpm lint`            | Run ESLint checks                            |
+| `pnpm lint:fix`        | Auto-fix ESLint issues                       |
+| `pnpm typecheck`       | TypeScript validation only                   |
+| **Database**           |                                              |
+| `pnpm migrate`         | Run database migrations (if configured)      |
+| **Maintenance**        |                                              |
+| `pnpm clean`           | Remove build artifacts                       |
+| `pnpm reinstall`       | Full clean + dependency reinstall            |
+
+### Development Workflow
 
 ```bash
-# Development mode (watch + reload)
-pnpm dev
+# Typical development session
+pnpm format:check && pnpm lint && pnpm dev
 
-# Production build
+# Commit process
+pnpm lint:fix && pnpm format
+git add .
+pnpm commit  # Using commitizen
+
+# CI/CD pipeline example
+pnpm install
+pnpm format:check
+pnpm lint
 pnpm build
-pnpm start
+pnpm test  # If you add tests
+pnpm start             
+```
 
-# Register commands (if needed)
-pnpm register
+### Prebuild Hook
+```json
+// From package.json
+"prebuild": "pnpm format:check && pnpm lint"
 ```
 
 ### Key Commands 🔑
@@ -179,15 +214,14 @@ pnpm register
 
 ```mermaid
 graph TD
-    A[Discord Client] --> B[Message Handler]
-    B --> C{Command?}
-    C -->|Yes| D[Command Router]
-    C -->|No| E[Suffix Parser]
-    D --> F[Execute Command]
-    E --> G[Webhook Manager]
-    G --> H[Database Query]
-    H --> I[PostgreSQL]
-    F --> J[Response Generator]
+    A[Discord Client] --> B[Message Parser]
+    B --> C{Suffix Pattern?}
+    C -->|Yes| D[Webhook Proxy]
+    C -->|No| E[Command Router]
+    D --> F[Database Lookup]
+    E --> G[Execute Command]
+    F --> H[PostgreSQL]
+    G --> I[Response Handler]
 ```
 
 ## Logging 📝

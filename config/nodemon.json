@@ -1,11 +1,6 @@
 {
-    "watch": [
-        "src"
-    ],
+    "watch": ["src"],
     "ext": "ts",
-    "ignore": [
-        "dist",
-        "node_modules"
-    ],
-    "exec": "ts-node-dev src/index.ts" 
+    "ignore": ["dist", "node_modules"],
+    "exec": "ts-node-dev src/index.ts"
 }

@@ -13,13 +13,12 @@ const logLevels = {
     http: 4,
     verbose: 5,
     debug: 6,
-    silly: 7
+    silly: 7,
 };
 
 const logLevel = process.env.LOG_LEVEL || 'info';
 
 type CustomLogger = winston.Logger & Record<keyof typeof logLevels, winston.LeveledLogMethod>;
-
 
 const logger: CustomLogger = winston.createLogger({
     levels: logLevels,
@@ -32,34 +31,55 @@ const logger: CustomLogger = winston.createLogger({
                 winston.format.metadata({ fillExcept: ['message', 'level', 'timestamp'] }),
                 winston.format.printf((info) => {
                     const metadata = (info.metadata || {}) as Record<string, unknown>;
-                    const metaString = Object.keys(metadata).length > 0
-                        ? JSON.stringify(metadata, (_, value) => {
-                            if (value instanceof Error) {
-                                return {
-                                    message: value.message,
-                                    stack: value.stack,
-                                    name: value.name
-                                };
-                            }
-                            return value;
-                        })
-                        : '';
+                    const metaString =
+                        Object.keys(metadata).length > 0
+                            ? JSON.stringify(metadata, (_, value) => {
+                                  if (value instanceof Error) {
+                                      return {
+                                          message: value.message,
+                                          stack: value.stack,
+                                          name: value.name,
+                                      };
+                                  }
+                                  return value;
+                              })
+                            : '';
                     return `${info.timestamp} [${info.level}]: ${info.message} ${metaString}`;
-                })
-            )
+                }),
+            ),
         }),
         new DailyRotateFile({
-            filename: 'logs/bot-%DATE%.log',
+            filename: 'logs/%LEVEL%/%DATE%.log',
             datePattern: 'DD-MM-YYYY',
             zippedArchive: true,
             maxSize: '20m',
             maxFiles: '30d',
-            format: winston.format.combine(
-                winston.format.timestamp(),
-                winston.format.json()
-            )
-        })
-    ]
-}) as CustomLogger;
+            utc: true,
+            extension: '.log',
 
+            format: winston.format.combine(
+                winston.format((info) => ({
+                    ...info,
+                    level: info.level.toUpperCase(),
+                }))(),
+                winston.format.timestamp(),
+                winston.format.json(),
+            ),
+        }),
+    ],
+    exceptionHandlers: [
+        new DailyRotateFile({
+            filename: 'logs/exceptions/%DATE%.log',
+            datePattern: 'DD-MM-YYYY',
+            zippedArchive: true,
+            maxSize: '20m',
+            maxFiles: '30d',
+            format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
+        }),
+    ],
+}) as CustomLogger;
+process.on('SIGTERM', () => {
+    logger.info('SIGTERM received - closing logger transports');
+    logger.close();
+});
 export default logger;

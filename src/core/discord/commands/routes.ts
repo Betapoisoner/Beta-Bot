@@ -1,3 +1,1 @@
-
-export const commands = [
-];
+export const commands = [];

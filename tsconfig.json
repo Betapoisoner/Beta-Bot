@@ -1,39 +1,23 @@
 {
-  "compilerOptions": {
-   "target": "es2022",
-  "module": "NodeNext",
-  "outDir": "dist",
-  "rootDir": "src",
-  "baseUrl": "src",
-  "moduleResolution": "NodeNext",
-  "strict": true,
-  "esModuleInterop": true,
-  "skipLibCheck": true,
-  "sourceMap": true,
-    "paths": {
-      "@config/*": [
-        "config/*"
-      ],
-      "@core/*": [
-        "core/*"
-      ],
-      "@database/*": [
-        "database/*"
-      ],
-      "@utils/*": [
-        "utils/*"
-      ],
-      "@types/*": [
-        "types/*"
-      ]
-    }
-  },
-  "include": [
-    "src/**/*.ts",
-    "test/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+    "compilerOptions": {
+        "target": "es2022",
+        "module": "NodeNext",
+        "outDir": "dist",
+        "rootDir": "src",
+        "baseUrl": "src",
+        "moduleResolution": "NodeNext",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "paths": {
+            "@config/*": ["config/*"],
+            "@core/*": ["core/*"],
+            "@database/*": ["database/*"],
+            "@utils/*": ["utils/*"],
+            "@types/*": ["types/*"]
+        }
+    },
+    "include": ["src/**/*.ts", "test/**/*.ts"],
+    "exclude": ["node_modules", "dist"]
 }

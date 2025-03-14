@@ -19,15 +19,17 @@ const db = new Client({
 
 // Establish database connection with error handling
 db.connect()
-    .then(() => logger.info('Connected to PostgreSQL database', {
-        event: 'databaseConnectSuccess',
-        databaseType: 'PostgreSQL'
-    }))
+    .then(() =>
+        logger.info('Connected to PostgreSQL database', {
+            event: 'databaseConnectSuccess',
+            databaseType: 'PostgreSQL',
+        }),
+    )
     .catch((err: Error) => {
         logger.error('Database connection error: ' + err, {
             event: 'databaseConnectError',
             databaseType: 'PostgreSQL',
-            error: err
+            error: err,
         });
         process.exit(1);
     });
@@ -54,10 +56,7 @@ export const dbUtils: DBUtils = {
      * @returns Promise resolving to Puppet or null if not found
      */
     async getPuppetBySuffix(userId: string, suffix: string): Promise<Puppet | null> {
-        const res = await db.query(
-            'SELECT * FROM puppets WHERE user_id = $1 AND suffix = $2',
-            [userId, suffix]
-        );
+        const res = await db.query('SELECT * FROM puppets WHERE user_id = $1 AND suffix = $2', [userId, suffix]);
         return res.rows[0] || null;
     },
 
@@ -70,8 +69,7 @@ export const dbUtils: DBUtils = {
         const res = await db.query(
             `INSERT INTO puppets(user_id, name, suffix, avatar, description)
              VALUES($1, $2, $3, $4, $5) RETURNING *`,
-            [puppet.user_id, puppet.name, puppet.suffix,
-            puppet.avatar, puppet.description]
+            [puppet.user_id, puppet.name, puppet.suffix, puppet.avatar, puppet.description],
         );
         return res.rows[0];
     },
@@ -83,10 +81,7 @@ export const dbUtils: DBUtils = {
      * @returns Promise resolving to Puppet or null if not found
      */
     async getPuppetByName(userId: string, name: string): Promise<Puppet | null> {
-        const res = await db.query(
-            'SELECT * FROM puppets WHERE user_id = $1 AND name = $2',
-            [userId, name]
-        );
+        const res = await db.query('SELECT * FROM puppets WHERE user_id = $1 AND name = $2', [userId, name]);
         return res.rows[0] || null;
-    }
+    },
 };
