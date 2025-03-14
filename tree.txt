@@ -1,0 +1,3560 @@
+Folder PATH listing for volume Disco HDD
+Volume serial number is AA94-D611
+D:.
++---config
++---dist
+|   +---config
+|   +---core
+|   |   \---discord
+|   |       +---commands
+|   |       \---utils
+|   +---database
+|   |   +---models
+|   |   \---services
+|   \---utils
++---logs
+|   +---.bin
+|   +---.pnpm
+|   |   +---@colors+colors@1.6.0
+|   |   |       \---@colors
+|   |   |           \---colors
+|   |   |               +---examples
+|   |   |               +---lib
+|   |   |               |   +---custom
+|   |   |               |   +---maps
+|   |   |               |   \---system
+|   |   |               \---themes
+|   |   +---@cspotcode+source-map-support@0.8.1
+|   |   |       +---@cspotcode
+|   |   |       |   \---source-map-support
+|   |   |       \---@jridgewell
+|   |   |           \---trace-mapping
+|   |   |               \---dist
+|   |   |                   \---types
+|   |   +---@dabh+diagnostics@2.0.3
+|   |   |       +---@dabh
+|   |   |       |   \---diagnostics
+|   |   |       |       +---adapters
+|   |   |       |       +---browser
+|   |   |       |       +---logger
+|   |   |       |       +---modifiers
+|   |   |       |       \---node
+|   |   |       +---colorspace
+|   |   |       +---enabled
+|   |   |       \---kuler
+|   |   +---@discordjs+builders@1.10.1
+|   |   |       +---@discordjs
+|   |   |       |   +---builders
+|   |   |       |   |   \---dist
+|   |   |       |   +---formatters
+|   |   |       |   |   \---dist
+|   |   |       |   \---util
+|   |   |       |       \---dist
+|   |   |       +---@sapphire
+|   |   |       |   \---shapeshift
+|   |   |       |       \---dist
+|   |   |       |           +---cjs
+|   |   |       |           +---esm
+|   |   |       |           \---iife
+|   |   |       +---discord-api-types
+|   |   |       |   +---gateway
+|   |   |       |   +---payloads
+|   |   |       |   |   +---v10
+|   |   |       |   |   |   \---_interactions
+|   |   |       |   |   |       \---_applicationCommands
+|   |   |       |   |   |           \---_chatInput
+|   |   |       |   |   +---v6
+|   |   |       |   |   +---v8
+|   |   |       |   |   |   \---_interactions
+|   |   |       |   |   |       \---_applicationCommands
+|   |   |       |   |   |           \---_chatInput
+|   |   |       |   |   \---v9
+|   |   |       |   |       \---_interactions
+|   |   |       |   |           \---_applicationCommands
+|   |   |       |   |               \---_chatInput
+|   |   |       |   +---rest
+|   |   |       |   |   +---v10
+|   |   |       |   |   +---v6
+|   |   |       |   |   +---v8
+|   |   |       |   |   \---v9
+|   |   |       |   +---rpc
+|   |   |       |   +---utils
+|   |   |       |   \---voice
+|   |   |       +---fast-deep-equal
+|   |   |       |   \---es6
+|   |   |       +---ts-mixer
+|   |   |       |   \---dist
+|   |   |       |       +---cjs
+|   |   |       |       +---esm
+|   |   |       |       \---types
+|   |   |       \---tslib
+|   |   |           \---modules
+|   |   +---@discordjs+collection@1.5.3
+|   |   |       \---@discordjs
+|   |   |           \---collection
+|   |   |               \---dist
+|   |   +---@discordjs+collection@2.1.1
+|   |   |       \---@discordjs
+|   |   |           \---collection
+|   |   |               \---dist
+|   |   +---@discordjs+formatters@0.6.0
+|   |   |       +---@discordjs
+|   |   |       |   \---formatters
+|   |   |       |       \---dist
+|   |   |       \---discord-api-types
+|   |   |           +---gateway
+|   |   |           +---payloads
+|   |   |           |   +---v10
+|   |   |           |   |   \---_interactions
+|   |   |           |   |       \---_applicationCommands
+|   |   |           |   |           \---_chatInput
+|   |   |           |   +---v6
+|   |   |           |   +---v8
+|   |   |           |   |   \---_interactions
+|   |   |           |   |       \---_applicationCommands
+|   |   |           |   |           \---_chatInput
+|   |   |           |   \---v9
+|   |   |           |       \---_interactions
+|   |   |           |           \---_applicationCommands
+|   |   |           |               \---_chatInput
+|   |   |           +---rest
+|   |   |           |   +---v10
+|   |   |           |   +---v6
+|   |   |           |   +---v8
+|   |   |           |   \---v9
+|   |   |           +---rpc
+|   |   |           +---utils
+|   |   |           \---voice
+|   |   +---@discordjs+rest@2.4.3
+|   |   |       +---@discordjs
+|   |   |       |   +---collection
+|   |   |       |   |   \---dist
+|   |   |       |   +---rest
+|   |   |       |   |   \---dist
+|   |   |       |   |       \---strategies
+|   |   |       |   \---util
+|   |   |       |       \---dist
+|   |   |       +---@sapphire
+|   |   |       |   +---async-queue
+|   |   |       |   |   \---dist
+|   |   |       |   |       +---cjs
+|   |   |       |   |       +---esm
+|   |   |       |   |       \---iife
+|   |   |       |   \---snowflake
+|   |   |       |       \---dist
+|   |   |       |           +---cjs
+|   |   |       |           +---esm
+|   |   |       |           \---iife
+|   |   |       +---@vladfrangu
+|   |   |       |   \---async_event_emitter
+|   |   |       |       \---dist
+|   |   |       +---discord-api-types
+|   |   |       |   +---gateway
+|   |   |       |   +---payloads
+|   |   |       |   |   +---v10
+|   |   |       |   |   |   \---_interactions
+|   |   |       |   |   |       \---_applicationCommands
+|   |   |       |   |   |           \---_chatInput
+|   |   |       |   |   +---v6
+|   |   |       |   |   +---v8
+|   |   |       |   |   |   \---_interactions
+|   |   |       |   |   |       \---_applicationCommands
+|   |   |       |   |   |           \---_chatInput
+|   |   |       |   |   \---v9
+|   |   |       |   |       \---_interactions
+|   |   |       |   |           \---_applicationCommands
+|   |   |       |   |               \---_chatInput
+|   |   |       |   +---rest
+|   |   |       |   |   +---v10
+|   |   |       |   |   +---v6
+|   |   |       |   |   +---v8
+|   |   |       |   |   \---v9
+|   |   |       |   +---rpc
+|   |   |       |   +---utils
+|   |   |       |   \---voice
+|   |   |       +---magic-bytes.js
+|   |   |       |   +---.github
+|   |   |       |   |   \---workflows
+|   |   |       |   \---dist
+|   |   |       |       \---model
+|   |   |       +---tslib
+|   |   |       |   \---modules
+|   |   |       \---undici
+|   |   |           +---docs
+|   |   |           |   \---docs
+|   |   |           |       +---api
+|   |   |           |       \---best-practices
+|   |   |           +---lib
+|   |   |           |   +---api
+|   |   |           |   +---core
+|   |   |           |   +---dispatcher
+|   |   |           |   +---handler
+|   |   |           |   +---interceptor
+|   |   |           |   +---llhttp
+|   |   |           |   +---mock
+|   |   |           |   +---util
+|   |   |           |   \---web
+|   |   |           |       +---cache
+|   |   |           |       +---cookies
+|   |   |           |       +---eventsource
+|   |   |           |       +---fetch
+|   |   |           |       +---fileapi
+|   |   |           |       \---websocket
+|   |   |           +---scripts
+|   |   |           \---types
+|   |   +---@discordjs+util@1.1.1
+|   |   |       \---@discordjs
+|   |   |           \---util
+|   |   |               \---dist
+|   |   +---@discordjs+ws@1.2.1
+|   |   |       +---@discordjs
+|   |   |       |   +---collection
+|   |   |       |   |   \---dist
+|   |   |       |   +---rest
+|   |   |       |   |   \---dist
+|   |   |       |   |       \---strategies
+|   |   |       |   +---util
+|   |   |       |   |   \---dist
+|   |   |       |   \---ws
+|   |   |       |       \---dist
+|   |   |       +---@sapphire
+|   |   |       |   \---async-queue
+|   |   |       |       \---dist
+|   |   |       |           +---cjs
+|   |   |       |           +---esm
+|   |   |       |           \---iife
+|   |   |       +---@types
+|   |   |       |   \---ws
+|   |   |       +---@vladfrangu
+|   |   |       |   \---async_event_emitter
+|   |   |       |       \---dist
+|   |   |       +---discord-api-types
+|   |   |       |   +---gateway
+|   |   |       |   +---payloads
+|   |   |       |   |   +---v10
+|   |   |       |   |   |   \---_interactions
+|   |   |       |   |   |       \---_applicationCommands
+|   |   |       |   |   |           \---_chatInput
+|   |   |       |   |   +---v6
+|   |   |       |   |   +---v8
+|   |   |       |   |   |   \---_interactions
+|   |   |       |   |   |       \---_applicationCommands
+|   |   |       |   |   |           \---_chatInput
+|   |   |       |   |   \---v9
+|   |   |       |   |       \---_interactions
+|   |   |       |   |           \---_applicationCommands
+|   |   |       |   |               \---_chatInput
+|   |   |       |   +---rest
+|   |   |       |   |   +---v10
+|   |   |       |   |   +---v6
+|   |   |       |   |   +---v8
+|   |   |       |   |   \---v9
+|   |   |       |   +---rpc
+|   |   |       |   +---utils
+|   |   |       |   \---voice
+|   |   |       +---tslib
+|   |   |       |   \---modules
+|   |   |       \---ws
+|   |   |           \---lib
+|   |   +---@eslint+eslintrc@2.1.4
+|   |   |       +---@eslint
+|   |   |       |   \---eslintrc
+|   |   |       |       +---conf
+|   |   |       |       +---dist
+|   |   |       |       +---lib
+|   |   |       |       |   +---config-array
+|   |   |       |       |   \---shared
+|   |   |       |           \---.bin
+|   |   |       +---ajv
+|   |   |       |   +---dist
+|   |   |       |   +---lib
+|   |   |       |   |   +---compile
+|   |   |       |   |   +---dot
+|   |   |       |   |   +---dotjs
+|   |   |       |   |   \---refs
+|   |   |       |   \---scripts
+|   |   |       +---debug
+|   |   |       |   \---src
+|   |   |       +---espree
+|   |   |       |   +---dist
+|   |   |       |   +---lib
+|   |   |       |       \---.bin
+|   |   |       +---globals
+|   |   |       +---ignore
+|   |   |       +---import-fresh
+|   |   |       +---js-yaml
+|   |   |       |   +---bin
+|   |   |       |   +---dist
+|   |   |       |   \---lib
+|   |   |       |       +---schema
+|   |   |       |       \---type
+|   |   |       +---minimatch
+|   |   |       \---strip-json-comments
+|   |   +---@eslint+js@8.57.0
+|   |   |       \---@eslint
+|   |   |           \---js
+|   |   |               \---src
+|   |   |                   \---configs
+|   |   +---@eslint-community+eslint-utils@4.4.1_eslint@8.57.0
+|   |   |       +---@eslint-community
+|   |   |       |   \---eslint-utils
+|   |   |       |           \---.bin
+|   |   |       +---eslint
+|   |   |       |   +---bin
+|   |   |       |   +---conf
+|   |   |       |   +---lib
+|   |   |       |   |   +---cli-engine
+|   |   |       |   |   |   \---formatters
+|   |   |       |   |   +---config
+|   |   |       |   |   +---eslint
+|   |   |       |   |   +---linter
+|   |   |       |   |   |   \---code-path-analysis
+|   |   |       |   |   +---rule-tester
+|   |   |       |   |   +---rules
+|   |   |       |   |   |   \---utils
+|   |   |       |   |   |       +---patterns
+|   |   |       |   |   |       \---unicode
+|   |   |       |   |   +---shared
+|   |   |       |   |   \---source-code
+|   |   |       |   |       \---token-store
+|   |   |       |   +---messages
+|   |   |       |       \---.bin
+|   |   |       \---eslint-visitor-keys
+|   |   |           +---dist
+|   |   |           \---lib
+|   |   +---@eslint-community+regexpp@4.12.1
+|   |   |       \---@eslint-community
+|   |   |           \---regexpp
+|   |   +---@humanwhocodes+config-array@0.11.14
+|   |   |       +---@humanwhocodes
+|   |   |       |   +---config-array
+|   |   |       |   \---object-schema
+|   |   |       |       \---src
+|   |   |       +---debug
+|   |   |       |   \---src
+|   |   |       \---minimatch
+|   |   +---@humanwhocodes+module-importer@1.0.1
+|   |   |       \---@humanwhocodes
+|   |   |           \---module-importer
+|   |   |               +---dist
+|   |   |               \---src
+|   |   +---@humanwhocodes+object-schema@2.0.3
+|   |   |       \---@humanwhocodes
+|   |   |           \---object-schema
+|   |   |               \---src
+|   |   +---@isaacs+cliui@8.0.2
+|   |   |       +---@isaacs
+|   |   |       |   \---cliui
+|   |   |       |       \---build
+|   |   |       |           \---lib
+|   |   |       +---string-width
+|   |   |       +---string-width-cjs
+|   |   |       +---strip-ansi
+|   |   |       +---strip-ansi-cjs
+|   |   |       +---wrap-ansi
+|   |   |       \---wrap-ansi-cjs
+|   |   +---@jridgewell+resolve-uri@3.1.2
+|   |   |       \---@jridgewell
+|   |   |           \---resolve-uri
+|   |   |               \---dist
+|   |   |                   \---types
+|   |   +---@jridgewell+sourcemap-codec@1.5.0
+|   |   |       \---@jridgewell
+|   |   |           \---sourcemap-codec
+|   |   |               \---dist
+|   |   |                   \---types
+|   |   +---@jridgewell+trace-mapping@0.3.9
+|   |   |       \---@jridgewell
+|   |   |           +---resolve-uri
+|   |   |           |   \---dist
+|   |   |           |       \---types
+|   |   |           +---sourcemap-codec
+|   |   |           |   \---dist
+|   |   |           |       \---types
+|   |   |           \---trace-mapping
+|   |   |               \---dist
+|   |   |                   \---types
+|   |   +---@nodelib+fs.scandir@2.1.5
+|   |   |       +---@nodelib
+|   |   |       |   +---fs.scandir
+|   |   |       |   |   \---out
+|   |   |       |   |       +---adapters
+|   |   |       |   |       +---providers
+|   |   |       |   |       +---types
+|   |   |       |   |       \---utils
+|   |   |       |   \---fs.stat
+|   |   |       |       \---out
+|   |   |       |           +---adapters
+|   |   |       |           +---providers
+|   |   |       |           \---types
+|   |   |       \---run-parallel
+|   |   +---@nodelib+fs.stat@2.0.5
+|   |   |       \---@nodelib
+|   |   |           \---fs.stat
+|   |   |               \---out
+|   |   |                   +---adapters
+|   |   |                   +---providers
+|   |   |                   \---types
+|   |   +---@nodelib+fs.walk@1.2.8
+|   |   |       +---@nodelib
+|   |   |       |   +---fs.scandir
+|   |   |       |   |   \---out
+|   |   |       |   |       +---adapters
+|   |   |       |   |       +---providers
+|   |   |       |   |       +---types
+|   |   |       |   |       \---utils
+|   |   |       |   \---fs.walk
+|   |   |       |       \---out
+|   |   |       |           +---providers
+|   |   |       |           +---readers
+|   |   |       |           \---types
+|   |   |       \---fastq
+|   |   |           +---.github
+|   |   |           |   \---workflows
+|   |   |           \---test
+|   |   +---@sapphire+async-queue@1.5.5
+|   |   |       \---@sapphire
+|   |   |           \---async-queue
+|   |   |               \---dist
+|   |   |                   +---cjs
+|   |   |                   +---esm
+|   |   |                   \---iife
+|   |   +---@sapphire+shapeshift@4.0.0
+|   |   |       +---@sapphire
+|   |   |       |   \---shapeshift
+|   |   |       |       \---dist
+|   |   |       |           +---cjs
+|   |   |       |           +---esm
+|   |   |       |           \---iife
+|   |   |       +---fast-deep-equal
+|   |   |       |   \---es6
+|   |   |       \---lodash
+|   |   |           \---fp
+|   |   +---@sapphire+snowflake@3.5.3
+|   |   |       \---@sapphire
+|   |   |           \---snowflake
+|   |   |               \---dist
+|   |   |                   +---cjs
+|   |   |                   +---esm
+|   |   |                   \---iife
+|   |   +---@tsconfig+node10@1.0.11
+|   |   |       \---@tsconfig
+|   |   |           \---node10
+|   |   +---@tsconfig+node12@1.0.11
+|   |   |       \---@tsconfig
+|   |   |           \---node12
+|   |   +---@tsconfig+node14@1.0.3
+|   |   |       \---@tsconfig
+|   |   |           \---node14
+|   |   +---@tsconfig+node16@1.0.4
+|   |   |       \---@tsconfig
+|   |   |           \---node16
+|   |   +---@types+json-schema@7.0.15
+|   |   |       \---@types
+|   |   |           \---json-schema
+|   |   +---@types+node@18.19.80
+|   |   |       +---@types
+|   |   |       |   \---node
+|   |   |       |       +---assert
+|   |   |       |       +---compatibility
+|   |   |       |       +---dns
+|   |   |       |       +---fs
+|   |   |       |       +---readline
+|   |   |       |       +---stream
+|   |   |       |       +---timers
+|   |   |       |       \---ts5.6
+|   |   |       \---undici-types
+|   |   +---@types+pg@8.11.11
+|   |   |       +---@types
+|   |   |       |   +---node
+|   |   |       |   |   +---assert
+|   |   |       |   |   +---compatibility
+|   |   |       |   |   +---dns
+|   |   |       |   |   +---fs
+|   |   |       |   |   +---readline
+|   |   |       |   |   +---stream
+|   |   |       |   |   +---timers
+|   |   |       |   |   \---ts5.6
+|   |   |       |   \---pg
+|   |   |       |       \---lib
+|   |   |       +---pg-protocol
+|   |   |       |   +---dist
+|   |   |       |   \---src
+|   |   |       |       +---testing
+|   |   |       |       \---types
+|   |   |       \---pg-types
+|   |   |           \---lib
+|   |   +---@types+semver@7.5.8
+|   |   |       \---@types
+|   |   |           \---semver
+|   |   |               +---classes
+|   |   |               +---functions
+|   |   |               +---internals
+|   |   |               \---ranges
+|   |   +---@types+strip-bom@3.0.0
+|   |   |       \---@types
+|   |   |           \---strip-bom
+|   |   +---@types+strip-json-comments@0.0.30
+|   |   |       \---@types
+|   |   |           \---strip-json-comments
+|   |   +---@types+triple-beam@1.3.5
+|   |   |       \---@types
+|   |   |           \---triple-beam
+|   |   +---@types+winston@2.4.4
+|   |   |       +---@types
+|   |   |       |   \---winston
+|   |   |       \---winston
+|   |   |           +---dist
+|   |   |           |   \---winston
+|   |   |           |       +---config
+|   |   |           |       \---transports
+|   |   |           \---lib
+|   |   |               \---winston
+|   |   |                   +---config
+|   |   |                   \---transports
+|   |   +---@types+ws@8.18.0
+|   |   |       \---@types
+|   |   |           +---node
+|   |   |           |   +---assert
+|   |   |           |   +---compatibility
+|   |   |           |   +---dns
+|   |   |           |   +---fs
+|   |   |           |   +---readline
+|   |   |           |   +---stream
+|   |   |           |   +---timers
+|   |   |           |   \---ts5.6
+|   |   |           \---ws
+|   |   +---@typescript-eslint+eslint-p_2e180188878310cea875fb69fa0bf784
+|   |   |       +---@eslint-community
+|   |   |       |   \---regexpp
+|   |   |       +---@typescript-eslint
+|   |   |       |   +---eslint-plugin
+|   |   |       |   |   +---dist
+|   |   |       |   |   |   +---configs
+|   |   |       |   |   |   +---rules
+|   |   |       |   |   |   |   +---enum-utils
+|   |   |       |   |   |   |   +---naming-convention-utils
+|   |   |       |   |   |   |   \---prefer-optional-chain-utils
+|   |   |       |   |   |   \---util
+|   |   |       |   |   +---docs
+|   |   |       |   |   |   \---rules
+|   |   |       |   |       \---.bin
+|   |   |       |   +---parser
+|   |   |       |   |   +---dist
+|   |   |       |   |       \---.bin
+|   |   |       |   +---scope-manager
+|   |   |       |   |   \---dist
+|   |   |       |   |       +---definition
+|   |   |       |   |       +---lib
+|   |   |       |   |       +---referencer
+|   |   |       |   |       +---scope
+|   |   |       |   |       \---variable
+|   |   |       |   +---type-utils
+|   |   |       |   |   +---dist
+|   |   |       |   |       \---.bin
+|   |   |       |   +---utils
+|   |   |       |   |   +---dist
+|   |   |       |   |   |   +---ast-utils
+|   |   |       |   |   |   |   \---eslint-utils
+|   |   |       |   |   |   +---eslint-utils
+|   |   |       |   |   |   +---ts-eslint
+|   |   |       |   |   |   \---ts-utils
+|   |   |       |   |       \---.bin
+|   |   |       |   \---visitor-keys
+|   |   |       |       \---dist
+|   |   |       +---debug
+|   |   |       |   \---src
+|   |   |       +---eslint
+|   |   |       |   +---bin
+|   |   |       |   +---conf
+|   |   |       |   +---lib
+|   |   |       |   |   +---cli-engine
+|   |   |       |   |   |   \---formatters
+|   |   |       |   |   +---config
+|   |   |       |   |   +---eslint
+|   |   |       |   |   +---linter
+|   |   |       |   |   |   \---code-path-analysis
+|   |   |       |   |   +---rule-tester
+|   |   |       |   |   +---rules
+|   |   |       |   |   |   \---utils
+|   |   |       |   |   |       +---patterns
+|   |   |       |   |   |       \---unicode
+|   |   |       |   |   +---shared
+|   |   |       |   |   \---source-code
+|   |   |       |   |       \---token-store
+|   |   |       |   +---messages
+|   |   |       |       \---.bin
+|   |   |       +---graphemer
+|   |   |       |   \---lib
+|   |   |       +---ignore
+|   |   |       +---natural-compare
+|   |   |       +---semver
+|   |   |       |   +---bin
+|   |   |       |   +---classes
+|   |   |       |   +---functions
+|   |   |       |   +---internal
+|   |   |       |   \---ranges
+|   |   |       +---ts-api-utils
+|   |   |       |   +---lib
+|   |   |       |       \---.bin
+|   |   |       \---typescript
+|   |   |           +---bin
+|   |   |           \---lib
+|   |   |               +---cs
+|   |   |               +---de
+|   |   |               +---es
+|   |   |               +---fr
+|   |   |               +---it
+|   |   |               +---ja
+|   |   |               +---ko
+|   |   |               +---pl
+|   |   |               +---pt-br
+|   |   |               +---ru
+|   |   |               +---tr
+|   |   |               +---zh-cn
+|   |   |               \---zh-tw
+|   |   +---@typescript-eslint+parser@6_f7b2d07717099f8886ea72933e1e5eaa
+|   |   |       +---@typescript-eslint
+|   |   |       |   +---parser
+|   |   |       |   |   +---dist
+|   |   |       |   |       \---.bin
+|   |   |       |   +---scope-manager
+|   |   |       |   |   \---dist
+|   |   |       |   |       +---definition
+|   |   |       |   |       +---lib
+|   |   |       |   |       +---referencer
+|   |   |       |   |       +---scope
+|   |   |       |   |       \---variable
+|   |   |       |   +---types
+|   |   |       |   |   \---dist
+|   |   |       |   |       \---generated
+|   |   |       |   +---typescript-estree
+|   |   |       |   |   +---dist
+|   |   |       |   |   |   +---create-program
+|   |   |       |   |   |   +---jsx
+|   |   |       |   |   |   +---parseSettings
+|   |   |       |   |   |   \---ts-estree
+|   |   |       |   |       \---.bin
+|   |   |       |   \---visitor-keys
+|   |   |       |       \---dist
+|   |   |       +---debug
+|   |   |       |   \---src
+|   |   |       +---eslint
+|   |   |       |   +---bin
+|   |   |       |   +---conf
+|   |   |       |   +---lib
+|   |   |       |   |   +---cli-engine
+|   |   |       |   |   |   \---formatters
+|   |   |       |   |   +---config
+|   |   |       |   |   +---eslint
+|   |   |       |   |   +---linter
+|   |   |       |   |   |   \---code-path-analysis
+|   |   |       |   |   +---rule-tester
+|   |   |       |   |   +---rules
+|   |   |       |   |   |   \---utils
+|   |   |       |   |   |       +---patterns
+|   |   |       |   |   |       \---unicode
+|   |   |       |   |   +---shared
+|   |   |       |   |   \---source-code
+|   |   |       |   |       \---token-store
+|   |   |       |   +---messages
+|   |   |       |       \---.bin
+|   |   |       \---typescript
+|   |   |           +---bin
+|   |   |           \---lib
+|   |   |               +---cs
+|   |   |               +---de
+|   |   |               +---es
+|   |   |               +---fr
+|   |   |               +---it
+|   |   |               +---ja
+|   |   |               +---ko
+|   |   |               +---pl
+|   |   |               +---pt-br
+|   |   |               +---ru
+|   |   |               +---tr
+|   |   |               +---zh-cn
+|   |   |               \---zh-tw
+|   |   +---@typescript-eslint+scope-manager@6.21.0
+|   |   |       \---@typescript-eslint
+|   |   |           +---scope-manager
+|   |   |           |   \---dist
+|   |   |           |       +---definition
+|   |   |           |       +---lib
+|   |   |           |       +---referencer
+|   |   |           |       +---scope
+|   |   |           |       \---variable
+|   |   |           +---types
+|   |   |           |   \---dist
+|   |   |           |       \---generated
+|   |   |           \---visitor-keys
+|   |   |               \---dist
+|   |   +---@typescript-eslint+type-uti_3d66dc9fad8645f0e1af72e4a149c445
+|   |   |       +---@typescript-eslint
+|   |   |       |   +---type-utils
+|   |   |       |   |   +---dist
+|   |   |       |   |       \---.bin
+|   |   |       |   +---typescript-estree
+|   |   |       |   |   +---dist
+|   |   |       |   |   |   +---create-program
+|   |   |       |   |   |   +---jsx
+|   |   |       |   |   |   +---parseSettings
+|   |   |       |   |   |   \---ts-estree
+|   |   |       |   |       \---.bin
+|   |   |       |   \---utils
+|   |   |       |       +---dist
+|   |   |       |       |   +---ast-utils
+|   |   |       |       |   |   \---eslint-utils
+|   |   |       |       |   +---eslint-utils
+|   |   |       |       |   +---ts-eslint
+|   |   |       |       |   \---ts-utils
+|   |   |       |           \---.bin
+|   |   |       +---debug
+|   |   |       |   \---src
+|   |   |       +---eslint
+|   |   |       |   +---bin
+|   |   |       |   +---conf
+|   |   |       |   +---lib
+|   |   |       |   |   +---cli-engine
+|   |   |       |   |   |   \---formatters
+|   |   |       |   |   +---config
+|   |   |       |   |   +---eslint
+|   |   |       |   |   +---linter
+|   |   |       |   |   |   \---code-path-analysis
+|   |   |       |   |   +---rule-tester
+|   |   |       |   |   +---rules
+|   |   |       |   |   |   \---utils
+|   |   |       |   |   |       +---patterns
+|   |   |       |   |   |       \---unicode
+|   |   |       |   |   +---shared
+|   |   |       |   |   \---source-code
+|   |   |       |   |       \---token-store
+|   |   |       |   +---messages
+|   |   |       |       \---.bin
+|   |   |       +---ts-api-utils
+|   |   |       |   +---lib
+|   |   |       |       \---.bin
+|   |   |       \---typescript
+|   |   |           +---bin
+|   |   |           \---lib
+|   |   |               +---cs
+|   |   |               +---de
+|   |   |               +---es
+|   |   |               +---fr
+|   |   |               +---it
+|   |   |               +---ja
+|   |   |               +---ko
+|   |   |               +---pl
+|   |   |               +---pt-br
+|   |   |               +---ru
+|   |   |               +---tr
+|   |   |               +---zh-cn
+|   |   |               \---zh-tw
+|   |   +---@typescript-eslint+types@6.21.0
+|   |   |       \---@typescript-eslint
+|   |   |           \---types
+|   |   |               \---dist
+|   |   |                   \---generated
+|   |   +---@typescript-eslint+typescript-estree@6.21.0_typescript@5.8.2
+|   |   |       +---@typescript-eslint
+|   |   |       |   +---types
+|   |   |       |   |   \---dist
+|   |   |       |   |       \---generated
+|   |   |       |   +---typescript-estree
+|   |   |       |   |   +---dist
+|   |   |       |   |   |   +---create-program
+|   |   |       |   |   |   +---jsx
+|   |   |       |   |   |   +---parseSettings
+|   |   |       |   |   |   \---ts-estree
+|   |   |       |   |       \---.bin
+|   |   |       |   \---visitor-keys
+|   |   |       |       \---dist
+|   |   |       +---debug
+|   |   |       |   \---src
+|   |   |       +---globby
+|   |   |       +---is-glob
+|   |   |       +---minimatch
+|   |   |       |   \---dist
+|   |   |       |       +---cjs
+|   |   |       |       \---mjs
+|   |   |       +---semver
+|   |   |       |   +---bin
+|   |   |       |   +---classes
+|   |   |       |   +---functions
+|   |   |       |   +---internal
+|   |   |       |   \---ranges
+|   |   |       +---ts-api-utils
+|   |   |       |   +---lib
+|   |   |       |       \---.bin
+|   |   |       \---typescript
+|   |   |           +---bin
+|   |   |           \---lib
+|   |   |               +---cs
+|   |   |               +---de
+|   |   |               +---es
+|   |   |               +---fr
+|   |   |               +---it
+|   |   |               +---ja
+|   |   |               +---ko
+|   |   |               +---pl
+|   |   |               +---pt-br
+|   |   |               +---ru
+|   |   |               +---tr
+|   |   |               +---zh-cn
+|   |   |               \---zh-tw
+|   |   +---@typescript-eslint+utils@6._e00b709f90eb0806402f14e810134dbd
+|   |   |       +---@eslint-community
+|   |   |       |   \---eslint-utils
+|   |   |       |           \---.bin
+|   |   |       +---@types
+|   |   |       |   +---json-schema
+|   |   |       |   \---semver
+|   |   |       |       +---classes
+|   |   |       |       +---functions
+|   |   |       |       +---internals
+|   |   |       |       \---ranges
+|   |   |       +---@typescript-eslint
+|   |   |       |   +---scope-manager
+|   |   |       |   |   \---dist
+|   |   |       |   |       +---definition
+|   |   |       |   |       +---lib
+|   |   |       |   |       +---referencer
+|   |   |       |   |       +---scope
+|   |   |       |   |       \---variable
+|   |   |       |   +---types
+|   |   |       |   |   \---dist
+|   |   |       |   |       \---generated
+|   |   |       |   +---typescript-estree
+|   |   |       |   |   +---dist
+|   |   |       |   |   |   +---create-program
+|   |   |       |   |   |   +---jsx
+|   |   |       |   |   |   +---parseSettings
+|   |   |       |   |   |   \---ts-estree
+|   |   |       |   |       \---.bin
+|   |   |       |   \---utils
+|   |   |       |       +---dist
+|   |   |       |       |   +---ast-utils
+|   |   |       |       |   |   \---eslint-utils
+|   |   |       |       |   +---eslint-utils
+|   |   |       |       |   +---ts-eslint
+|   |   |       |       |   \---ts-utils
+|   |   |       |           \---.bin
+|   |   |       +---eslint
+|   |   |       |   +---bin
+|   |   |       |   +---conf
+|   |   |       |   +---lib
+|   |   |       |   |   +---cli-engine
+|   |   |       |   |   |   \---formatters
+|   |   |       |   |   +---config
+|   |   |       |   |   +---eslint
+|   |   |       |   |   +---linter
+|   |   |       |   |   |   \---code-path-analysis
+|   |   |       |   |   +---rule-tester
+|   |   |       |   |   +---rules
+|   |   |       |   |   |   \---utils
+|   |   |       |   |   |       +---patterns
+|   |   |       |   |   |       \---unicode
+|   |   |       |   |   +---shared
+|   |   |       |   |   \---source-code
+|   |   |       |   |       \---token-store
+|   |   |       |   +---messages
+|   |   |       |       \---.bin
+|   |   |       \---semver
+|   |   |           +---bin
+|   |   |           +---classes
+|   |   |           +---functions
+|   |   |           +---internal
+|   |   |           \---ranges
+|   |   +---@typescript-eslint+visitor-keys@6.21.0
+|   |   |       +---@typescript-eslint
+|   |   |       |   +---types
+|   |   |       |   |   \---dist
+|   |   |       |   |       \---generated
+|   |   |       |   \---visitor-keys
+|   |   |       |       \---dist
+|   |   |       \---eslint-visitor-keys
+|   |   |           +---dist
+|   |   |           \---lib
+|   |   +---@ungap+structured-clone@1.3.0
+|   |   |       \---@ungap
+|   |   |           \---structured-clone
+|   |   |               +---.github
+|   |   |               |   \---workflows
+|   |   |               +---cjs
+|   |   |               \---esm
+|   |   +---@vladfrangu+async_event_emitter@2.4.6
+|   |   |       \---@vladfrangu
+|   |   |           \---async_event_emitter
+|   |   |               \---dist
+|   |   +---acorn-jsx@5.3.2_acorn@8.14.1
+|   |   |       +---acorn
+|   |   |       |   +---bin
+|   |   |       |   \---dist
+|   |   |       \---acorn-jsx
+|   |   |               \---.bin
+|   |   +---acorn-walk@8.3.4
+|   |   |       +---acorn
+|   |   |       |   +---bin
+|   |   |       |   \---dist
+|   |   |       \---acorn-walk
+|   |   |           +---dist
+|   |   |               \---.bin
+|   |   +---acorn@8.14.1
+|   |   |       \---acorn
+|   |   |           +---bin
+|   |   |           \---dist
+|   |   +---ajv@6.12.6
+|   |   |       +---ajv
+|   |   |       |   +---dist
+|   |   |       |   +---lib
+|   |   |       |   |   +---compile
+|   |   |       |   |   +---dot
+|   |   |       |   |   +---dotjs
+|   |   |       |   |   \---refs
+|   |   |       |   \---scripts
+|   |   |       +---fast-deep-equal
+|   |   |       |   \---es6
+|   |   |       +---fast-json-stable-stringify
+|   |   |       |   +---.github
+|   |   |       |   +---benchmark
+|   |   |       |   +---example
+|   |   |       |   \---test
+|   |   |       +---json-schema-traverse
+|   |   |       |   \---spec
+|   |   |       |       \---fixtures
+|   |   |       \---uri-js
+|   |   |           \---dist
+|   |   |               +---es5
+|   |   |               \---esnext
+|   |   |                   \---schemes
+|   |   +---ansi-regex@5.0.1
+|   |   |       \---ansi-regex
+|   |   +---ansi-regex@6.1.0
+|   |   |       \---ansi-regex
+|   |   +---ansi-styles@4.3.0
+|   |   |       +---ansi-styles
+|   |   |       \---color-convert
+|   |   +---ansi-styles@6.2.1
+|   |   |       \---ansi-styles
+|   |   +---anymatch@3.1.3
+|   |   |       +---anymatch
+|   |   |       +---normalize-path
+|   |   |       \---picomatch
+|   |   |           \---lib
+|   |   +---arg@4.1.3
+|   |   |       \---arg
+|   |   +---argparse@2.0.1
+|   |   |       \---argparse
+|   |   |           \---lib
+|   |   +---array-union@2.1.0
+|   |   |       \---array-union
+|   |   +---async@3.2.6
+|   |   |       \---async
+|   |   |           +---dist
+|   |   |           \---internal
+|   |   +---balanced-match@1.0.2
+|   |   |       \---balanced-match
+|   |   |           \---.github
+|   |   +---binary-extensions@2.3.0
+|   |   |       \---binary-extensions
+|   |   +---brace-expansion@1.1.11
+|   |   |       +---balanced-match
+|   |   |       |   \---.github
+|   |   |       +---brace-expansion
+|   |   |       \---concat-map
+|   |   |           +---example
+|   |   |           \---test
+|   |   +---brace-expansion@2.0.1
+|   |   |       +---balanced-match
+|   |   |       |   \---.github
+|   |   |       \---brace-expansion
+|   |   |           \---.github
+|   |   +---braces@3.0.3
+|   |   |       +---braces
+|   |   |       |   \---lib
+|   |   |       \---fill-range
+|   |   +---buffer-from@1.1.2
+|   |   |       \---buffer-from
+|   |   +---callsites@3.1.0
+|   |   |       \---callsites
+|   |   +---chalk@4.1.2
+|   |   |       +---ansi-styles
+|   |   |       +---chalk
+|   |   |       |   \---source
+|   |   |       \---supports-color
+|   |   +---chokidar@3.6.0
+|   |   |       +---anymatch
+|   |   |       +---braces
+|   |   |       |   \---lib
+|   |   |       +---chokidar
+|   |   |       |   +---lib
+|   |   |       |   \---types
+|   |   |       +---glob-parent
+|   |   |       +---is-binary-path
+|   |   |       +---is-glob
+|   |   |       +---normalize-path
+|   |   |       \---readdirp
+|   |   +---cliui@7.0.4
+|   |   |       +---cliui
+|   |   |       |   \---build
+|   |   |       |       \---lib
+|   |   |       +---string-width
+|   |   |       +---strip-ansi
+|   |   |       \---wrap-ansi
+|   |   +---color-convert@1.9.3
+|   |   |       +---color-convert
+|   |   |       \---color-name
+|   |   +---color-convert@2.0.1
+|   |   |       +---color-convert
+|   |   |       \---color-name
+|   |   +---color-name@1.1.3
+|   |   |       \---color-name
+|   |   +---color-name@1.1.4
+|   |   |       \---color-name
+|   |   +---color-string@1.9.1
+|   |   |       +---color-name
+|   |   |       +---color-string
+|   |   |       \---simple-swizzle
+|   |   +---color@3.2.1
+|   |   |       +---color
+|   |   |       +---color-convert
+|   |   |       \---color-string
+|   |   +---colorspace@1.1.4
+|   |   |       +---color
+|   |   |       +---colorspace
+|   |   |       \---text-hex
+|   |   +---commander@9.5.0
+|   |   |       \---commander
+|   |   |           +---lib
+|   |   |           \---typings
+|   |   +---concat-map@0.0.1
+|   |   |       \---concat-map
+|   |   |           +---example
+|   |   |           \---test
+|   |   +---copyfiles@2.4.1
+|   |   |       +---copyfiles
+|   |   |       |   |   \---.bin
+|   |   |       |   \---test
+|   |   |       +---glob
+|   |   |       +---minimatch
+|   |   |       +---mkdirp
+|   |   |       |   +---bin
+|   |   |       |   \---lib
+|   |   |       +---noms
+|   |   |       +---through2
+|   |   |       +---untildify
+|   |   |       \---yargs
+|   |   |           +---build
+|   |   |           |   \---lib
+|   |   |           |       +---typings
+|   |   |           |       \---utils
+|   |   |           +---helpers
+|   |   |           +---lib
+|   |   |           |   \---platform-shims
+|   |   |           \---locales
+|   |   +---core-util-is@1.0.3
+|   |   |       \---core-util-is
+|   |   |           \---lib
+|   |   +---create-require@1.1.1
+|   |   |       \---create-require
+|   |   +---cross-spawn@7.0.6
+|   |   |       +---cross-spawn
+|   |   |       |   +---lib
+|   |   |       |   |   \---util
+|   |   |       |       \---.bin
+|   |   |       +---path-key
+|   |   |       +---shebang-command
+|   |   |       \---which
+|   |   |           \---bin
+|   |   +---debug@4.4.0
+|   |   |       +---debug
+|   |   |       |   \---src
+|   |   |       \---ms
+|   |   +---deep-is@0.1.4
+|   |   |       \---deep-is
+|   |   |           +---example
+|   |   |           \---test
+|   |   +---diff@4.0.2
+|   |   |       \---diff
+|   |   |           +---dist
+|   |   |           \---lib
+|   |   |               +---convert
+|   |   |               +---diff
+|   |   |               +---patch
+|   |   |               \---util
+|   |   +---dir-glob@3.0.1
+|   |   |       +---dir-glob
+|   |   |       \---path-type
+|   |   +---discord-api-types@0.37.119
+|   |   |       \---discord-api-types
+|   |   |           +---gateway
+|   |   |           +---payloads
+|   |   |           |   +---v10
+|   |   |           |   |   \---_interactions
+|   |   |           |   |       \---_applicationCommands
+|   |   |           |   |           \---_chatInput
+|   |   |           |   +---v6
+|   |   |           |   +---v8
+|   |   |           |   |   \---_interactions
+|   |   |           |   |       \---_applicationCommands
+|   |   |           |   |           \---_chatInput
+|   |   |           |   \---v9
+|   |   |           |       \---_interactions
+|   |   |           |           \---_applicationCommands
+|   |   |           |               \---_chatInput
+|   |   |           +---rest
+|   |   |           |   +---v10
+|   |   |           |   +---v6
+|   |   |           |   +---v8
+|   |   |           |   \---v9
+|   |   |           +---rpc
+|   |   |           +---utils
+|   |   |           \---voice
+|   |   +---discord.js@14.18.0
+|   |   |       +---@discordjs
+|   |   |       |   +---builders
+|   |   |       |   |   \---dist
+|   |   |       |   +---collection
+|   |   |       |   |   \---dist
+|   |   |       |   +---formatters
+|   |   |       |   |   \---dist
+|   |   |       |   +---rest
+|   |   |       |   |   \---dist
+|   |   |       |   |       \---strategies
+|   |   |       |   +---util
+|   |   |       |   |   \---dist
+|   |   |       |   \---ws
+|   |   |       |       \---dist
+|   |   |       +---@sapphire
+|   |   |       |   \---snowflake
+|   |   |       |       \---dist
+|   |   |       |           +---cjs
+|   |   |       |           +---esm
+|   |   |       |           \---iife
+|   |   |       +---discord-api-types
+|   |   |       |   +---gateway
+|   |   |       |   +---payloads
+|   |   |       |   |   +---v10
+|   |   |       |   |   |   \---_interactions
+|   |   |       |   |   |       \---_applicationCommands
+|   |   |       |   |   |           \---_chatInput
+|   |   |       |   |   +---v6
+|   |   |       |   |   +---v8
+|   |   |       |   |   |   \---_interactions
+|   |   |       |   |   |       \---_applicationCommands
+|   |   |       |   |   |           \---_chatInput
+|   |   |       |   |   \---v9
+|   |   |       |   |       \---_interactions
+|   |   |       |   |           \---_applicationCommands
+|   |   |       |   |               \---_chatInput
+|   |   |       |   +---rest
+|   |   |       |   |   +---v10
+|   |   |       |   |   +---v6
+|   |   |       |   |   +---v8
+|   |   |       |   |   \---v9
+|   |   |       |   +---rpc
+|   |   |       |   +---utils
+|   |   |       |   \---voice
+|   |   |       +---discord.js
+|   |   |       |   +---src
+|   |   |       |   |   +---client
+|   |   |       |   |   |   +---actions
+|   |   |       |   |   |   +---voice
+|   |   |       |   |   |   \---websocket
+|   |   |       |   |   |       \---handlers
+|   |   |       |   |   +---errors
+|   |   |       |   |   +---managers
+|   |   |       |   |   +---sharding
+|   |   |       |   |   +---structures
+|   |   |       |   |   |   \---interfaces
+|   |   |       |   |   \---util
+|   |   |       |   \---typings
+|   |   |       +---fast-deep-equal
+|   |   |       |   \---es6
+|   |   |       +---lodash.snakecase
+|   |   |       +---tslib
+|   |   |       |   \---modules
+|   |   |       \---undici
+|   |   |           +---docs
+|   |   |           |   \---docs
+|   |   |           |       +---api
+|   |   |           |       \---best-practices
+|   |   |           +---lib
+|   |   |           |   +---api
+|   |   |           |   +---core
+|   |   |           |   +---dispatcher
+|   |   |           |   +---handler
+|   |   |           |   +---interceptor
+|   |   |           |   +---llhttp
+|   |   |           |   +---mock
+|   |   |           |   +---util
+|   |   |           |   \---web
+|   |   |           |       +---cache
+|   |   |           |       +---cookies
+|   |   |           |       +---eventsource
+|   |   |           |       +---fetch
+|   |   |           |       +---fileapi
+|   |   |           |       \---websocket
+|   |   |           +---scripts
+|   |   |           \---types
+|   |   +---doctrine@3.0.0
+|   |   |       +---doctrine
+|   |   |       |   \---lib
+|   |   |       \---esutils
+|   |   |           \---lib
+|   |   +---dotenv@16.4.7
+|   |   |       \---dotenv
+|   |   |           \---lib
+|   |   +---dynamic-dedupe@0.3.0
+|   |   |       +---dynamic-dedupe
+|   |   |       |   +---example
+|   |   |       |   |   +---pack1
+|   |   |       |   |   |   \---common
+|   |   |       |   |   |       \---dep-uno
+|   |   |       |   |   \---pack2
+|   |   |       |   |       \---common
+|   |   |       |   |           \---dep-uno
+|   |   |       |   \---test
+|   |   |       |       \---fixtures
+|   |   |       |           +---pack1
+|   |   |       |           |   \---common
+|   |   |       |           |       +---dep-dos
+|   |   |       |           |       \---dep-uno
+|   |   |       |           \---pack2
+|   |   |       |               \---common
+|   |   |       |                   \---dep-uno
+|   |   |       \---xtend
+|   |   +---eastasianwidth@0.2.0
+|   |   |       \---eastasianwidth
+|   |   +---emoji-regex@8.0.0
+|   |   |       \---emoji-regex
+|   |   |           \---es2015
+|   |   +---emoji-regex@9.2.2
+|   |   |       \---emoji-regex
+|   |   |           \---es2015
+|   |   +---enabled@2.0.0
+|   |   |       \---enabled
+|   |   +---envalid@8.0.0
+|   |   |       +---envalid
+|   |   |       |   +---dist
+|   |   |       |   \---src
+|   |   |       \---tslib
+|   |   |           \---modules
+|   |   +---escalade@3.2.0
+|   |   |       \---escalade
+|   |   |           +---dist
+|   |   |           \---sync
+|   |   +---escape-string-regexp@4.0.0
+|   |   |       \---escape-string-regexp
+|   |   +---eslint-scope@7.2.2
+|   |   |       +---eslint-scope
+|   |   |       |   +---dist
+|   |   |       |   \---lib
+|   |   |       +---esrecurse
+|   |   |       \---estraverse
+|   |   +---eslint-visitor-keys@3.4.3
+|   |   |       \---eslint-visitor-keys
+|   |   |           +---dist
+|   |   |           \---lib
+|   |   +---eslint@8.57.0
+|   |   |       +---@eslint
+|   |   |       |   +---eslintrc
+|   |   |       |   |   +---conf
+|   |   |       |   |   +---dist
+|   |   |       |   |   +---lib
+|   |   |       |   |   |   +---config-array
+|   |   |       |   |   |   \---shared
+|   |   |       |   |       \---.bin
+|   |   |       |   \---js
+|   |   |       |       \---src
+|   |   |       |           \---configs
+|   |   |       +---@eslint-community
+|   |   |       |   +---eslint-utils
+|   |   |       |   |       \---.bin
+|   |   |       |   \---regexpp
+|   |   |       +---@humanwhocodes
+|   |   |       |   +---config-array
+|   |   |       |   \---module-importer
+|   |   |       |       +---dist
+|   |   |       |       \---src
+|   |   |       +---@nodelib
+|   |   |       |   \---fs.walk
+|   |   |       |       \---out
+|   |   |       |           +---providers
+|   |   |       |           +---readers
+|   |   |       |           \---types
+|   |   |       +---@ungap
+|   |   |       |   \---structured-clone
+|   |   |       |       +---.github
+|   |   |       |       |   \---workflows
+|   |   |       |       +---cjs
+|   |   |       |       \---esm
+|   |   |       +---ajv
+|   |   |       |   +---dist
+|   |   |       |   +---lib
+|   |   |       |   |   +---compile
+|   |   |       |   |   +---dot
+|   |   |       |   |   +---dotjs
+|   |   |       |   |   \---refs
+|   |   |       |   \---scripts
+|   |   |       +---chalk
+|   |   |       |   \---source
+|   |   |       +---cross-spawn
+|   |   |       |   +---lib
+|   |   |       |   |   \---util
+|   |   |       |       \---.bin
+|   |   |       +---debug
+|   |   |       |   \---src
+|   |   |       +---doctrine
+|   |   |       |   \---lib
+|   |   |       +---escape-string-regexp
+|   |   |       +---eslint
+|   |   |       |   +---bin
+|   |   |       |   +---conf
+|   |   |       |   +---lib
+|   |   |       |   |   +---cli-engine
+|   |   |       |   |   |   \---formatters
+|   |   |       |   |   +---config
+|   |   |       |   |   +---eslint
+|   |   |       |   |   +---linter
+|   |   |       |   |   |   \---code-path-analysis
+|   |   |       |   |   +---rule-tester
+|   |   |       |   |   +---rules
+|   |   |       |   |   |   \---utils
+|   |   |       |   |   |       +---patterns
+|   |   |       |   |   |       \---unicode
+|   |   |       |   |   +---shared
+|   |   |       |   |   \---source-code
+|   |   |       |   |       \---token-store
+|   |   |       |   +---messages
+|   |   |       |       \---.bin
+|   |   |       +---eslint-scope
+|   |   |       |   +---dist
+|   |   |       |   \---lib
+|   |   |       +---eslint-visitor-keys
+|   |   |       |   +---dist
+|   |   |       |   \---lib
+|   |   |       +---espree
+|   |   |       |   +---dist
+|   |   |       |   +---lib
+|   |   |       |       \---.bin
+|   |   |       +---esquery
+|   |   |       |   \---dist
+|   |   |       +---esutils
+|   |   |       |   \---lib
+|   |   |       +---fast-deep-equal
+|   |   |       |   \---es6
+|   |   |       +---file-entry-cache
+|   |   |       +---find-up
+|   |   |       +---glob-parent
+|   |   |       +---globals
+|   |   |       +---graphemer
+|   |   |       |   \---lib
+|   |   |       +---ignore
+|   |   |       +---imurmurhash
+|   |   |       +---is-glob
+|   |   |       +---is-path-inside
+|   |   |       +---js-yaml
+|   |   |       |   +---bin
+|   |   |       |   +---dist
+|   |   |       |   \---lib
+|   |   |       |       +---schema
+|   |   |       |       \---type
+|   |   |       +---json-stable-stringify-without-jsonify
+|   |   |       |   +---example
+|   |   |       |   \---test
+|   |   |       +---levn
+|   |   |       |   \---lib
+|   |   |       +---lodash.merge
+|   |   |       +---minimatch
+|   |   |       +---natural-compare
+|   |   |       +---optionator
+|   |   |       |   \---lib
+|   |   |       +---strip-ansi
+|   |   |       \---text-table
+|   |   |           +---example
+|   |   |           \---test
+|   |   +---espree@9.6.1
+|   |   |       +---acorn
+|   |   |       |   +---bin
+|   |   |       |   \---dist
+|   |   |       +---acorn-jsx
+|   |   |       |       \---.bin
+|   |   |       +---eslint-visitor-keys
+|   |   |       |   +---dist
+|   |   |       |   \---lib
+|   |   |       \---espree
+|   |   |           +---dist
+|   |   |           +---lib
+|   |   |               \---.bin
+|   |   +---esquery@1.6.0
+|   |   |       +---esquery
+|   |   |       |   \---dist
+|   |   |       \---estraverse
+|   |   +---esrecurse@4.3.0
+|   |   |       +---esrecurse
+|   |   |       \---estraverse
+|   |   +---estraverse@5.3.0
+|   |   |       \---estraverse
+|   |   +---esutils@2.0.3
+|   |   |       \---esutils
+|   |   |           \---lib
+|   |   +---fast-deep-equal@3.1.3
+|   |   |       \---fast-deep-equal
+|   |   |           \---es6
+|   |   +---fast-glob@3.3.3
+|   |   |       +---@nodelib
+|   |   |       |   +---fs.stat
+|   |   |       |   |   \---out
+|   |   |       |   |       +---adapters
+|   |   |       |   |       +---providers
+|   |   |       |   |       \---types
+|   |   |       |   \---fs.walk
+|   |   |       |       \---out
+|   |   |       |           +---providers
+|   |   |       |           +---readers
+|   |   |       |           \---types
+|   |   |       +---fast-glob
+|   |   |       |   \---out
+|   |   |       |       +---managers
+|   |   |       |       +---providers
+|   |   |       |       |   +---filters
+|   |   |       |       |   +---matchers
+|   |   |       |       |   \---transformers
+|   |   |       |       +---readers
+|   |   |       |       +---types
+|   |   |       |       \---utils
+|   |   |       +---glob-parent
+|   |   |       +---merge2
+|   |   |       \---micromatch
+|   |   +---fast-json-stable-stringify@2.1.0
+|   |   |       \---fast-json-stable-stringify
+|   |   |           +---.github
+|   |   |           +---benchmark
+|   |   |           +---example
+|   |   |           \---test
+|   |   +---fast-levenshtein@2.0.6
+|   |   |       \---fast-levenshtein
+|   |   +---fastq@1.19.1
+|   |   |       +---fastq
+|   |   |       |   +---.github
+|   |   |       |   |   \---workflows
+|   |   |       |   \---test
+|   |   |       \---reusify
+|   |   |           +---.github
+|   |   |           |   \---workflows
+|   |   |           \---benchmarks
+|   |   +---fecha@4.2.3
+|   |   |       \---fecha
+|   |   |           +---dist
+|   |   |           +---lib
+|   |   |           \---src
+|   |   +---file-entry-cache@6.0.1
+|   |   |       +---file-entry-cache
+|   |   |       \---flat-cache
+|   |   |           |   \---.bin
+|   |   |           \---src
+|   |   +---file-stream-rotator@0.6.1
+|   |   |       +---file-stream-rotator
+|   |   |       |   \---tests
+|   |   |       \---moment
+|   |   |           +---dist
+|   |   |           |   \---locale
+|   |   |           +---locale
+|   |   |           +---min
+|   |   |           +---src
+|   |   |           |   +---lib
+|   |   |           |   |   +---create
+|   |   |           |   |   +---duration
+|   |   |           |   |   +---format
+|   |   |           |   |   +---locale
+|   |   |           |   |   +---moment
+|   |   |           |   |   +---parse
+|   |   |           |   |   +---units
+|   |   |           |   |   \---utils
+|   |   |           |   \---locale
+|   |   |           \---ts3.1-typings
+|   |   +---fill-range@7.1.1
+|   |   |       +---fill-range
+|   |   |       \---to-regex-range
+|   |   +---find-up@5.0.0
+|   |   |       +---find-up
+|   |   |       +---locate-path
+|   |   |       \---path-exists
+|   |   +---flat-cache@3.2.0
+|   |   |       +---flat-cache
+|   |   |       |   |   \---.bin
+|   |   |       |   \---src
+|   |   |       +---flatted
+|   |   |       |   +---cjs
+|   |   |       |   +---esm
+|   |   |       |   +---php
+|   |   |       |   +---python
+|   |   |       |   \---types
+|   |   |       +---keyv
+|   |   |       |   \---src
+|   |   |       \---rimraf
+|   |   +---flatted@3.3.3
+|   |   |       \---flatted
+|   |   |           +---cjs
+|   |   |           +---esm
+|   |   |           +---php
+|   |   |           +---python
+|   |   |           \---types
+|   |   +---fn.name@1.1.0
+|   |   |       \---fn.name
+|   |   +---foreground-child@3.3.1
+|   |   |       +---cross-spawn
+|   |   |       |   +---lib
+|   |   |       |   |   \---util
+|   |   |       |       \---.bin
+|   |   |       +---foreground-child
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       \---signal-exit
+|   |   |           \---dist
+|   |   |               +---cjs
+|   |   |               \---mjs
+|   |   +---fs.realpath@1.0.0
+|   |   |       \---fs.realpath
+|   |   +---function-bind@1.1.2
+|   |   |       \---function-bind
+|   |   |           +---.github
+|   |   |           \---test
+|   |   +---get-caller-file@2.0.5
+|   |   |       \---get-caller-file
+|   |   +---glob-parent@5.1.2
+|   |   |       +---glob-parent
+|   |   |       \---is-glob
+|   |   +---glob-parent@6.0.2
+|   |   |       +---glob-parent
+|   |   |       \---is-glob
+|   |   +---glob@11.0.1
+|   |   |       +---foreground-child
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       +---glob
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       +---jackspeak
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       +---minimatch
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       +---minipass
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       +---package-json-from-dist
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       \---path-scurry
+|   |   |           \---dist
+|   |   |               +---commonjs
+|   |   |               \---esm
+|   |   +---glob@7.2.3
+|   |   |       +---fs.realpath
+|   |   |       +---glob
+|   |   |       +---inflight
+|   |   |       +---inherits
+|   |   |       +---minimatch
+|   |   |       +---once
+|   |   |       \---path-is-absolute
+|   |   +---globals@13.24.0
+|   |   |       +---globals
+|   |   |       \---type-fest
+|   |   |           +---source
+|   |   |           \---ts41
+|   |   +---globby@11.1.0
+|   |   |       +---array-union
+|   |   |       +---dir-glob
+|   |   |       +---fast-glob
+|   |   |       |   \---out
+|   |   |       |       +---managers
+|   |   |       |       +---providers
+|   |   |       |       |   +---filters
+|   |   |       |       |   +---matchers
+|   |   |       |       |   \---transformers
+|   |   |       |       +---readers
+|   |   |       |       +---types
+|   |   |       |       \---utils
+|   |   |       +---globby
+|   |   |       +---ignore
+|   |   |       +---merge2
+|   |   |       \---slash
+|   |   +---graphemer@1.4.0
+|   |   |       \---graphemer
+|   |   |           \---lib
+|   |   +---has-flag@4.0.0
+|   |   |       \---has-flag
+|   |   +---hasown@2.0.2
+|   |   |       +---function-bind
+|   |   |       |   +---.github
+|   |   |       |   \---test
+|   |   |       \---hasown
+|   |   |           \---.github
+|   |   +---ignore@5.3.2
+|   |   |       \---ignore
+|   |   +---import-fresh@3.3.1
+|   |   |       +---import-fresh
+|   |   |       +---parent-module
+|   |   |       \---resolve-from
+|   |   +---imurmurhash@0.1.4
+|   |   |       \---imurmurhash
+|   |   +---inflight@1.0.6
+|   |   |       +---inflight
+|   |   |       +---once
+|   |   |       \---wrappy
+|   |   +---inherits@2.0.4
+|   |   |       \---inherits
+|   |   +---is-arrayish@0.3.2
+|   |   |       \---is-arrayish
+|   |   +---is-binary-path@2.1.0
+|   |   |       +---binary-extensions
+|   |   |       \---is-binary-path
+|   |   +---is-core-module@2.16.1
+|   |   |       +---hasown
+|   |   |       |   \---.github
+|   |   |       \---is-core-module
+|   |   |           \---test
+|   |   +---is-extglob@2.1.1
+|   |   |       \---is-extglob
+|   |   +---is-fullwidth-code-point@3.0.0
+|   |   |       \---is-fullwidth-code-point
+|   |   +---is-glob@4.0.3
+|   |   |       +---is-extglob
+|   |   |       \---is-glob
+|   |   +---is-number@7.0.0
+|   |   |       \---is-number
+|   |   +---is-path-inside@3.0.3
+|   |   |       \---is-path-inside
+|   |   +---is-stream@2.0.1
+|   |   |       \---is-stream
+|   |   +---isarray@0.0.1
+|   |   |       \---isarray
+|   |   |           \---build
+|   |   +---isarray@1.0.0
+|   |   |       \---isarray
+|   |   +---isexe@2.0.0
+|   |   |       \---isexe
+|   |   |           \---test
+|   |   +---jackspeak@4.1.0
+|   |   |       +---@isaacs
+|   |   |       |   \---cliui
+|   |   |       |       \---build
+|   |   |       |           \---lib
+|   |   |       \---jackspeak
+|   |   |           \---dist
+|   |   |               +---commonjs
+|   |   |               \---esm
+|   |   +---js-yaml@4.1.0
+|   |   |       +---argparse
+|   |   |       |   \---lib
+|   |   |       \---js-yaml
+|   |   |           +---bin
+|   |   |           +---dist
+|   |   |           \---lib
+|   |   |               +---schema
+|   |   |               \---type
+|   |   +---json-buffer@3.0.1
+|   |   |       \---json-buffer
+|   |   |           \---test
+|   |   +---json-schema-traverse@0.4.1
+|   |   |       \---json-schema-traverse
+|   |   |           \---spec
+|   |   |               \---fixtures
+|   |   +---json-stable-stringify-without-jsonify@1.0.1
+|   |   |       \---json-stable-stringify-without-jsonify
+|   |   |           +---example
+|   |   |           \---test
+|   |   +---json5@2.2.3
+|   |   |       \---json5
+|   |   |           +---dist
+|   |   |           \---lib
+|   |   +---keyv@4.5.4
+|   |   |       +---json-buffer
+|   |   |       |   \---test
+|   |   |       \---keyv
+|   |   |           \---src
+|   |   +---kuler@2.0.0
+|   |   |       \---kuler
+|   |   +---levn@0.4.1
+|   |   |       +---levn
+|   |   |       |   \---lib
+|   |   |       +---prelude-ls
+|   |   |       |   \---lib
+|   |   |       \---type-check
+|   |   |           \---lib
+|   |   +---locate-path@6.0.0
+|   |   |       +---locate-path
+|   |   |       \---p-locate
+|   |   +---lodash.merge@4.6.2
+|   |   |       \---lodash.merge
+|   |   +---lodash.snakecase@4.1.1
+|   |   |       \---lodash.snakecase
+|   |   +---lodash@4.17.21
+|   |   |       \---lodash
+|   |   |           \---fp
+|   |   +---logform@2.7.0
+|   |   |       +---@colors
+|   |   |       |   \---colors
+|   |   |       |       +---examples
+|   |   |       |       +---lib
+|   |   |       |       |   +---custom
+|   |   |       |       |   +---maps
+|   |   |       |       |   \---system
+|   |   |       |       \---themes
+|   |   |       +---@types
+|   |   |       |   \---triple-beam
+|   |   |       +---fecha
+|   |   |       |   +---dist
+|   |   |       |   +---lib
+|   |   |       |   \---src
+|   |   |       +---logform
+|   |   |       |   \---dist
+|   |   |       +---ms
+|   |   |       +---safe-stable-stringify
+|   |   |       |   \---esm
+|   |   |       \---triple-beam
+|   |   |           +---.nyc_output
+|   |   |           |   \---processinfo
+|   |   |           \---config
+|   |   +---lru-cache@11.0.2
+|   |   |       \---lru-cache
+|   |   |           \---dist
+|   |   |               +---commonjs
+|   |   |               \---esm
+|   |   +---magic-bytes.js@1.10.0
+|   |   |       \---magic-bytes.js
+|   |   |           +---.github
+|   |   |           |   \---workflows
+|   |   |           \---dist
+|   |   |               \---model
+|   |   +---make-error@1.3.6
+|   |   |       \---make-error
+|   |   |           \---dist
+|   |   +---merge2@1.4.1
+|   |   |       \---merge2
+|   |   +---micromatch@4.0.8
+|   |   |       +---braces
+|   |   |       |   \---lib
+|   |   |       +---micromatch
+|   |   |       \---picomatch
+|   |   |           \---lib
+|   |   +---minimatch@10.0.1
+|   |   |       +---brace-expansion
+|   |   |       |   \---.github
+|   |   |       \---minimatch
+|   |   |           \---dist
+|   |   |               +---commonjs
+|   |   |               \---esm
+|   |   +---minimatch@3.1.2
+|   |   |       +---brace-expansion
+|   |   |       \---minimatch
+|   |   +---minimatch@9.0.3
+|   |   |       +---brace-expansion
+|   |   |       |   \---.github
+|   |   |       \---minimatch
+|   |   |           \---dist
+|   |   |               +---cjs
+|   |   |               \---mjs
+|   |   +---minimist@1.2.8
+|   |   |       \---minimist
+|   |   |           +---.github
+|   |   |           +---example
+|   |   |           \---test
+|   |   +---minipass@7.1.2
+|   |   |       \---minipass
+|   |   |           \---dist
+|   |   |               +---commonjs
+|   |   |               \---esm
+|   |   +---mkdirp@1.0.4
+|   |   |       \---mkdirp
+|   |   |           +---bin
+|   |   |           \---lib
+|   |   +---mkdirp@3.0.1
+|   |   |       \---mkdirp
+|   |   |           \---dist
+|   |   |               +---cjs
+|   |   |               |   \---src
+|   |   |               \---mjs
+|   |   +---moment@2.30.1
+|   |   |       \---moment
+|   |   |           +---dist
+|   |   |           |   \---locale
+|   |   |           +---locale
+|   |   |           +---min
+|   |   |           +---src
+|   |   |           |   +---lib
+|   |   |           |   |   +---create
+|   |   |           |   |   +---duration
+|   |   |           |   |   +---format
+|   |   |           |   |   +---locale
+|   |   |           |   |   +---moment
+|   |   |           |   |   +---parse
+|   |   |           |   |   +---units
+|   |   |           |   |   \---utils
+|   |   |           |   \---locale
+|   |   |           \---ts3.1-typings
+|   |   +---ms@2.1.3
+|   |   |       \---ms
+|   |   +---mylas@2.1.13
+|   |   |       \---mylas
+|   |   |           \---build
+|   |   +---natural-compare@1.4.0
+|   |   |       \---natural-compare
+|   |   |   +---.bin
+|   |   |   +---@colors
+|   |   |   |   \---colors
+|   |   |   |       +---examples
+|   |   |   |       +---lib
+|   |   |   |       |   +---custom
+|   |   |   |       |   +---maps
+|   |   |   |       |   \---system
+|   |   |   |       \---themes
+|   |   |   +---@cspotcode
+|   |   |   |   \---source-map-support
+|   |   |   +---@dabh
+|   |   |   |   \---diagnostics
+|   |   |   |       +---adapters
+|   |   |   |       +---browser
+|   |   |   |       +---logger
+|   |   |   |       +---modifiers
+|   |   |   |       \---node
+|   |   |   +---@discordjs
+|   |   |   |   +---builders
+|   |   |   |   |   \---dist
+|   |   |   |   +---collection
+|   |   |   |   |   \---dist
+|   |   |   |   +---formatters
+|   |   |   |   |   \---dist
+|   |   |   |   +---rest
+|   |   |   |   |   \---dist
+|   |   |   |   |       \---strategies
+|   |   |   |   +---util
+|   |   |   |   |   \---dist
+|   |   |   |   \---ws
+|   |   |   |       \---dist
+|   |   |   +---@eslint
+|   |   |   |   +---eslintrc
+|   |   |   |   |   +---conf
+|   |   |   |   |   +---dist
+|   |   |   |   |   +---lib
+|   |   |   |   |   |   +---config-array
+|   |   |   |   |   |   \---shared
+|   |   |   |   |       \---.bin
+|   |   |   |   \---js
+|   |   |   |       \---src
+|   |   |   |           \---configs
+|   |   |   +---@eslint-community
+|   |   |   |   +---eslint-utils
+|   |   |   |   |       \---.bin
+|   |   |   |   \---regexpp
+|   |   |   +---@humanwhocodes
+|   |   |   |   +---config-array
+|   |   |   |   +---module-importer
+|   |   |   |   |   +---dist
+|   |   |   |   |   \---src
+|   |   |   |   \---object-schema
+|   |   |   |       \---src
+|   |   |   +---@isaacs
+|   |   |   |   \---cliui
+|   |   |   |       \---build
+|   |   |   |           \---lib
+|   |   |   +---@jridgewell
+|   |   |   |   +---resolve-uri
+|   |   |   |   |   \---dist
+|   |   |   |   |       \---types
+|   |   |   |   +---sourcemap-codec
+|   |   |   |   |   \---dist
+|   |   |   |   |       \---types
+|   |   |   |   \---trace-mapping
+|   |   |   |       \---dist
+|   |   |   |           \---types
+|   |   |   +---@nodelib
+|   |   |   |   +---fs.scandir
+|   |   |   |   |   \---out
+|   |   |   |   |       +---adapters
+|   |   |   |   |       +---providers
+|   |   |   |   |       +---types
+|   |   |   |   |       \---utils
+|   |   |   |   +---fs.stat
+|   |   |   |   |   \---out
+|   |   |   |   |       +---adapters
+|   |   |   |   |       +---providers
+|   |   |   |   |       \---types
+|   |   |   |   \---fs.walk
+|   |   |   |       \---out
+|   |   |   |           +---providers
+|   |   |   |           +---readers
+|   |   |   |           \---types
+|   |   |   +---@sapphire
+|   |   |   |   +---async-queue
+|   |   |   |   |   \---dist
+|   |   |   |   |       +---cjs
+|   |   |   |   |       +---esm
+|   |   |   |   |       \---iife
+|   |   |   |   +---shapeshift
+|   |   |   |   |   \---dist
+|   |   |   |   |       +---cjs
+|   |   |   |   |       +---esm
+|   |   |   |   |       \---iife
+|   |   |   |   \---snowflake
+|   |   |   |       \---dist
+|   |   |   |           +---cjs
+|   |   |   |           +---esm
+|   |   |   |           \---iife
+|   |   |   +---@tsconfig
+|   |   |   |   +---node10
+|   |   |   |   +---node12
+|   |   |   |   +---node14
+|   |   |   |   \---node16
+|   |   |   +---@types
+|   |   |   |   +---json-schema
+|   |   |   |   +---semver
+|   |   |   |   |   +---classes
+|   |   |   |   |   +---functions
+|   |   |   |   |   +---internals
+|   |   |   |   |   \---ranges
+|   |   |   |   +---strip-bom
+|   |   |   |   +---strip-json-comments
+|   |   |   |   +---triple-beam
+|   |   |   |   \---ws
+|   |   |   +---@typescript-eslint
+|   |   |   |   +---scope-manager
+|   |   |   |   |   \---dist
+|   |   |   |   |       +---definition
+|   |   |   |   |       +---lib
+|   |   |   |   |       +---referencer
+|   |   |   |   |       +---scope
+|   |   |   |   |       \---variable
+|   |   |   |   +---type-utils
+|   |   |   |   |   +---dist
+|   |   |   |   |       \---.bin
+|   |   |   |   +---types
+|   |   |   |   |   \---dist
+|   |   |   |   |       \---generated
+|   |   |   |   +---typescript-estree
+|   |   |   |   |   +---dist
+|   |   |   |   |   |   +---create-program
+|   |   |   |   |   |   +---jsx
+|   |   |   |   |   |   +---parseSettings
+|   |   |   |   |   |   \---ts-estree
+|   |   |   |   |       \---.bin
+|   |   |   |   +---utils
+|   |   |   |   |   +---dist
+|   |   |   |   |   |   +---ast-utils
+|   |   |   |   |   |   |   \---eslint-utils
+|   |   |   |   |   |   +---eslint-utils
+|   |   |   |   |   |   +---ts-eslint
+|   |   |   |   |   |   \---ts-utils
+|   |   |   |   |       \---.bin
+|   |   |   |   \---visitor-keys
+|   |   |   |       \---dist
+|   |   |   +---@ungap
+|   |   |   |   \---structured-clone
+|   |   |   |       +---.github
+|   |   |   |       |   \---workflows
+|   |   |   |       +---cjs
+|   |   |   |       \---esm
+|   |   |   +---@vladfrangu
+|   |   |   |   \---async_event_emitter
+|   |   |   |       \---dist
+|   |   |   +---acorn
+|   |   |   |   +---bin
+|   |   |   |   \---dist
+|   |   |   +---acorn-jsx
+|   |   |   |       \---.bin
+|   |   |   +---acorn-walk
+|   |   |   |   +---dist
+|   |   |   |       \---.bin
+|   |   |   +---ajv
+|   |   |   |   +---dist
+|   |   |   |   +---lib
+|   |   |   |   |   +---compile
+|   |   |   |   |   +---dot
+|   |   |   |   |   +---dotjs
+|   |   |   |   |   \---refs
+|   |   |   |   \---scripts
+|   |   |   +---ansi-regex
+|   |   |   +---ansi-styles
+|   |   |   +---anymatch
+|   |   |   +---arg
+|   |   |   +---argparse
+|   |   |   |   \---lib
+|   |   |   +---array-union
+|   |   |   +---async
+|   |   |   |   +---dist
+|   |   |   |   \---internal
+|   |   |   +---balanced-match
+|   |   |   |   \---.github
+|   |   |   +---binary-extensions
+|   |   |   +---brace-expansion
+|   |   |   +---braces
+|   |   |   |   \---lib
+|   |   |   +---buffer-from
+|   |   |   +---callsites
+|   |   |   +---chalk
+|   |   |   |   \---source
+|   |   |   +---chokidar
+|   |   |   |   +---lib
+|   |   |   |   \---types
+|   |   |   +---cliui
+|   |   |   |   \---build
+|   |   |   |       \---lib
+|   |   |   +---color
+|   |   |   +---color-convert
+|   |   |   +---color-name
+|   |   |   +---color-string
+|   |   |   +---colorspace
+|   |   |   +---concat-map
+|   |   |   |   +---example
+|   |   |   |   \---test
+|   |   |   +---core-util-is
+|   |   |   |   \---lib
+|   |   |   +---create-require
+|   |   |   +---cross-spawn
+|   |   |   |   +---lib
+|   |   |   |   |   \---util
+|   |   |   |       \---.bin
+|   |   |   +---debug
+|   |   |   |   \---src
+|   |   |   +---deep-is
+|   |   |   |   +---example
+|   |   |   |   \---test
+|   |   |   +---diff
+|   |   |   |   +---dist
+|   |   |   |   \---lib
+|   |   |   |       +---convert
+|   |   |   |       +---diff
+|   |   |   |       +---patch
+|   |   |   |       \---util
+|   |   |   +---dir-glob
+|   |   |   +---discord-api-types
+|   |   |   |   +---gateway
+|   |   |   |   +---payloads
+|   |   |   |   |   +---v10
+|   |   |   |   |   |   \---_interactions
+|   |   |   |   |   |       \---_applicationCommands
+|   |   |   |   |   |           \---_chatInput
+|   |   |   |   |   +---v6
+|   |   |   |   |   +---v8
+|   |   |   |   |   |   \---_interactions
+|   |   |   |   |   |       \---_applicationCommands
+|   |   |   |   |   |           \---_chatInput
+|   |   |   |   |   \---v9
+|   |   |   |   |       \---_interactions
+|   |   |   |   |           \---_applicationCommands
+|   |   |   |   |               \---_chatInput
+|   |   |   |   +---rest
+|   |   |   |   |   +---v10
+|   |   |   |   |   +---v6
+|   |   |   |   |   +---v8
+|   |   |   |   |   \---v9
+|   |   |   |   +---rpc
+|   |   |   |   +---utils
+|   |   |   |   \---voice
+|   |   |   +---doctrine
+|   |   |   |   \---lib
+|   |   |   +---dynamic-dedupe
+|   |   |   |   +---example
+|   |   |   |   |   +---pack1
+|   |   |   |   |   |   \---common
+|   |   |   |   |   |       \---dep-uno
+|   |   |   |   |   \---pack2
+|   |   |   |   |       \---common
+|   |   |   |   |           \---dep-uno
+|   |   |   |   \---test
+|   |   |   |       \---fixtures
+|   |   |   |           +---pack1
+|   |   |   |           |   \---common
+|   |   |   |           |       +---dep-dos
+|   |   |   |           |       \---dep-uno
+|   |   |   |           \---pack2
+|   |   |   |               \---common
+|   |   |   |                   \---dep-uno
+|   |   |   +---eastasianwidth
+|   |   |   +---emoji-regex
+|   |   |   |   \---es2015
+|   |   |   +---enabled
+|   |   |   +---escalade
+|   |   |   |   +---dist
+|   |   |   |   \---sync
+|   |   |   +---escape-string-regexp
+|   |   |   +---eslint-scope
+|   |   |   |   +---dist
+|   |   |   |   \---lib
+|   |   |   +---eslint-visitor-keys
+|   |   |   |   +---dist
+|   |   |   |   \---lib
+|   |   |   +---espree
+|   |   |   |   +---dist
+|   |   |   |   +---lib
+|   |   |   |       \---.bin
+|   |   |   +---esquery
+|   |   |   |   \---dist
+|   |   |   +---esrecurse
+|   |   |   +---estraverse
+|   |   |   +---esutils
+|   |   |   |   \---lib
+|   |   |   +---fast-deep-equal
+|   |   |   |   \---es6
+|   |   |   +---fast-glob
+|   |   |   |   \---out
+|   |   |   |       +---managers
+|   |   |   |       +---providers
+|   |   |   |       |   +---filters
+|   |   |   |       |   +---matchers
+|   |   |   |       |   \---transformers
+|   |   |   |       +---readers
+|   |   |   |       +---types
+|   |   |   |       \---utils
+|   |   |   +---fast-json-stable-stringify
+|   |   |   |   +---.github
+|   |   |   |   +---benchmark
+|   |   |   |   +---example
+|   |   |   |   \---test
+|   |   |   +---fast-levenshtein
+|   |   |   +---fastq
+|   |   |   |   +---.github
+|   |   |   |   |   \---workflows
+|   |   |   |   \---test
+|   |   |   +---fecha
+|   |   |   |   +---dist
+|   |   |   |   +---lib
+|   |   |   |   \---src
+|   |   |   +---file-entry-cache
+|   |   |   +---file-stream-rotator
+|   |   |   |   \---tests
+|   |   |   +---fill-range
+|   |   |   +---find-up
+|   |   |   +---flat-cache
+|   |   |   |   |   \---.bin
+|   |   |   |   \---src
+|   |   |   +---flatted
+|   |   |   |   +---cjs
+|   |   |   |   +---esm
+|   |   |   |   +---php
+|   |   |   |   +---python
+|   |   |   |   \---types
+|   |   |   +---fn.name
+|   |   |   +---foreground-child
+|   |   |   |   \---dist
+|   |   |   |       +---commonjs
+|   |   |   |       \---esm
+|   |   |   +---fs.realpath
+|   |   |   +---function-bind
+|   |   |   |   +---.github
+|   |   |   |   \---test
+|   |   |   +---get-caller-file
+|   |   |   +---glob
+|   |   |   +---glob-parent
+|   |   |   +---globals
+|   |   |   +---globby
+|   |   |   +---graphemer
+|   |   |   |   \---lib
+|   |   |   +---has-flag
+|   |   |   +---hasown
+|   |   |   |   \---.github
+|   |   |   +---ignore
+|   |   |   +---import-fresh
+|   |   |   +---imurmurhash
+|   |   |   +---inflight
+|   |   |   +---inherits
+|   |   |   +---is-arrayish
+|   |   |   +---is-binary-path
+|   |   |   +---is-core-module
+|   |   |   |   \---test
+|   |   |   +---is-extglob
+|   |   |   +---is-fullwidth-code-point
+|   |   |   +---is-glob
+|   |   |   +---is-number
+|   |   |   +---is-path-inside
+|   |   |   +---is-stream
+|   |   |   +---isarray
+|   |   |   |   \---build
+|   |   |   +---isexe
+|   |   |   |   \---test
+|   |   |   +---jackspeak
+|   |   |   |   \---dist
+|   |   |   |       +---commonjs
+|   |   |   |       \---esm
+|   |   |   +---js-yaml
+|   |   |   |   +---bin
+|   |   |   |   +---dist
+|   |   |   |   \---lib
+|   |   |   |       +---schema
+|   |   |   |       \---type
+|   |   |   +---json-buffer
+|   |   |   |   \---test
+|   |   |   +---json-schema-traverse
+|   |   |   |   \---spec
+|   |   |   |       \---fixtures
+|   |   |   +---json-stable-stringify-without-jsonify
+|   |   |   |   +---example
+|   |   |   |   \---test
+|   |   |   +---json5
+|   |   |   |   +---dist
+|   |   |   |   \---lib
+|   |   |   +---keyv
+|   |   |   |   \---src
+|   |   |   +---kuler
+|   |   |   +---levn
+|   |   |   |   \---lib
+|   |   |   +---locate-path
+|   |   |   +---lodash
+|   |   |   |   \---fp
+|   |   |   +---lodash.merge
+|   |   |   +---lodash.snakecase
+|   |   |   +---logform
+|   |   |   |   \---dist
+|   |   |   +---lru-cache
+|   |   |   |   \---dist
+|   |   |   |       +---commonjs
+|   |   |   |       \---esm
+|   |   |   +---magic-bytes.js
+|   |   |   |   +---.github
+|   |   |   |   |   \---workflows
+|   |   |   |   \---dist
+|   |   |   |       \---model
+|   |   |   +---make-error
+|   |   |   |   \---dist
+|   |   |   +---merge2
+|   |   |   +---micromatch
+|   |   |   +---minimatch
+|   |   |   +---minimist
+|   |   |   |   +---.github
+|   |   |   |   +---example
+|   |   |   |   \---test
+|   |   |   +---minipass
+|   |   |   |   \---dist
+|   |   |   |       +---commonjs
+|   |   |   |       \---esm
+|   |   |   +---moment
+|   |   |   |   +---dist
+|   |   |   |   |   \---locale
+|   |   |   |   +---locale
+|   |   |   |   +---min
+|   |   |   |   +---src
+|   |   |   |   |   +---lib
+|   |   |   |   |   |   +---create
+|   |   |   |   |   |   +---duration
+|   |   |   |   |   |   +---format
+|   |   |   |   |   |   +---locale
+|   |   |   |   |   |   +---moment
+|   |   |   |   |   |   +---parse
+|   |   |   |   |   |   +---units
+|   |   |   |   |   |   \---utils
+|   |   |   |   |   \---locale
+|   |   |   |   \---ts3.1-typings
+|   |   |   +---ms
+|   |   |   +---mylas
+|   |   |   |   \---build
+|   |   |   +---natural-compare
+|   |   |   +---noms
+|   |   |   +---normalize-path
+|   |   |   +---object-hash
+|   |   |   |   \---dist
+|   |   |   +---obuf
+|   |   |   |   \---test
+|   |   |   +---once
+|   |   |   +---one-time
+|   |   |   +---optionator
+|   |   |   |   \---lib
+|   |   |   +---p-limit
+|   |   |   +---p-locate
+|   |   |   +---package-json-from-dist
+|   |   |   |   \---dist
+|   |   |   |       +---commonjs
+|   |   |   |       \---esm
+|   |   |   +---parent-module
+|   |   |   +---path-exists
+|   |   |   +---path-is-absolute
+|   |   |   +---path-key
+|   |   |   +---path-parse
+|   |   |   +---path-scurry
+|   |   |   |   \---dist
+|   |   |   |       +---commonjs
+|   |   |   |       \---esm
+|   |   |   +---path-type
+|   |   |   +---pg-cloudflare
+|   |   |   |   +---dist
+|   |   |   |   \---src
+|   |   |   +---pg-connection-string
+|   |   |   +---pg-int8
+|   |   |   +---pg-numeric
+|   |   |   +---pg-pool
+|   |   |   |   \---test
+|   |   |   +---pg-protocol
+|   |   |   |   +---dist
+|   |   |   |   \---src
+|   |   |   |       +---testing
+|   |   |   |       \---types
+|   |   |   +---pg-types
+|   |   |   |   \---lib
+|   |   |   +---pgpass
+|   |   |   |   \---lib
+|   |   |   +---picomatch
+|   |   |   |   \---lib
+|   |   |   +---plimit-lit
+|   |   |   |   \---dist
+|   |   |   +---postgres-array
+|   |   |   +---postgres-bytea
+|   |   |   +---postgres-date
+|   |   |   +---postgres-interval
+|   |   |   +---postgres-range
+|   |   |   +---prelude-ls
+|   |   |   |   \---lib
+|   |   |   +---process-nextick-args
+|   |   |   +---punycode
+|   |   |   +---queue-lit
+|   |   |   |   \---dist
+|   |   |   +---queue-microtask
+|   |   |   +---readable-stream
+|   |   |   |   \---lib
+|   |   |   |       \---internal
+|   |   |   |           \---streams
+|   |   |   +---readdirp
+|   |   |   +---require-directory
+|   |   |   +---resolve
+|   |   |   |   +---.github
+|   |   |   |   +---bin
+|   |   |   |   +---example
+|   |   |   |   +---lib
+|   |   |   |   \---test
+|   |   |   |       +---dotdot
+|   |   |   |       |   \---abc
+|   |   |   |       +---module_dir
+|   |   |   |       |   +---xmodules
+|   |   |   |       |   |   \---aaa
+|   |   |   |       |   +---ymodules
+|   |   |   |       |   |   \---aaa
+|   |   |   |       |   \---zmodules
+|   |   |   |       |       \---bbb
+|   |   |   |       +---node_path
+|   |   |   |       |   +---x
+|   |   |   |       |   |   +---aaa
+|   |   |   |       |   |   \---ccc
+|   |   |   |       |   \---y
+|   |   |   |       |       +---bbb
+|   |   |   |       |       \---ccc
+|   |   |   |       +---pathfilter
+|   |   |   |       |   \---deep_ref
+|   |   |   |       +---precedence
+|   |   |   |       |   +---aaa
+|   |   |   |       |   \---bbb
+|   |   |   |       +---resolver
+|   |   |   |       |   +---baz
+|   |   |   |       |   +---browser_field
+|   |   |   |       |   +---dot_main
+|   |   |   |       |   +---dot_slash_main
+|   |   |   |       |   +---false_main
+|   |   |   |       |   +---incorrect_main
+|   |   |   |       |   +---invalid_main
+|   |   |   |       |   +---multirepo
+|   |   |   |       |   |   \---packages
+|   |   |   |       |   |       +---package-a
+|   |   |   |       |   |       \---package-b
+|   |   |   |       |   +---nested_symlinks
+|   |   |   |       |   |   \---mylib
+|   |   |   |       |   +---other_path
+|   |   |   |       |   |   \---lib
+|   |   |   |       |   +---quux
+|   |   |   |       |   |   \---foo
+|   |   |   |       |   +---same_names
+|   |   |   |       |   |   \---foo
+|   |   |   |       |   +---symlinked
+|   |   |   |       |   |   +---package
+|   |   |   |       |   |   \---_
+|   |   |   |       |   |       \---symlink_target
+|   |   |   |       |   \---without_basedir
+|   |   |   |       \---shadowed_core
+|   |   |   |               \---util
+|   |   |   +---resolve-from
+|   |   |   +---reusify
+|   |   |   |   +---.github
+|   |   |   |   |   \---workflows
+|   |   |   |   \---benchmarks
+|   |   |   +---run-parallel
+|   |   |   +---safe-buffer
+|   |   |   +---safe-stable-stringify
+|   |   |   |   \---esm
+|   |   |   +---semver
+|   |   |   |   +---bin
+|   |   |   |   +---classes
+|   |   |   |   +---functions
+|   |   |   |   +---internal
+|   |   |   |   \---ranges
+|   |   |   +---shebang-command
+|   |   |   +---shebang-regex
+|   |   |   +---signal-exit
+|   |   |   |   \---dist
+|   |   |   |       +---cjs
+|   |   |   |       \---mjs
+|   |   |   +---simple-swizzle
+|   |   |   +---slash
+|   |   |   +---source-map
+|   |   |   |   +---dist
+|   |   |   |   \---lib
+|   |   |   +---source-map-support
+|   |   |   +---split2
+|   |   |   +---stack-trace
+|   |   |   |   \---lib
+|   |   |   +---string-width
+|   |   |   +---string-width-cjs
+|   |   |   +---string_decoder
+|   |   |   |   \---lib
+|   |   |   +---strip-ansi
+|   |   |   +---strip-ansi-cjs
+|   |   |   +---strip-bom
+|   |   |   +---strip-json-comments
+|   |   |   +---supports-color
+|   |   |   +---supports-preserve-symlinks-flag
+|   |   |   |   +---.github
+|   |   |   |   \---test
+|   |   |   +---text-hex
+|   |   |   +---text-table
+|   |   |   |   +---example
+|   |   |   |   \---test
+|   |   |   +---through2
+|   |   |   +---to-regex-range
+|   |   |   +---tree-kill
+|   |   |   +---triple-beam
+|   |   |   |   +---.nyc_output
+|   |   |   |   |   \---processinfo
+|   |   |   |   \---config
+|   |   |   +---ts-api-utils
+|   |   |   |   +---lib
+|   |   |   |       \---.bin
+|   |   |   +---ts-mixer
+|   |   |   |   \---dist
+|   |   |   |       +---cjs
+|   |   |   |       +---esm
+|   |   |   |       \---types
+|   |   |   +---tsconfig
+|   |   |   |   \---dist
+|   |   |   +---tslib
+|   |   |   |   \---modules
+|   |   |   +---type-check
+|   |   |   |   \---lib
+|   |   |   +---type-fest
+|   |   |   |   +---source
+|   |   |   |   \---ts41
+|   |   |   +---undici
+|   |   |   |   +---docs
+|   |   |   |   |   \---docs
+|   |   |   |   |       +---api
+|   |   |   |   |       \---best-practices
+|   |   |   |   +---lib
+|   |   |   |   |   +---api
+|   |   |   |   |   +---core
+|   |   |   |   |   +---dispatcher
+|   |   |   |   |   +---handler
+|   |   |   |   |   +---interceptor
+|   |   |   |   |   +---llhttp
+|   |   |   |   |   +---mock
+|   |   |   |   |   +---util
+|   |   |   |   |   \---web
+|   |   |   |   |       +---cache
+|   |   |   |   |       +---cookies
+|   |   |   |   |       +---eventsource
+|   |   |   |   |       +---fetch
+|   |   |   |   |       +---fileapi
+|   |   |   |   |       \---websocket
+|   |   |   |   +---scripts
+|   |   |   |   \---types
+|   |   |   +---undici-types
+|   |   |   +---untildify
+|   |   |   +---uri-js
+|   |   |   |   \---dist
+|   |   |   |       +---es5
+|   |   |   |       \---esnext
+|   |   |   |           \---schemes
+|   |   |   +---util-deprecate
+|   |   |   +---v8-compile-cache-lib
+|   |   |   +---which
+|   |   |   |   \---bin
+|   |   |   +---winston-transport
+|   |   |   |   +---.nyc_output
+|   |   |   |   |   \---processinfo
+|   |   |   |   \---dist
+|   |   |   +---word-wrap
+|   |   |   +---wrap-ansi
+|   |   |   +---wrap-ansi-cjs
+|   |   |   +---wrappy
+|   |   |   +---ws
+|   |   |   |   \---lib
+|   |   |   +---xtend
+|   |   |   +---y18n
+|   |   |   |   \---build
+|   |   |   |       \---lib
+|   |   |   |           \---platform-shims
+|   |   |   +---yargs
+|   |   |   |   +---build
+|   |   |   |   |   \---lib
+|   |   |   |   |       +---typings
+|   |   |   |   |       \---utils
+|   |   |   |   +---helpers
+|   |   |   |   +---lib
+|   |   |   |   |   \---platform-shims
+|   |   |   |   \---locales
+|   |   |   +---yargs-parser
+|   |   |   |   \---build
+|   |   |   |       \---lib
+|   |   |   +---yn
+|   |   |   \---yocto-queue
+|   |   +---noms@0.0.0
+|   |   |       +---inherits
+|   |   |       +---noms
+|   |   |       \---readable-stream
+|   |   |           \---lib
+|   |   +---normalize-path@3.0.0
+|   |   |       \---normalize-path
+|   |   +---object-hash@3.0.0
+|   |   |       \---object-hash
+|   |   |           \---dist
+|   |   +---obuf@1.1.2
+|   |   |       \---obuf
+|   |   |           \---test
+|   |   +---once@1.4.0
+|   |   |       +---once
+|   |   |       \---wrappy
+|   |   +---one-time@1.0.0
+|   |   |       +---fn.name
+|   |   |       \---one-time
+|   |   +---optionator@0.9.4
+|   |   |       +---deep-is
+|   |   |       |   +---example
+|   |   |       |   \---test
+|   |   |       +---fast-levenshtein
+|   |   |       +---levn
+|   |   |       |   \---lib
+|   |   |       +---optionator
+|   |   |       |   \---lib
+|   |   |       +---prelude-ls
+|   |   |       |   \---lib
+|   |   |       +---type-check
+|   |   |       |   \---lib
+|   |   |       \---word-wrap
+|   |   +---p-limit@3.1.0
+|   |   |       +---p-limit
+|   |   |       \---yocto-queue
+|   |   +---p-locate@5.0.0
+|   |   |       +---p-limit
+|   |   |       \---p-locate
+|   |   +---package-json-from-dist@1.0.1
+|   |   |       \---package-json-from-dist
+|   |   |           \---dist
+|   |   |               +---commonjs
+|   |   |               \---esm
+|   |   +---parent-module@1.0.1
+|   |   |       +---callsites
+|   |   |       \---parent-module
+|   |   +---path-exists@4.0.0
+|   |   |       \---path-exists
+|   |   +---path-is-absolute@1.0.1
+|   |   |       \---path-is-absolute
+|   |   +---path-key@3.1.1
+|   |   |       \---path-key
+|   |   +---path-parse@1.0.7
+|   |   |       \---path-parse
+|   |   +---path-scurry@2.0.0
+|   |   |       +---lru-cache
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       +---minipass
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       \---path-scurry
+|   |   |           \---dist
+|   |   |               +---commonjs
+|   |   |               \---esm
+|   |   +---path-type@4.0.0
+|   |   |       \---path-type
+|   |   +---pg-cloudflare@1.1.1
+|   |   |       \---pg-cloudflare
+|   |   |           +---dist
+|   |   |           \---src
+|   |   +---pg-connection-string@2.7.0
+|   |   |       \---pg-connection-string
+|   |   +---pg-int8@1.0.1
+|   |   |       \---pg-int8
+|   |   +---pg-numeric@1.0.2
+|   |   |       \---pg-numeric
+|   |   +---pg-pool@3.7.1_pg@8.13.3
+|   |   |       +---pg
+|   |   |       |   \---lib
+|   |   |       |       +---crypto
+|   |   |       |       \---native
+|   |   |       \---pg-pool
+|   |   |           \---test
+|   |   +---pg-protocol@1.7.1
+|   |   |       \---pg-protocol
+|   |   |           +---dist
+|   |   |           \---src
+|   |   |               +---testing
+|   |   |               \---types
+|   |   +---pg-types@2.2.0
+|   |   |       +---pg-int8
+|   |   |       +---pg-types
+|   |   |       |   +---lib
+|   |   |       |   \---test
+|   |   |       +---postgres-array
+|   |   |       +---postgres-bytea
+|   |   |       +---postgres-date
+|   |   |       \---postgres-interval
+|   |   +---pg-types@4.0.2
+|   |   |       +---pg-int8
+|   |   |       +---pg-numeric
+|   |   |       +---pg-types
+|   |   |       |   \---lib
+|   |   |       +---postgres-array
+|   |   |       +---postgres-bytea
+|   |   |       +---postgres-date
+|   |   |       +---postgres-interval
+|   |   |       \---postgres-range
+|   |   +---pg@8.13.3
+|   |   |       +---pg
+|   |   |       |   \---lib
+|   |   |       |       +---crypto
+|   |   |       |       \---native
+|   |   |       +---pg-cloudflare
+|   |   |       |   +---dist
+|   |   |       |   \---src
+|   |   |       +---pg-connection-string
+|   |   |       +---pg-pool
+|   |   |       |   \---test
+|   |   |       +---pg-protocol
+|   |   |       |   +---dist
+|   |   |       |   \---src
+|   |   |       |       +---testing
+|   |   |       |       \---types
+|   |   |       +---pg-types
+|   |   |       |   +---lib
+|   |   |       |   \---test
+|   |   |       \---pgpass
+|   |   |           \---lib
+|   |   +---pgpass@1.0.5
+|   |   |       +---pgpass
+|   |   |       |   \---lib
+|   |   |       \---split2
+|   |   +---picomatch@2.3.1
+|   |   |       \---picomatch
+|   |   |           \---lib
+|   |   +---plimit-lit@1.6.1
+|   |   |       +---plimit-lit
+|   |   |       |   \---dist
+|   |   |       \---queue-lit
+|   |   |           \---dist
+|   |   +---postgres-array@2.0.0
+|   |   |       \---postgres-array
+|   |   +---postgres-array@3.0.4
+|   |   |       \---postgres-array
+|   |   +---postgres-bytea@1.0.0
+|   |   |       \---postgres-bytea
+|   |   +---postgres-bytea@3.0.0
+|   |   |       +---obuf
+|   |   |       |   \---test
+|   |   |       \---postgres-bytea
+|   |   +---postgres-date@1.0.7
+|   |   |       \---postgres-date
+|   |   +---postgres-date@2.1.0
+|   |   |       \---postgres-date
+|   |   +---postgres-interval@1.2.0
+|   |   |       +---postgres-interval
+|   |   |       \---xtend
+|   |   +---postgres-interval@3.0.0
+|   |   |       \---postgres-interval
+|   |   +---postgres-range@1.1.4
+|   |   |       \---postgres-range
+|   |   +---prelude-ls@1.2.1
+|   |   |       \---prelude-ls
+|   |   |           \---lib
+|   |   +---process-nextick-args@2.0.1
+|   |   |       \---process-nextick-args
+|   |   +---punycode@2.3.1
+|   |   |       \---punycode
+|   |   +---queue-lit@1.5.2
+|   |   |       \---queue-lit
+|   |   |           \---dist
+|   |   +---queue-microtask@1.2.3
+|   |   |       \---queue-microtask
+|   |   +---readable-stream@1.0.34
+|   |   |       +---core-util-is
+|   |   |       |   \---lib
+|   |   |       +---inherits
+|   |   |       +---isarray
+|   |   |       |   \---build
+|   |   |       +---readable-stream
+|   |   |       |   \---lib
+|   |   |       \---string_decoder
+|   |   +---readable-stream@2.3.8
+|   |   |       +---core-util-is
+|   |   |       |   \---lib
+|   |   |       +---inherits
+|   |   |       +---isarray
+|   |   |       +---process-nextick-args
+|   |   |       +---readable-stream
+|   |   |       |   +---doc
+|   |   |       |   |   \---wg-meetings
+|   |   |       |   \---lib
+|   |   |       |       \---internal
+|   |   |       |           \---streams
+|   |   |       +---safe-buffer
+|   |   |       +---string_decoder
+|   |   |       |   \---lib
+|   |   |       \---util-deprecate
+|   |   +---readable-stream@3.6.2
+|   |   |       +---inherits
+|   |   |       +---readable-stream
+|   |   |       |   \---lib
+|   |   |       |       \---internal
+|   |   |       |           \---streams
+|   |   |       +---string_decoder
+|   |   |       |   \---lib
+|   |   |       \---util-deprecate
+|   |   +---readdirp@3.6.0
+|   |   |       +---picomatch
+|   |   |       |   \---lib
+|   |   |       \---readdirp
+|   |   +---require-directory@2.1.1
+|   |   |       \---require-directory
+|   |   +---resolve-from@4.0.0
+|   |   |       \---resolve-from
+|   |   +---resolve@1.22.10
+|   |   |       +---is-core-module
+|   |   |       |   \---test
+|   |   |       +---path-parse
+|   |   |       +---resolve
+|   |   |       |   +---.github
+|   |   |       |   +---bin
+|   |   |       |   +---example
+|   |   |       |   +---lib
+|   |   |       |   \---test
+|   |   |       |       +---dotdot
+|   |   |       |       |   \---abc
+|   |   |       |       +---module_dir
+|   |   |       |       |   +---xmodules
+|   |   |       |       |   |   \---aaa
+|   |   |       |       |   +---ymodules
+|   |   |       |       |   |   \---aaa
+|   |   |       |       |   \---zmodules
+|   |   |       |       |       \---bbb
+|   |   |       |       +---node_path
+|   |   |       |       |   +---x
+|   |   |       |       |   |   +---aaa
+|   |   |       |       |   |   \---ccc
+|   |   |       |       |   \---y
+|   |   |       |       |       +---bbb
+|   |   |       |       |       \---ccc
+|   |   |       |       +---pathfilter
+|   |   |       |       |   \---deep_ref
+|   |   |       |       +---precedence
+|   |   |       |       |   +---aaa
+|   |   |       |       |   \---bbb
+|   |   |       |       +---resolver
+|   |   |       |       |   +---baz
+|   |   |       |       |   +---browser_field
+|   |   |       |       |   +---dot_main
+|   |   |       |       |   +---dot_slash_main
+|   |   |       |       |   +---false_main
+|   |   |       |       |   +---incorrect_main
+|   |   |       |       |   +---invalid_main
+|   |   |       |       |   +---multirepo
+|   |   |       |       |   |   \---packages
+|   |   |       |       |   |       +---package-a
+|   |   |       |       |   |       \---package-b
+|   |   |       |       |   +---nested_symlinks
+|   |   |       |       |   |   \---mylib
+|   |   |       |       |   +---other_path
+|   |   |       |       |   |   \---lib
+|   |   |       |       |   +---quux
+|   |   |       |       |   |   \---foo
+|   |   |       |       |   +---same_names
+|   |   |       |       |   |   \---foo
+|   |   |       |       |   +---symlinked
+|   |   |       |       |   |   +---package
+|   |   |       |       |   |   \---_
+|   |   |       |       |   |       \---symlink_target
+|   |   |       |       |   \---without_basedir
+|   |   |       |       \---shadowed_core
+|   |   |       |               \---util
+|   |   |       \---supports-preserve-symlinks-flag
+|   |   |           +---.github
+|   |   |           \---test
+|   |   +---reusify@1.1.0
+|   |   |       \---reusify
+|   |   |           +---.github
+|   |   |           |   \---workflows
+|   |   |           \---benchmarks
+|   |   +---rimraf@2.7.1
+|   |   |       +---glob
+|   |   |       \---rimraf
+|   |   +---rimraf@3.0.2
+|   |   |       +---glob
+|   |   |       \---rimraf
+|   |   +---rimraf@6.0.1
+|   |   |       +---glob
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       +---package-json-from-dist
+|   |   |       |   \---dist
+|   |   |       |       +---commonjs
+|   |   |       |       \---esm
+|   |   |       \---rimraf
+|   |   |           +---dist
+|   |   |           |   +---commonjs
+|   |   |           |   \---esm
+|   |   |               \---.bin
+|   |   +---run-parallel@1.2.0
+|   |   |       +---queue-microtask
+|   |   |       \---run-parallel
+|   |   +---safe-buffer@5.1.2
+|   |   |       \---safe-buffer
+|   |   +---safe-buffer@5.2.1
+|   |   |       \---safe-buffer
+|   |   +---safe-stable-stringify@2.5.0
+|   |   |       \---safe-stable-stringify
+|   |   |           \---esm
+|   |   +---semver@7.7.1
+|   |   |       \---semver
+|   |   |           +---bin
+|   |   |           +---classes
+|   |   |           +---functions
+|   |   |           +---internal
+|   |   |           \---ranges
+|   |   +---shebang-command@2.0.0
+|   |   |       +---shebang-command
+|   |   |       \---shebang-regex
+|   |   +---shebang-regex@3.0.0
+|   |   |       \---shebang-regex
+|   |   +---signal-exit@4.1.0
+|   |   |       \---signal-exit
+|   |   |           \---dist
+|   |   |               +---cjs
+|   |   |               \---mjs
+|   |   +---simple-swizzle@0.2.2
+|   |   |       +---is-arrayish
+|   |   |       \---simple-swizzle
+|   |   +---slash@3.0.0
+|   |   |       \---slash
+|   |   +---source-map-support@0.5.21
+|   |   |       +---buffer-from
+|   |   |       +---source-map
+|   |   |       |   +---dist
+|   |   |       |   \---lib
+|   |   |       \---source-map-support
+|   |   +---source-map@0.6.1
+|   |   |       \---source-map
+|   |   |           +---dist
+|   |   |           \---lib
+|   |   +---split2@4.2.0
+|   |   |       \---split2
+|   |   +---stack-trace@0.0.10
+|   |   |       \---stack-trace
+|   |   |           \---lib
+|   |   +---string-width@4.2.3
+|   |   |       +---emoji-regex
+|   |   |       |   \---es2015
+|   |   |       +---is-fullwidth-code-point
+|   |   |       +---string-width
+|   |   |       \---strip-ansi
+|   |   +---string-width@5.1.2
+|   |   |       +---eastasianwidth
+|   |   |       +---emoji-regex
+|   |   |       |   \---es2015
+|   |   |       +---string-width
+|   |   |       \---strip-ansi
+|   |   +---string_decoder@0.10.31
+|   |   |       \---string_decoder
+|   |   +---string_decoder@1.1.1
+|   |   |       +---safe-buffer
+|   |   |       \---string_decoder
+|   |   |           \---lib
+|   |   +---string_decoder@1.3.0
+|   |   |       +---safe-buffer
+|   |   |       \---string_decoder
+|   |   |           \---lib
+|   |   +---strip-ansi@6.0.1
+|   |   |       +---ansi-regex
+|   |   |       \---strip-ansi
+|   |   +---strip-ansi@7.1.0
+|   |   |       +---ansi-regex
+|   |   |       \---strip-ansi
+|   |   +---strip-bom@3.0.0
+|   |   |       \---strip-bom
+|   |   +---strip-json-comments@2.0.1
+|   |   |       \---strip-json-comments
+|   |   +---strip-json-comments@3.1.1
+|   |   |       \---strip-json-comments
+|   |   +---supports-color@7.2.0
+|   |   |       +---has-flag
+|   |   |       \---supports-color
+|   |   +---supports-preserve-symlinks-flag@1.0.0
+|   |   |       \---supports-preserve-symlinks-flag
+|   |   |           +---.github
+|   |   |           \---test
+|   |   +---text-hex@1.0.0
+|   |   |       \---text-hex
+|   |   +---text-table@0.2.0
+|   |   |       \---text-table
+|   |   |           +---example
+|   |   |           \---test
+|   |   +---through2@2.0.5
+|   |   |       +---readable-stream
+|   |   |       |   +---doc
+|   |   |       |   |   \---wg-meetings
+|   |   |       |   \---lib
+|   |   |       |       \---internal
+|   |   |       |           \---streams
+|   |   |       +---through2
+|   |   |       \---xtend
+|   |   +---to-regex-range@5.0.1
+|   |   |       +---is-number
+|   |   |       \---to-regex-range
+|   |   +---tree-kill@1.2.2
+|   |   |       \---tree-kill
+|   |   +---triple-beam@1.4.1
+|   |   |       \---triple-beam
+|   |   |           +---.nyc_output
+|   |   |           |   \---processinfo
+|   |   |           \---config
+|   |   +---ts-api-utils@1.4.3_typescript@5.8.2
+|   |   |       +---ts-api-utils
+|   |   |       |   +---lib
+|   |   |       |       \---.bin
+|   |   |       \---typescript
+|   |   |           +---bin
+|   |   |           \---lib
+|   |   |               +---cs
+|   |   |               +---de
+|   |   |               +---es
+|   |   |               +---fr
+|   |   |               +---it
+|   |   |               +---ja
+|   |   |               +---ko
+|   |   |               +---pl
+|   |   |               +---pt-br
+|   |   |               +---ru
+|   |   |               +---tr
+|   |   |               +---zh-cn
+|   |   |               \---zh-tw
+|   |   +---ts-mixer@6.0.4
+|   |   |       \---ts-mixer
+|   |   |           \---dist
+|   |   |               +---cjs
+|   |   |               +---esm
+|   |   |               \---types
+|   |   +---ts-node-dev@2.0.0_@types+node@18.19.80_typescript@5.8.2
+|   |   |       +---chokidar
+|   |   |       |   +---lib
+|   |   |       |   \---types
+|   |   |       +---dynamic-dedupe
+|   |   |       |   +---example
+|   |   |       |   |   +---pack1
+|   |   |       |   |   |   \---common
+|   |   |       |   |   |       \---dep-uno
+|   |   |       |   |   \---pack2
+|   |   |       |   |       \---common
+|   |   |       |   |           \---dep-uno
+|   |   |       |   \---test
+|   |   |       |       \---fixtures
+|   |   |       |           +---pack1
+|   |   |       |           |   \---common
+|   |   |       |           |       +---dep-dos
+|   |   |       |           |       \---dep-uno
+|   |   |       |           \---pack2
+|   |   |       |               \---common
+|   |   |       |                   \---dep-uno
+|   |   |       +---minimist
+|   |   |       |   +---.github
+|   |   |       |   +---example
+|   |   |       |   \---test
+|   |   |       +---mkdirp
+|   |   |       |   +---bin
+|   |   |       |   \---lib
+|   |   |       +---resolve
+|   |   |       |   +---.github
+|   |   |       |   +---bin
+|   |   |       |   +---example
+|   |   |       |   +---lib
+|   |   |       |   \---test
+|   |   |       |       +---dotdot
+|   |   |       |       |   \---abc
+|   |   |       |       +---module_dir
+|   |   |       |       |   +---xmodules
+|   |   |       |       |   |   \---aaa
+|   |   |       |       |   +---ymodules
+|   |   |       |       |   |   \---aaa
+|   |   |       |       |   \---zmodules
+|   |   |       |       |       \---bbb
+|   |   |       |       +---node_path
+|   |   |       |       |   +---x
+|   |   |       |       |   |   +---aaa
+|   |   |       |       |   |   \---ccc
+|   |   |       |       |   \---y
+|   |   |       |       |       +---bbb
+|   |   |       |       |       \---ccc
+|   |   |       |       +---pathfilter
+|   |   |       |       |   \---deep_ref
+|   |   |       |       +---precedence
+|   |   |       |       |   +---aaa
+|   |   |       |       |   \---bbb
+|   |   |       |       +---resolver
+|   |   |       |       |   +---baz
+|   |   |       |       |   +---browser_field
+|   |   |       |       |   +---dot_main
+|   |   |       |       |   +---dot_slash_main
+|   |   |       |       |   +---false_main
+|   |   |       |       |   +---incorrect_main
+|   |   |       |       |   +---invalid_main
+|   |   |       |       |   +---multirepo
+|   |   |       |       |   |   \---packages
+|   |   |       |       |   |       +---package-a
+|   |   |       |       |   |       \---package-b
+|   |   |       |       |   +---nested_symlinks
+|   |   |       |       |   |   \---mylib
+|   |   |       |       |   +---other_path
+|   |   |       |       |   |   \---lib
+|   |   |       |       |   +---quux
+|   |   |       |       |   |   \---foo
+|   |   |       |       |   +---same_names
+|   |   |       |       |   |   \---foo
+|   |   |       |       |   +---symlinked
+|   |   |       |       |   |   +---package
+|   |   |       |       |   |   \---_
+|   |   |       |       |   |       \---symlink_target
+|   |   |       |       |   \---without_basedir
+|   |   |       |       \---shadowed_core
+|   |   |       |               \---util
+|   |   |       +---rimraf
+|   |   |       +---source-map-support
+|   |   |       +---tree-kill
+|   |   |       +---ts-node
+|   |   |       |   +---dist
+|   |   |       |   |   +---child
+|   |   |       |   |   \---transpilers
+|   |   |       |   +---dist-raw
+|   |   |       |   +---esm
+|   |   |       |   +---node10
+|   |   |       |   +---node12
+|   |   |       |   +---node14
+|   |   |       |   +---node16
+|   |   |       |   |   \---.bin
+|   |   |       |   +---register
+|   |   |       |   \---transpilers
+|   |   |       +---ts-node-dev
+|   |   |       |   +---icons
+|   |   |       |   +---lib
+|   |   |       |       \---.bin
+|   |   |       +---tsconfig
+|   |   |       |   \---dist
+|   |   |       \---typescript
+|   |   |           +---bin
+|   |   |           \---lib
+|   |   |               +---cs
+|   |   |               +---de
+|   |   |               +---es
+|   |   |               +---fr
+|   |   |               +---it
+|   |   |               +---ja
+|   |   |               +---ko
+|   |   |               +---pl
+|   |   |               +---pt-br
+|   |   |               +---ru
+|   |   |               +---tr
+|   |   |               +---zh-cn
+|   |   |               \---zh-tw
+|   |   +---ts-node@10.9.2_@types+node@18.19.80_typescript@5.8.2
+|   |   |       +---@cspotcode
+|   |   |       |   \---source-map-support
+|   |   |       +---@tsconfig
+|   |   |       |   +---node10
+|   |   |       |   +---node12
+|   |   |       |   +---node14
+|   |   |       |   \---node16
+|   |   |       +---@types
+|   |   |       |   \---node
+|   |   |       |       +---assert
+|   |   |       |       +---compatibility
+|   |   |       |       +---dns
+|   |   |       |       +---fs
+|   |   |       |       +---readline
+|   |   |       |       +---stream
+|   |   |       |       +---timers
+|   |   |       |       \---ts5.6
+|   |   |       +---acorn
+|   |   |       |   +---bin
+|   |   |       |   \---dist
+|   |   |       +---acorn-walk
+|   |   |       |   +---dist
+|   |   |       |       \---.bin
+|   |   |       +---arg
+|   |   |       +---create-require
+|   |   |       +---diff
+|   |   |       |   +---dist
+|   |   |       |   \---lib
+|   |   |       |       +---convert
+|   |   |       |       +---diff
+|   |   |       |       +---patch
+|   |   |       |       \---util
+|   |   |       +---make-error
+|   |   |       |   \---dist
+|   |   |       +---ts-node
+|   |   |       |   +---dist
+|   |   |       |   |   +---child
+|   |   |       |   |   \---transpilers
+|   |   |       |   +---dist-raw
+|   |   |       |   +---esm
+|   |   |       |   +---node10
+|   |   |       |   +---node12
+|   |   |       |   +---node14
+|   |   |       |   +---node16
+|   |   |       |   |   \---.bin
+|   |   |       |   +---register
+|   |   |       |   \---transpilers
+|   |   |       +---typescript
+|   |   |       |   +---bin
+|   |   |       |   \---lib
+|   |   |       |       +---cs
+|   |   |       |       +---de
+|   |   |       |       +---es
+|   |   |       |       +---fr
+|   |   |       |       +---it
+|   |   |       |       +---ja
+|   |   |       |       +---ko
+|   |   |       |       +---pl
+|   |   |       |       +---pt-br
+|   |   |       |       +---ru
+|   |   |       |       +---tr
+|   |   |       |       +---zh-cn
+|   |   |       |       \---zh-tw
+|   |   |       +---v8-compile-cache-lib
+|   |   |       \---yn
+|   |   +---tsc-alias@1.8.11
+|   |   |       +---chokidar
+|   |   |       |   +---lib
+|   |   |       |   \---types
+|   |   |       +---commander
+|   |   |       |   +---lib
+|   |   |       |   \---typings
+|   |   |       +---globby
+|   |   |       +---mylas
+|   |   |       |   \---build
+|   |   |       +---normalize-path
+|   |   |       +---plimit-lit
+|   |   |       |   \---dist
+|   |   |       \---tsc-alias
+|   |   |           +---dist
+|   |   |           |   +---bin
+|   |   |           |   +---helpers
+|   |   |           |   +---replacers
+|   |   |           |   \---utils
+|   |   |               \---.bin
+|   |   +---tsconfig-paths@4.2.0
+|   |   |       +---json5
+|   |   |       |   +---dist
+|   |   |       |   \---lib
+|   |   |       +---minimist
+|   |   |       |   +---.github
+|   |   |       |   +---example
+|   |   |       |   \---test
+|   |   |       +---strip-bom
+|   |   |       \---tsconfig-paths
+|   |   |           +---lib
+|   |   |           |   \---__tests__
+|   |   |           |       \---data
+|   |   |           |   \---.bin
+|   |   |           \---src
+|   |   |               \---__tests__
+|   |   |                   \---data
+|   |   +---tsconfig@7.0.0
+|   |   |       +---@types
+|   |   |       |   +---strip-bom
+|   |   |       |   \---strip-json-comments
+|   |   |       +---strip-bom
+|   |   |       +---strip-json-comments
+|   |   |       \---tsconfig
+|   |   |           \---dist
+|   |   +---tslib@2.6.2
+|   |   |       \---tslib
+|   |   |           \---modules
+|   |   +---tslib@2.8.1
+|   |   |       \---tslib
+|   |   |           \---modules
+|   |   +---type-check@0.4.0
+|   |   |       +---prelude-ls
+|   |   |       |   \---lib
+|   |   |       \---type-check
+|   |   |           \---lib
+|   |   +---type-fest@0.20.2
+|   |   |       \---type-fest
+|   |   |           +---source
+|   |   |           \---ts41
+|   |   +---typescript@5.8.2
+|   |   |       \---typescript
+|   |   |           +---bin
+|   |   |           \---lib
+|   |   |               +---cs
+|   |   |               +---de
+|   |   |               +---es
+|   |   |               +---fr
+|   |   |               +---it
+|   |   |               +---ja
+|   |   |               +---ko
+|   |   |               +---pl
+|   |   |               +---pt-br
+|   |   |               +---ru
+|   |   |               +---tr
+|   |   |               +---zh-cn
+|   |   |               \---zh-tw
+|   |   +---undici-types@5.26.5
+|   |   |       \---undici-types
+|   |   +---undici@6.21.1
+|   |   |       \---undici
+|   |   |           +---docs
+|   |   |           |   \---docs
+|   |   |           |       +---api
+|   |   |           |       \---best-practices
+|   |   |           +---lib
+|   |   |           |   +---api
+|   |   |           |   +---core
+|   |   |           |   +---dispatcher
+|   |   |           |   +---handler
+|   |   |           |   +---interceptor
+|   |   |           |   +---llhttp
+|   |   |           |   +---mock
+|   |   |           |   +---util
+|   |   |           |   \---web
+|   |   |           |       +---cache
+|   |   |           |       +---cookies
+|   |   |           |       +---eventsource
+|   |   |           |       +---fetch
+|   |   |           |       +---fileapi
+|   |   |           |       \---websocket
+|   |   |           +---scripts
+|   |   |           \---types
+|   |   +---untildify@4.0.0
+|   |   |       \---untildify
+|   |   +---uri-js@4.4.1
+|   |   |       +---punycode
+|   |   |       \---uri-js
+|   |   |           \---dist
+|   |   |               +---es5
+|   |   |               \---esnext
+|   |   |                   \---schemes
+|   |   +---util-deprecate@1.0.2
+|   |   |       \---util-deprecate
+|   |   +---v8-compile-cache-lib@3.0.1
+|   |   |       \---v8-compile-cache-lib
+|   |   +---which@2.0.2
+|   |   |       +---isexe
+|   |   |       |   \---test
+|   |   |       \---which
+|   |   |           \---bin
+|   |   +---winston-daily-rotate-file@5.0.0_winston@3.17.0
+|   |   |       +---file-stream-rotator
+|   |   |       |   \---tests
+|   |   |       +---object-hash
+|   |   |       |   \---dist
+|   |   |       +---triple-beam
+|   |   |       |   +---.nyc_output
+|   |   |       |   |   \---processinfo
+|   |   |       |   \---config
+|   |   |       +---winston
+|   |   |       |   +---dist
+|   |   |       |   |   \---winston
+|   |   |       |   |       +---config
+|   |   |       |   |       \---transports
+|   |   |       |   \---lib
+|   |   |       |       \---winston
+|   |   |       |           +---config
+|   |   |       |           \---transports
+|   |   |       +---winston-daily-rotate-file
+|   |   |       \---winston-transport
+|   |   |           +---.nyc_output
+|   |   |           |   \---processinfo
+|   |   |           \---dist
+|   |   +---winston-transport@4.9.0
+|   |   |       +---logform
+|   |   |       |   \---dist
+|   |   |       +---readable-stream
+|   |   |       |   \---lib
+|   |   |       |       \---internal
+|   |   |       |           \---streams
+|   |   |       +---triple-beam
+|   |   |       |   +---.nyc_output
+|   |   |       |   |   \---processinfo
+|   |   |       |   \---config
+|   |   |       \---winston-transport
+|   |   |           +---.nyc_output
+|   |   |           |   \---processinfo
+|   |   |           \---dist
+|   |   +---winston@3.17.0
+|   |   |       +---@colors
+|   |   |       |   \---colors
+|   |   |       |       +---examples
+|   |   |       |       +---lib
+|   |   |       |       |   +---custom
+|   |   |       |       |   +---maps
+|   |   |       |       |   \---system
+|   |   |       |       \---themes
+|   |   |       +---@dabh
+|   |   |       |   \---diagnostics
+|   |   |       |       +---adapters
+|   |   |       |       +---browser
+|   |   |       |       +---logger
+|   |   |       |       +---modifiers
+|   |   |       |       \---node
+|   |   |       +---async
+|   |   |       |   +---dist
+|   |   |       |   \---internal
+|   |   |       +---is-stream
+|   |   |       +---logform
+|   |   |       |   \---dist
+|   |   |       +---one-time
+|   |   |       +---readable-stream
+|   |   |       |   \---lib
+|   |   |       |       \---internal
+|   |   |       |           \---streams
+|   |   |       +---safe-stable-stringify
+|   |   |       |   \---esm
+|   |   |       +---stack-trace
+|   |   |       |   \---lib
+|   |   |       +---triple-beam
+|   |   |       |   +---.nyc_output
+|   |   |       |   |   \---processinfo
+|   |   |       |   \---config
+|   |   |       +---winston
+|   |   |       |   +---dist
+|   |   |       |   |   \---winston
+|   |   |       |   |       +---config
+|   |   |       |   |       \---transports
+|   |   |       |   \---lib
+|   |   |       |       \---winston
+|   |   |       |           +---config
+|   |   |       |           \---transports
+|   |   |       \---winston-transport
+|   |   |           +---.nyc_output
+|   |   |           |   \---processinfo
+|   |   |           \---dist
+|   |   +---word-wrap@1.2.5
+|   |   |       \---word-wrap
+|   |   +---wrap-ansi@7.0.0
+|   |   |       +---ansi-styles
+|   |   |       +---string-width
+|   |   |       +---strip-ansi
+|   |   |       \---wrap-ansi
+|   |   +---wrap-ansi@8.1.0
+|   |   |       +---ansi-styles
+|   |   |       +---string-width
+|   |   |       +---strip-ansi
+|   |   |       \---wrap-ansi
+|   |   +---wrappy@1.0.2
+|   |   |       \---wrappy
+|   |   +---ws@8.18.1
+|   |   |       \---ws
+|   |   |           \---lib
+|   |   +---xtend@4.0.2
+|   |   |       \---xtend
+|   |   +---y18n@5.0.8
+|   |   |       \---y18n
+|   |   |           \---build
+|   |   |               \---lib
+|   |   |                   \---platform-shims
+|   |   +---yargs-parser@20.2.9
+|   |   |       \---yargs-parser
+|   |   |           \---build
+|   |   |               \---lib
+|   |   +---yargs@16.2.0
+|   |   |       +---cliui
+|   |   |       |   \---build
+|   |   |       |       \---lib
+|   |   |       +---escalade
+|   |   |       |   +---dist
+|   |   |       |   \---sync
+|   |   |       +---get-caller-file
+|   |   |       +---require-directory
+|   |   |       +---string-width
+|   |   |       +---y18n
+|   |   |       |   \---build
+|   |   |       |       \---lib
+|   |   |       |           \---platform-shims
+|   |   |       +---yargs
+|   |   |       |   +---build
+|   |   |       |   |   \---lib
+|   |   |       |   |       +---typings
+|   |   |       |   |       \---utils
+|   |   |       |   +---helpers
+|   |   |       |   +---lib
+|   |   |       |   |   \---platform-shims
+|   |   |       |   \---locales
+|   |   |       \---yargs-parser
+|   |   |           \---build
+|   |   |               \---lib
+|   |   +---yn@3.1.1
+|   |   |       \---yn
+|   |   \---yocto-queue@0.1.0
+|   |           \---yocto-queue
+|   +---@types
+|   |   +---node
+|   |   |   +---assert
+|   |   |   +---compatibility
+|   |   |   +---dns
+|   |   |   +---fs
+|   |   |   +---readline
+|   |   |   +---stream
+|   |   |   +---timers
+|   |   |   \---ts5.6
+|   |   +---pg
+|   |   |   \---lib
+|   |   \---winston
+|   +---@typescript-eslint
+|   |   +---eslint-plugin
+|   |   |   +---dist
+|   |   |   |   +---configs
+|   |   |   |   +---rules
+|   |   |   |   |   +---enum-utils
+|   |   |   |   |   +---naming-convention-utils
+|   |   |   |   |   \---prefer-optional-chain-utils
+|   |   |   |   \---util
+|   |   |   +---docs
+|   |   |   |   \---rules
+|   |   |       \---.bin
+|   |   \---parser
+|   |       +---dist
+|   |           \---.bin
+|   +---copyfiles
+|   |   |   \---.bin
+|   |   \---test
+|   +---discord.js
+|   |   +---src
+|   |   |   +---client
+|   |   |   |   +---actions
+|   |   |   |   +---voice
+|   |   |   |   \---websocket
+|   |   |   |       \---handlers
+|   |   |   +---errors
+|   |   |   +---managers
+|   |   |   +---sharding
+|   |   |   +---structures
+|   |   |   |   \---interfaces
+|   |   |   \---util
+|   |   \---typings
+|   +---dotenv
+|   |   \---lib
+|   +---envalid
+|   |   +---dist
+|   |   \---src
+|   +---eslint
+|   |   +---bin
+|   |   +---conf
+|   |   +---lib
+|   |   |   +---cli-engine
+|   |   |   |   \---formatters
+|   |   |   +---config
+|   |   |   +---eslint
+|   |   |   +---linter
+|   |   |   |   \---code-path-analysis
+|   |   |   +---rule-tester
+|   |   |   +---rules
+|   |   |   |   \---utils
+|   |   |   |       +---patterns
+|   |   |   |       \---unicode
+|   |   |   +---shared
+|   |   |   \---source-code
+|   |   |       \---token-store
+|   |   +---messages
+|   |       \---.bin
+|   +---mkdirp
+|   |   \---dist
+|   |       +---cjs
+|   |       |   \---src
+|   |       \---mjs
+|   +---pg
+|   |   \---lib
+|   |       +---crypto
+|   |       \---native
+|   +---rimraf
+|   |   +---dist
+|   |   |   +---commonjs
+|   |   |   \---esm
+|   |       \---.bin
+|   +---ts-node
+|   |   +---dist
+|   |   |   +---child
+|   |   |   \---transpilers
+|   |   +---dist-raw
+|   |   +---esm
+|   |   +---node10
+|   |   +---node12
+|   |   +---node14
+|   |   +---node16
+|   |   |   \---.bin
+|   |   +---register
+|   |   \---transpilers
+|   +---ts-node-dev
+|   |   +---icons
+|   |   +---lib
+|   |       \---.bin
+|   +---tsconfig-paths
+|   |   +---lib
+|   |   |   \---__tests__
+|   |   |       \---data
+|   |   |   \---.bin
+|   |   \---src
+|   |       \---__tests__
+|   |           \---data
+|   +---typescript
+|   |   +---bin
+|   |   \---lib
+|   |       +---cs
+|   |       +---de
+|   |       +---es
+|   |       +---fr
+|   |       +---it
+|   |       +---ja
+|   |       +---ko
+|   |       +---pl
+|   |       +---pt-br
+|   |       +---ru
+|   |       +---tr
+|   |       +---zh-cn
+|   |       \---zh-tw
+|   +---winston
+|   |   +---dist
+|   |   |   \---winston
+|   |   |       +---config
+|   |   |       \---transports
+|   |   \---lib
+|   |       \---winston
+|   |           +---config
+|   |           \---transports
+|   \---winston-daily-rotate-file
++---src
+|   +---config
+|   +---core
+|   |   \---discord
+|   |       +---commands
+|   |       +---events
+|   |       \---utils
+|   +---database
+|   |   +---models
+|   |   \---services
+|   +---interfaces
+|   |   \---discord
+|   +---types
+|   \---utils
+\---test
+    +---integration
+    \---unit

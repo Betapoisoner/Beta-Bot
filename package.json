@@ -12,14 +12,14 @@
   "scripts": {
     "prestart": "node -e \"require('mkdirp').sync('logs')\"",
     "clean": "rimraf dist",
-    "postbuild": "copyfiles .env dist/",
-"build": "pnpm clean && tsc -p src/config/tsconfig.json --moduleResolution nodeNext && copyfiles .env dist/",
-"start": "node -r tsconfig-paths/register -r dotenv/config dist/core/index.js"   , "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/core/index.ts",
-    "dev:debug": "nodemon --exec ts-node --inspect-brk -r tsconfig-paths/register src/core/index.ts",
+    "build": "pnpm clean && tsc && tsc-alias && copyfiles .env dist/",
+    "start": "node -r tsconfig-paths/register -r dotenv/config dist/core/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register -r dotenv/config src/core/index.ts",
+    "dev:debug": "nodemon --exec ts-node --inspect-brk -r tsconfig-paths/register -r dotenv/config src/core/index.ts",
     "register": "ts-node -r dotenv/config -r tsconfig-paths/register src/core/discord/commands/register.ts",
     "unregister": "ts-node -r dotenv/config -r tsconfig-paths/register src/core/discord/commands/unregister.ts",
     "lint": "eslint src/**/*.ts",
-    "typecheck": "tsc --noEmit --project src/config/tsconfig.json"
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
@@ -44,6 +44,7 @@
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.11",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.2"
   }

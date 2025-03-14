@@ -3,11 +3,10 @@
  * Uses envalid for robust env var handling
  */
 import { cleanEnv, str, num } from 'envalid';
-import path from 'path';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 
 // Load environment variables before validation to support multiple environments
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+config({ path: process.env.ENV_PATH || '.env' });
 
 /**
  * Validated environment variables

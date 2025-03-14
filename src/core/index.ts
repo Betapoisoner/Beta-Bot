@@ -8,6 +8,7 @@ declare const performance: {
  */
 import dotenv from 'dotenv';
 import path from 'path';
+import logger from './../utils/logger';
 
 // Load environment variables first to ensure availability for subsequent modules
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
@@ -15,7 +16,6 @@ logger.debug('Environment variables loaded', {
     envKeys: Object.keys(process.env).filter(k => k.startsWith('DISCORD') || k.startsWith('DB'))
 });
 
-import logger from './../utils/logger';
 import { replies } from '../core/discord/utils/replies';
 import { dbUtils } from '../database/services/PuppetService';
 import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
@@ -135,7 +135,8 @@ client.on('messageCreate', async (message) => {
                     userId: message.author.id,
                     suffix,
                     storedSuffixes: await dbUtils.getUserPuppets(message.author.id)
-                        .then((puppets: Puppet[]) => puppets.map(p => p.suffix))                });
+                        .then((puppets: Puppet[]) => puppets.map(p => p.suffix))
+                });
 
                 const reply = await message.reply(`No puppet with suffix "${suffix}" found!`);
 
