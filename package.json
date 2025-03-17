@@ -6,7 +6,7 @@
         "type": "git",
         "url": "beta-bot"
     },
-    "packageManager": "pnpm@10.6.2",
+    "packageManager": "pnpm@10.6.3",
     "type": "commonjs",
     "main": "dist/core/index.js",
     "scripts": {
@@ -33,6 +33,7 @@
     "license": "ISC",
     "dependencies": {
         "@types/logform": "^1.10.1",
+        "chalk": "4.1.2",
         "discord.js": "^14.18.0",
         "dotenv": "^16.4.7",
         "envalid": "^8.0.0",

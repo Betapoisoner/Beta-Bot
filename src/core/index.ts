@@ -8,7 +8,8 @@ declare const performance: {
  */
 import dotenv from 'dotenv';
 import path from 'path';
-import logger from './../utils/logger';
+import logger from '@utils/logger';
+
 
 // Load environment variables first to ensure availability for subsequent modules
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
@@ -16,8 +17,8 @@ logger.debug('Environment variables loaded', {
     envKeys: Object.keys(process.env).filter((k) => k.startsWith('DISCORD') || k.startsWith('DB')),
 });
 
-import { replies } from '../core/discord/utils/replies';
-import { dbUtils } from '../database/services/PuppetService';
+import { replies } from '@core/discord/utils/replies';
+import { dbUtils } from '@database/services/PuppetService';
 import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
 import type { Puppet } from '@database/models/Puppet';
 import tsPackageJson from 'typescript/package.json';
@@ -92,6 +93,7 @@ client.once('ready', () => {
  * 2. Traditional command messages (e.g., "!help")
  */
 client.on('messageCreate', async (message) => {
+
     // Ignore messages from other bots to prevent loops
     if (message.author.bot) {
         logger.silly('Ignored bot-to-bot message', {
@@ -108,21 +110,32 @@ client.on('messageCreate', async (message) => {
     });
 
     // Region: Suffix-based Message Handling
-    const suffixRegex = /^(\S+)(:{1,2})(.*)/; // Captures [suffix, colon(s), content]
+    const suffixRegex = /^([^:]+)(:{1,2})+(.+)$/;
     const match = message.content.match(suffixRegex);
 
     if (match) {
-        const [ suffix, suffixType, rawContent] = match;
+        const [fullMatch, suffix, suffixType, rawContent] = match;
         const content = rawContent.trim();
 
-        logger.info('Detected suffix-based message', {
+        logger.info('Detected suffix message', {
             userId: message.author.id,
-            suffix,
+            fullMatch,
+            suffix: suffix,
             suffixType,
-            contentLength: content.length,
+            pipeContent: content,
+            originalLength: rawContent.length
         });
+        if (!content) {
+            logger.warn('Empty message content rejected', {
+                userId: message.author.id,
+                suffix: suffix.trim()
+            });
+            const reply = await message.reply('Message content cannot be empty!');
+            return setTimeout(() => reply.delete(), 5000);
+        }
 
         try {
+
             logger.debug('Querying database for puppet', {
                 userId: message.author.id,
                 suffix,
@@ -138,14 +151,7 @@ client.on('messageCreate', async (message) => {
                         .getUserPuppets(message.author.id)
                         .then((puppets: Puppet[]) => puppets.map((p) => p.suffix)),
                 });
-
-                const reply = await message.reply(`No puppet with suffix "${suffix}" found!`);
-
-                logger.debug('Scheduled ephemeral error reply', {
-                    messageId: reply.id,
-                    deleteIn: '5s',
-                });
-
+                const reply = await message.reply(`No puppet found with suffix "${suffix}"`);
                 return setTimeout(() => reply.delete(), 5000);
             }
 
@@ -267,3 +273,10 @@ client
         });
         process.exit(1);
     });
+
+
+['SIGINT', 'SIGTERM'].forEach((signal) => {
+    process.on(signal, () => {
+        client.destroy();
+    });
+});

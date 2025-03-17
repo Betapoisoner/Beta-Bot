@@ -1,7 +1,5 @@
 // src/types/winston.d.ts
 import winston from 'winston';
-import logger from '../utils/logger';
-
 declare module 'winston' {
     interface Logger {
         fatal: winston.LeveledLogMethod;

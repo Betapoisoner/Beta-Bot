@@ -5,8 +5,7 @@
 import winston, { Logger } from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
 import path from 'path';
-import { Format, TransformableInfo } from 'logform';
-import fs from 'fs';
+import { TransformableInfo } from 'logform';
 
 const logLevels = {
     fatal: 0,
@@ -15,11 +14,27 @@ const logLevels = {
     info: 3,
     http: 4,
     verbose: 5,
-    debug: 6,
-    silly: 7,
+    silly: 6,
+    debug: 7,
 };
 
-type LogLevel = keyof typeof logLevels;
+// Add custom color configuration
+const logColors = {
+    // Custom color only for silly
+    silly: 'rainbow',
+
+    // Standard Winston colors for other levels
+    fatal: 'magenta',  // Standard default for highest severity
+    error: 'red',
+    warn: 'yellow',
+    info: 'green',
+    http: 'cyan',      // Matches default verbose color
+    verbose: 'gray',
+    debug: 'blue'
+};
+
+// Register custom colors
+winston.addColors(logColors);
 
 const LOG_DIRECTORY = path.join(__dirname, '../../logs');
 const DEFAULT_LOG_LEVEL = 'info';
@@ -27,102 +42,64 @@ const LOG_FILE_PATTERN = 'DD-MM-YYYY';
 const MAX_FILE_SIZE = '20m';
 const MAX_FILES = '30d';
 
-Object.keys(logLevels).forEach(level => {
-    const dir = path.join(LOG_DIRECTORY, level);
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-    }
-});
-
-const getFileFormat = (level: LogLevel): Format => winston.format.combine(
-    winston.format((info: TransformableInfo) => {
-        return info.level === level ? info : false;
-    })(),
-    winston.format.timestamp(),
-    winston.format.json()
-);
-
-// Helper functions for common configurations
-const createFileTransport = (level: LogLevel): DailyRotateFile => new DailyRotateFile({
-    dirname: path.join(LOG_DIRECTORY, level),
-    filename: 'discord-bot-%DATE%.log',
-    datePattern: LOG_FILE_PATTERN,
-    zippedArchive: true,
-    maxSize: MAX_FILE_SIZE,
-    maxFiles: MAX_FILES,
-    utc: true,
-    format: getFileFormat(level), // Pass the level string here
-});;
-
-
-
 const formatConsoleOutput = (info: TransformableInfo): string => {
     const metadata = info.metadata as Record<string, unknown>;
-    const metaString = Object.keys(metadata).length > 0
-        ? JSON.stringify(metadata, errorReplacer)
-        : '';
+    const metaString = Object.keys(metadata).length > 0 ? JSON.stringify(metadata, errorReplacer) : '';
     return `${info.timestamp} [${info.level}]: ${info.message} ${metaString}`;
 };
 
 const consoleFormat = winston.format.combine(
-    winston.format.colorize(),
+    // Apply custom colors through colorize
+    winston.format.colorize({ colors: logColors }),
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     winston.format.metadata({ fillExcept: ['message', 'level', 'timestamp'] }),
-    winston.format.printf(formatConsoleOutput)
+    winston.format.printf(formatConsoleOutput),
 );
 
+// Rest of the configuration remains the same...
 const errorReplacer = (_key: string, value: unknown): unknown =>
-    value instanceof Error
-        ? { message: value.message, stack: value.stack, name: value.name }
-        : value;
+    value instanceof Error ? { message: value.message, stack: value.stack, name: value.name } : value;
 
 const logger: Logger = winston.createLogger({
     levels: logLevels,
     level: process.env.LOG_LEVEL || DEFAULT_LOG_LEVEL,
     transports: [
         new winston.transports.Console({ format: consoleFormat }),
-        ...Object.keys(logLevels).map(level => createFileTransport(level as LogLevel)),
         new DailyRotateFile({
-            dirname: path.join(LOG_DIRECTORY, 'combined'),
-            filename: 'discord-bot-%DATE%.log',
-            datePattern: LOG_FILE_PATTERN,
-            zippedArchive: true,
-            maxSize: MAX_FILE_SIZE,
-            maxFiles: MAX_FILES,
-            utc: true,
-            format: winston.format.combine(
-                winston.format.timestamp(),
-                winston.format.json()
-            ),
-        }),
-    ],
-    exceptionHandlers: [
-        new DailyRotateFile({
-            dirname: path.join(LOG_DIRECTORY, 'exceptions'),
+            dirname: path.join(LOG_DIRECTORY),
             filename: '%DATE%.log',
             datePattern: LOG_FILE_PATTERN,
             zippedArchive: true,
             maxSize: MAX_FILE_SIZE,
             maxFiles: MAX_FILES,
             utc: true,
-            format: winston.format.combine(
-                winston.format.timestamp(),
-                winston.format.json()
-            ),
+            format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
+        }),
+    ],
+    exceptionHandlers: [
+        new winston.transports.Console({ format: consoleFormat }),
+        new DailyRotateFile({
+            dirname: path.join(LOG_DIRECTORY, 'exceptions'),
+            filename: '%DATE%.json',
+            datePattern: LOG_FILE_PATTERN,
+            zippedArchive: true,
+            maxSize: MAX_FILE_SIZE,
+            maxFiles: MAX_FILES,
+            utc: true,
+            format: winston.format.combine(winston.format.timestamp(), winston.format.json({ replacer: errorReplacer })),
         }),
     ],
 });
 
-logger.on('error', (error) => {
-    console.error('Logger error:', error);
-});
-
-// Handle process termination
-['SIGINT', 'SIGTERM'].forEach(signal => {
+// Handle process termination and error logging remains the same...
+['SIGINT', 'SIGTERM'].forEach((signal) => {
     process.on(signal, () => {
-        logger.info(`${signal} received - closing logger transports`);
         logger.close();
     });
+});
+
+logger.on('error', (error) => {
+    console.error('Logger error:', error);
 });
 
 export default logger;

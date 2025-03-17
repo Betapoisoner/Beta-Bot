@@ -1,6 +1,6 @@
 import { Message, EmbedBuilder, TextChannel } from 'discord.js';
-import { dbUtils } from '../../../database/services/PuppetService';
-import logger from '../../../utils/logger';
+import { dbUtils } from '@database/services/PuppetService';
+import logger from '@utils/logger';
 import type { Puppet } from '@database/models/Puppet';
 
 function getErrorMessage(error: unknown): string {
@@ -180,37 +180,37 @@ export const replies: Record<string, ReplyFunction> = {
                 },
             };
 
-            // Then in your embed builder
             const embed = new EmbedBuilder()
                 .setColor(0x0099ff)
                 .setTitle('🌟 Bot Command Help')
-                .setDescription('**Syntax Guide:**\n`<required>` `[optional]` `[attachment]`')
+                .setDescription(
+                    '**Syntax Guide:**\n' +
+                        '`<required>` `[optional]` `[attachment]`\n\n' +
+                        '**Puppet Syntax:**\n' +
+                        '`[suffix]:  Message` - Regular message (space after colon)\n' +
+                        '`[suffix]::  Action` - *Italic action message* (space after double colon)',
+                )
                 .setThumbnail(message.client.user?.displayAvatarURL() || null)
                 .setTimestamp()
                 .setFooter({
-                    text: `Requested by ${message.author.tag}`,
+                    text: `Requested by ${message.author.tag} | Example: "mrln::  waves hello"`,
                     iconURL: message.author.displayAvatarURL(),
                 });
 
-            // Add fields
+            // Add command categories with updated spacing
             for (const [category, cmds] of Object.entries(commands)) {
                 embed.addFields({
-                    name: category,
+                    name: `**${category}**`,
                     value: Object.entries(cmds)
-                        .map(([cmd, desc]) => `**\`${cmd}\`**\n${desc}`)
-                        .join('\n\n'),
-                    inline: true,
+                        .map(([cmd, desc]) => `▸ \`${cmd}\`\n   - ${desc}`)
+                        .join('\n'),
+                    inline: category === '🐭 Puppet System' ? false : true,
                 });
             }
 
             await message.reply({
                 embeds: [embed],
                 allowedMentions: { repliedUser: false },
-            });
-
-            logger.info('Help command executed', {
-                user: message.author.tag,
-                channel: message.channel.id,
             });
         } catch (error) {
             logger.error('Failed to send help command:', error);
