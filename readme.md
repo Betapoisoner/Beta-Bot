@@ -401,7 +401,7 @@ flowchart LR
 ### Data Flow
 
 ```mermaid
-flowchart
+sequenceDiagram
     Member->>+Puppet: Create with !addpuppet
     Puppet->>-Database: Store metadata
     Member->>+Chat: Use puppet: syntax
