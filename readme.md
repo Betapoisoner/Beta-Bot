@@ -188,6 +188,20 @@ CREATE TABLE members (
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Enforce unique suffixes per user
+CREATE UNIQUE INDEX idx_puppet_suffix 
+ON puppets(user_id, suffix);
+
+-- Prevent duplicate puppet names
+CREATE UNIQUE INDEX idx_puppet_names 
+ON puppets(user_id, name);
+
+-- Relations
+ALTER TABLE public.puppets ADD CONSTRAINT puppets_members_fk FOREIGN KEY (user_id) REFERENCES public.members(user_id);
+ALTER TABLE public.server_sanctions ADD CONSTRAINT server_sanctions_members_fk FOREIGN KEY (user_id) REFERENCES public.members(user_id);
+ALTER TABLE public.infractions ADD CONSTRAINT infractions_members_fk FOREIGN KEY (user_id) REFERENCES public.members(user_id);
+
+
 -- For frequent infraction lookups
 CREATE INDEX idx_infractions_user ON infractions(user_id);
 CREATE INDEX idx_infractions_type ON infractions(type);
@@ -203,24 +217,36 @@ CREATE INDEX idx_members_username ON members(username);
 
 ```mermaid
 erDiagram
+    members ||--o{ puppets : "owns"
     members ||--o{ infractions : "moderates"
     members ||--o{ server_sanctions : "track"
+    
     members {
         VARCHAR(255) user_id PK
         VARCHAR(32) username
         TIMESTAMP last_updated
     }
-
+    
+    puppets {
+        SERIAL id PK
+        VARCHAR(255) user_id FK
+        VARCHAR(50) name
+        VARCHAR(20) suffix
+        TEXT avatar
+        TEXT description
+        TIMESTAMP created_at
+    }
+    
     infractions {
         SERIAL id PK
-        VARCHAR(255) user_id
+        VARCHAR(255) user_id FK
         VARCHAR(255) moderator_id FK
         VARCHAR(32) moderator_tag
         VARCHAR(4) type
         TEXT reason
         TIMESTAMP created_at
     }
-
+    
     server_sanctions {
         VARCHAR(255) user_id PK
         INT mute_count
@@ -320,21 +346,6 @@ pnpm start
 | `!ban @user [reason]`               | Permanent ban           | `!ban @scammer Phishing links`         |
 | `!infractions [@user]`              | View punishment history | `!infractions @troublemaker`           |
 
-### Moderation System
-
-```mermaid
-graph TD
-    A[Warn Received] --> B{Check Warn Count}
-    B -->|3 Warns| C[10m Mute]
-    B -->|5 Warns| D[30m Mute]
-    B -->|3 Warns in 24h| E[1-Week Kick]
-    E --> F{Returns Within Week}
-    F -->|Yes + New Warn| G[Permanent Ban]
-    B -->|7 Warns| H[1-Week Kick]
-    B -->|10 Warns| I[Permanent Ban]
-    B -->|11 Warns Post-Ban| J[IP Ban]
-```
-
 #### Punishment Thresholds
 
 | Warns | Time Frame       | Action        | Duration   |
@@ -359,6 +370,43 @@ graph TD
     F --> G[Update Infractions DB]
     D -->|Yes| H[Webhook Proxy]
     D -->|No| I[Standard Commands]
+```
+
+### Moderation System
+
+```mermaid
+graph TD
+    A[Warn Received] --> B{Check Warn Count}
+    B -->|3 Warns| C[10m Mute]
+    B -->|5 Warns| D[30m Mute]
+    B -->|3 Warns in 24h| E[1-Week Kick]
+    E --> F{Returns Within Week}
+    F -->|Yes + New Warn| G[Permanent Ban]
+    B -->|7 Warns| H[1-Week Kick]
+    B -->|10 Warns| I[Permanent Ban]
+    B -->|11 Warns Post-Ban| J[IP Ban]
+```
+
+### Puppet Lifecycle
+
+```mermaid
+flowchart LR
+    A[Member] --> B[Create Puppet]
+    B --> C[Use in Chat]
+    C --> D{Abandon?}
+    D -->|Yes| E[Orphaned Puppet]
+    D -->|No| C
+```
+
+### Data Flow
+
+```mermaid
+sequenceDiagram
+    Member->>+Puppet: Create with !addpuppet
+    Puppet->>-Database: Store metadata
+    Member->>+Chat: Use puppet: syntax
+    Chat->>Database: Verify suffix
+    Database->>-Webhook: Proxy message
 ```
 
 ## Logging
