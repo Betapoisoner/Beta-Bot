@@ -257,24 +257,6 @@ graph TD
     B -->|10 Warns| I[Permanent Ban]
     B -->|11 Warns Post-Ban| J[IP Ban]
 ```
-Here's the markdown for each changed section:
-
-### 1. Enhanced Moderation System
-```markdown
-## Enhanced Moderation System ⚖️
-
-```mermaid
-graph TD
-    A[Warn Received] --> B{Check Warn Count}
-    B -->|3 Warns| C[10m Mute]
-    B -->|5 Warns| D[30m Mute]
-    B -->|3 Warns in 24h| E[1-Week Kick]
-    E --> F{Returns Within Week}
-    F -->|Yes + New Warn| G[Permanent Ban]
-    B -->|7 Warns| H[1-Week Kick]
-    B -->|10 Warns| I[Permanent Ban]
-    B -->|11 Warns Post-Ban| J[IP Ban]
-```
 
 ### Punishment Thresholds
 
