@@ -1,3 +1,7 @@
+import { infractionService } from "@database/services/InfractionService";
+import { Client, GuildMember } from "discord.js";
+import logger from "./logger";
+
 export class PunishmentManager {
     private client: Client;
 

@@ -1,4 +1,4 @@
-import { Message, EmbedBuilder, TextChannel, PermissionsBitField } from 'discord.js';
+import { Message, EmbedBuilder, TextChannel, PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageActionRowComponentBuilder } from 'discord.js';
 import { dbUtils } from '@database/services/PuppetService';
 import logger from '@utils/logger';
 import type { Puppet } from '@database/models/Puppet';
@@ -264,24 +264,57 @@ export const replies: Record<string, ReplyFunction> = {
     },
 
     '!infractions': async (message) => {
-        const target = message.mentions.users.first() || message.author;
-        const [warns, kicks, bans] = await Promise.all([
-            infractionService.getInfractionCount(target.id, 'WARN'),
-            infractionService.getInfractionCount(target.id, 'KICK'),
-            infractionService.getInfractionCount(target.id, 'BAN'),
-        ]);
+        try {
+            const target = message.mentions.users.first() || message.author;
+            const infractions = await infractionService.getDetailedInfractions(target.id);
 
-        const embed = new EmbedBuilder()
-            .setColor(0x0099ff)
-            .setTitle(`Infractions for ${target.tag}`)
-            .addFields(
-                { name: 'Warnings', value: warns.toString(), inline: true },
-                { name: 'Kicks', value: kicks.toString(), inline: true },
-                { name: 'Bans', value: bans.toString(), inline: true },
-            );
+            const embed = new EmbedBuilder()
+                .setColor(0x0099ff)
+                .setTitle(`🔍 Infraction History: ${target.tag}`)
+                .setThumbnail(target.displayAvatarURL());
 
-        message.reply({ embeds: [embed] });
-    },
+            if (infractions.length === 0) {
+                embed.setDescription('*No recorded infractions*')
+                    .setColor(0x00ff00);
+            } else {
+                const formatted = infractions.map((inf, index) => {
+                    let duration = '';
+                    if (inf.duration) {
+                        const expires = new Date(inf.duration);
+                        duration = `\n⏳ __Expires:__ <t:${Math.floor(expires.getTime() / 1000)}:R>`;
+                    }
+
+                    return `**Case #${inf.id}** [${inf.type}]
+                📝 ${inf.reason || '*No reason provided*'}
+                👮 Moderator: ${inf.moderator_tag || 'System'}
+                🕒 <t:${Math.floor(inf.created_at.getTime() / 1000)}:D>${duration}`;
+                });
+
+                embed.setDescription(formatted.join('\n\n'))
+                    .setFooter({
+                        text: `Showing ${infractions.length} most recent cases • IDs may be non-sequential`,
+                        iconURL: message.client.user?.displayAvatarURL()
+                    });
+            }
+
+            await message.reply({
+                embeds: [embed],
+                components: [
+                    new ActionRowBuilder<MessageActionRowComponentBuilder>()
+                        .addComponents(
+                            new ButtonBuilder()
+                                .setCustomId('delete_infractions')
+                                .setLabel('Delete History')
+                                .setStyle(ButtonStyle.Danger)
+                                .setDisabled(infractions.length === 0)
+                        )
+                ]
+            });
+        } catch (error) {
+            logger.error('Failed to fetch infractions:', error);
+            message.reply('❌ Error retrieving infraction history');
+        }
+},
 
     '!help': async (message) => {
         try {

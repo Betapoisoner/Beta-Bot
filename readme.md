@@ -145,26 +145,29 @@ psql -U postgres
 CREATE DATABASE puppetdb;
 \c puppetdb
 
--- Puppet System
+-- Main Puppet System Table
 CREATE TABLE puppets (
     id SERIAL PRIMARY KEY,
     user_id VARCHAR(255) NOT NULL,
     name VARCHAR(50) NOT NULL,
     suffix VARCHAR(20) UNIQUE NOT NULL,
     avatar TEXT,
-    description TEXT
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Moderation System
+-- Infraction Tracking System
 CREATE TABLE infractions (
     id SERIAL PRIMARY KEY,
     user_id VARCHAR(255) NOT NULL,
     moderator_id VARCHAR(255) NOT NULL,
-    type VARCHAR(4) NOT NULL CHECK (type IN ('WARN', 'KICK', 'BAN')),
+    moderator_tag VARCHAR(32) NOT NULL,
+    type VARCHAR(4) NOT NULL CHECK (type IN ('WARN', 'KICK', 'BAN', 'MUTE')),
     reason TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Sanction State Management
 CREATE TABLE server_sanctions (
     user_id VARCHAR(255) PRIMARY KEY,
     mute_count INT DEFAULT 0,
@@ -175,6 +178,76 @@ CREATE TABLE server_sanctions (
     return_date TIMESTAMP,
     perma_banned BOOLEAN DEFAULT false
 );
+
+-- Member Username Cache
+CREATE TABLE members (
+    user_id VARCHAR(255) PRIMARY KEY,
+    username VARCHAR(32) NOT NULL,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- For frequent infraction lookups
+CREATE INDEX idx_infractions_user ON infractions(user_id);
+CREATE INDEX idx_infractions_type ON infractions(type);
+
+-- For expiration checks
+CREATE INDEX idx_sanctions_expiry ON server_sanctions(kick_expires);
+
+-- For username history
+CREATE INDEX idx_members_username ON members(username);
+```
+
+#### Entity Relationship Diagram
+
+```mermaid
+erDiagram
+    members ||--o{ infractions : "moderates"
+    members ||--o{ server_sanctions : "track"
+    members {
+        VARCHAR(255) user_id PK
+        VARCHAR(32) username
+        TIMESTAMP last_updated
+    }
+    
+    infractions {
+        SERIAL id PK
+        VARCHAR(255) user_id
+        VARCHAR(255) moderator_id FK
+        VARCHAR(32) moderator_tag
+        VARCHAR(4) type
+        TEXT reason
+        TIMESTAMP created_at
+    }
+    
+    server_sanctions {
+        VARCHAR(255) user_id PK
+        INT mute_count
+        INT kick_count
+        INT ban_count
+        TIMESTAMP last_kick
+        TIMESTAMP kick_expires
+        TIMESTAMP return_date
+        BOOLEAN perma_banned
+    }
+```
+
+#### Key Features
+- Temporal Data Tracking: Precise timestamping for all moderation actions
+- Moderator Accountability: Permanent record of enforcing staff members
+- State Persistence: Maintains punishment status through bot restarts
+- Username Versioning: Historical record of member name changes
+- Expiration System: Automatic cleanup of temporary punishments
+
+#### Maintenance Tips
+```bash
+# Daily sanity check
+psql -U postgres -d puppetdb -c "VACUUM ANALYZE;"
+
+# Backup command (run nightly)
+pg_dump -U postgres -Fc puppetdb > puppetdb_$(date +%Y-%m-%d).dump
+
+# Restore from backup
+pg_restore -U postgres -d puppetdb puppetdb_YYYY-MM-DD.dump
 ```
 
 ## Usage 📖
@@ -294,6 +367,10 @@ graph TD
 
 ```
 logs/
+├──exceptions
+|  ├──bot-01-05-2024.json
+|  ├── bot-02-05-2024.json
+|  └── bot-03-05-2024.json.gz
 ├── bot-01-05-2024.log
 ├── bot-02-05-2024.log
 └── bot-03-05-2024.log.gz

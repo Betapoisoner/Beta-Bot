@@ -115,5 +115,30 @@ export const infractionService = {
              SET perma_banned = true`,
             [userId]
         );
+    }, async getDetailedInfractions(userId: string): Promise<Array<{
+        id: number;
+        type: 'WARN' | 'KICK' | 'BAN' | 'MUTE';
+        reason: string;
+        created_at: Date;
+        moderator_tag: string;
+        duration?: string;
+    }>> {
+        const res = await db.query(
+            `SELECT 
+                i.id, 
+                i.type,
+                i.reason,
+                i.created_at,
+                m.username AS moderator_tag,
+                s.kick_expires AS duration
+             FROM infractions i
+             LEFT JOIN members m ON i.moderator_id = m.user_id
+             LEFT JOIN server_sanctions s ON i.user_id = s.user_id
+             WHERE i.user_id = $1
+             ORDER BY i.created_at DESC
+             LIMIT 15`,
+            [userId]
+        );
+        return res.rows;
     }
 };
