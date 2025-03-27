@@ -24,7 +24,7 @@ A feature-rich Discord bot with puppet system integration **and advanced moderat
 - [Usage](#usage-📖)
   - [Development](#development)
   - [Key Commands](#key-commands-🔑)
-  - [Moderation System](#soderation-system-⚖️)
+  - [Moderation System](#moderation-system-⚖️)
 - [Architecture](#architecture-🏗️)
 - [Logging](#logging-📝)
 - [Contributing](#contributing-🤝)
