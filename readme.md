@@ -5,34 +5,36 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.x-blue)](https://www.postgresql.org/)
 [![Discord.js](https://img.shields.io/badge/Discord.js-14.x-blue)](https://discord.js.org/)
 
-A feature-rich Discord bot with puppet system integration **and advanced moderation capabilities**, enabling users to create/manage personas and moderators to enforce server rules through automated sanctions.
+A feature-rich Discord bot with puppet system integration **and advanced moderation capabilities**, enabling users to
+create/manage personas and moderators to enforce server rules through automated sanctions.
 
 ## Table of Contents 📚
 
-- [Features](#features-✨)
+- [Features](#features)
   - [Core Functionality](#core-functionality)
   - [Technical Features](#technical-features)
-- [Installation](#installation-🚀)
+- [Installation](#installation)
   - [Prerequisites](#prerequisites)
-- [Configuration](#configuration-⚙️)
+- [Configuration](#configuration)
   - [Discord Setup](#discord-setup)
   - [Database Configuration](#database-configuration)
   - [Final .env file](#final-env-file)
-- [Database Setup](#database-setup-🗄️)
+- [Database Setup](#database-setup)
   - [1. Connect to PostgreSQL](#1-connect-to-postgresql)
-  - [2. Create database and table](#2-create-database-and-table)
-- [Usage](#usage-📖)
+  - [2. Create database and tables](#2-create-database-and-tables)
+- [Usage](#usage)
   - [Development](#development)
-  - [Key Commands](#key-commands-🔑)
-  - [Moderation System](#moderation-system-⚖️)
-- [Architecture](#architecture-🏗️)
-- [Logging](#logging-📝)
-- [Contributing](#contributing-🤝)
+  - [Key Commands](#key-commands)
+  - [Moderation System](#moderation-system)
+    - [Punishment Thresholds](#punishment-thresholds)
+- [Architecture](#architecture)
+- [Logging](#logging)
+- [Contributing](#contributing)
   - [Workflow](#workflow)
   - [Testing Requirements](#testing-requirements)
 - [Support](#support-🔧)
 
-## Features ✨
+## Features
 
 ### Core Functionality
 
@@ -65,7 +67,7 @@ A feature-rich Discord bot with puppet system integration **and advanced moderat
   - Automatic help generation
 - 🔄 **Webhook Integration**: Automatic message proxying with avatar support
 
-## Installation 🚀
+## Installation
 
 ### Prerequisites
 
@@ -87,7 +89,7 @@ cp config/.env.example .env
 # Edit .env with your credentials
 ```
 
-## Configuration ⚙️
+## Configuration
 
 ### Discord Setup
 
@@ -131,7 +133,7 @@ DB_PORT=5432
 LOG_LEVEL=debug
 ```
 
-## Database Setup 🗄️
+## Database Setup
 
 ### 1. Connect to PostgreSQL:
 
@@ -208,7 +210,7 @@ erDiagram
         VARCHAR(32) username
         TIMESTAMP last_updated
     }
-    
+
     infractions {
         SERIAL id PK
         VARCHAR(255) user_id
@@ -218,7 +220,7 @@ erDiagram
         TEXT reason
         TIMESTAMP created_at
     }
-    
+
     server_sanctions {
         VARCHAR(255) user_id PK
         INT mute_count
@@ -232,6 +234,7 @@ erDiagram
 ```
 
 #### Key Features
+
 - Temporal Data Tracking: Precise timestamping for all moderation actions
 - Moderator Accountability: Permanent record of enforcing staff members
 - State Persistence: Maintains punishment status through bot restarts
@@ -239,6 +242,7 @@ erDiagram
 - Expiration System: Automatic cleanup of temporary punishments
 
 #### Maintenance Tips
+
 ```bash
 # Daily sanity check
 psql -U postgres -d puppetdb -c "VACUUM ANALYZE;"
@@ -250,7 +254,7 @@ pg_dump -U postgres -Fc puppetdb > puppetdb_$(date +%Y-%m-%d).dump
 pg_restore -U postgres -d puppetdb puppetdb_YYYY-MM-DD.dump
 ```
 
-## Usage 📖
+## Usage
 
 ### Scripts
 
@@ -301,22 +305,22 @@ pnpm start
 "prebuild": "pnpm format:check && pnpm lint"
 ```
 
-### Key Commands 🔑
+### Key Commands
 
-| Command                             | Description                     | Example                                |
-| ----------------------------------- | --------------------------------| -------------------------------------- |
-| `!addpuppet <name> <suffix> [desc]` | Create new puppet               | `!addpuppet Merlin mrln A wise wizard` |
-| `!mypuppets`                        | List your puppets               | `!mypuppets`                           |
-| `[suffix]: Message`                 | Speak as puppet                 | `mrln: Greetings travelers!`           |
-| `[suffix]:: Action`                 | Emote as puppet                 | `mrln:: waves his staff`               |
-| `!help`                             | Show help menu                  | `!help`                                |
-| `!roll [max]`                       | Random number                   | `!roll 20`                             |
-| `!warn @user [reason]`              | Issue warning                   | `!warn @spammer Stop flooding`         |
-| `!kick @user [reason]`              | Remove user from server         | `!kick @harasser No NSFW`              |
-| `!ban @user [reason]`               | Permanent ban                   | `!ban @scammer Phishing links`         |
-| `!infractions [@user]`              | View punishment history         | `!infractions @troublemaker`           |
+| Command                             | Description             | Example                                |
+| ----------------------------------- | ----------------------- | -------------------------------------- |
+| `!addpuppet <name> <suffix> [desc]` | Create new puppet       | `!addpuppet Merlin mrln A wise wizard` |
+| `!mypuppets`                        | List your puppets       | `!mypuppets`                           |
+| `[suffix]: Message`                 | Speak as puppet         | `mrln: Greetings travelers!`           |
+| `[suffix]:: Action`                 | Emote as puppet         | `mrln:: waves his staff`               |
+| `!help`                             | Show help menu          | `!help`                                |
+| `!roll [max]`                       | Random number           | `!roll 20`                             |
+| `!warn @user [reason]`              | Issue warning           | `!warn @spammer Stop flooding`         |
+| `!kick @user [reason]`              | Remove user from server | `!kick @harasser No NSFW`              |
+| `!ban @user [reason]`               | Permanent ban           | `!ban @scammer Phishing links`         |
+| `!infractions [@user]`              | View punishment history | `!infractions @troublemaker`           |
 
-### Moderation System ⚖️
+### Moderation System
 
 ```mermaid
 graph TD
@@ -331,19 +335,19 @@ graph TD
     B -->|11 Warns Post-Ban| J[IP Ban]
 ```
 
-### Punishment Thresholds
+#### Punishment Thresholds
 
-| Warns | Time Frame          | Action                     | Duration       |
-|-------|---------------------|----------------------------|----------------|
-| 3     | Any                 | Mute                       | 10 minutes     |
-| 5     | Any                 | Mute                       | 30 minutes     |
-| 3     | 24 hours            | Kick                       | 7 days         |
-| 4     | Post-kick return    | Permanent Ban              | ∞              |
-| 7     | Any                 | Kick                       | 7 days         |
-| 10    | Any                 | Permanent Ban              | ∞              |
-| 11    | Post-ban return     | IP Ban*                    | ∞              |
+| Warns | Time Frame       | Action        | Duration   |
+| ----- | ---------------- | ------------- | ---------- |
+| 3     | Any              | Mute          | 10 minutes |
+| 5     | Any              | Mute          | 30 minutes |
+| 3     | 24 hours         | Kick          | 7 days     |
+| 4     | Post-kick return | Permanent Ban | ∞          |
+| 7     | Any              | Kick          | 7 days     |
+| 10    | Any              | Permanent Ban | ∞          |
+| 11    | Post-ban return  | IP Ban\*      | ∞          |
 
-## Architecture 🏗️
+## Architecture
 
 ```mermaid
 graph TD
@@ -357,7 +361,7 @@ graph TD
     D -->|No| I[Standard Commands]
 ```
 
-## Logging 📝
+## Logging
 
 ### Configured with Winston:
 
@@ -376,7 +380,7 @@ logs/
 └── bot-03-05-2024.log.gz
 ```
 
-## Contributing 🤝
+## Contributing
 
 ### Workflow
 
@@ -411,5 +415,3 @@ logs/
 - ### Found an issue? [Open a ticket](https://github.com/betapoisoner/beta-bot/issues)
 
 ### Made with ❤️ by 𝕭𝖊𝖙𝖆 | [Contribution Guidelines](CONTRIBUTING.md) | [Code of Conduct](CODE_OF_CONDUCT.md)
-
-
