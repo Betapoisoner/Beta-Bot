@@ -10,7 +10,6 @@ import dotenv from 'dotenv';
 import path from 'path';
 import logger from '@utils/logger';
 
-
 // Load environment variables first to ensure availability for subsequent modules
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 logger.debug('Environment variables loaded', {
@@ -31,9 +30,9 @@ logger.info('Initializing Discord bot client...', {
 // Configure Discord client with necessary intents
 const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds, // Required for server data
-        GatewayIntentBits.GuildMessages, // Needed for message events
-        GatewayIntentBits.MessageContent, // Essential for reading message content
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
     ],
 });
 
@@ -93,7 +92,6 @@ client.once('ready', () => {
  * 2. Traditional command messages (e.g., "!help")
  */
 client.on('messageCreate', async (message) => {
-
     // Ignore messages from other bots to prevent loops
     if (message.author.bot) {
         logger.silly('Ignored bot-to-bot message', {
@@ -123,19 +121,18 @@ client.on('messageCreate', async (message) => {
             suffix: suffix,
             suffixType,
             pipeContent: content,
-            originalLength: rawContent.length
+            originalLength: rawContent.length,
         });
         if (!content) {
             logger.warn('Empty message content rejected', {
                 userId: message.author.id,
-                suffix: suffix.trim()
+                suffix: suffix.trim(),
             });
             const reply = await message.reply('Message content cannot be empty!');
             return setTimeout(() => reply.delete(), 5000);
         }
 
         try {
-
             logger.debug('Querying database for puppet', {
                 userId: message.author.id,
                 suffix,
@@ -273,7 +270,6 @@ client
         });
         process.exit(1);
     });
-
 
 ['SIGINT', 'SIGTERM'].forEach((signal) => {
     process.on(signal, () => {

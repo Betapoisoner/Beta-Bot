@@ -1,7 +1,9 @@
-import { Message, EmbedBuilder, TextChannel } from 'discord.js';
+import { Message, EmbedBuilder, TextChannel, PermissionsBitField } from 'discord.js';
 import { dbUtils } from '@database/services/PuppetService';
 import logger from '@utils/logger';
 import type { Puppet } from '@database/models/Puppet';
+import { infractionService } from '@database/services/InfractionService';
+import { PunishmentManager } from '@utils/punishmentScheduler';
 
 function getErrorMessage(error: unknown): string {
     if (error instanceof Error) return error.message;
@@ -157,6 +159,129 @@ export const replies: Record<string, ReplyFunction> = {
             }
         }
     },
+    '!warn': async (message, args) => {
+        if (!message.member?.permissions.has(PermissionsBitField.Flags.KickMembers)) {
+            return message.reply('❌ You need Kick Members permission to warn users.');
+        }
+
+        const target = message.mentions.users.first();
+        if (!target) return message.reply('❌ Mention a user to warn.');
+        if (target.bot) return message.reply("❌ Can't warn bots.");
+
+        const reason = args.slice(1).join(' ') || 'No reason provided';
+
+        try {
+            // Add warning to database
+            await infractionService.addInfraction({
+                user_id: target.id,
+                moderator_id: message.author.id,
+                type: 'WARN',
+                reason,
+            });
+
+            // Apply automatic punishments
+            const punishmentManager = new PunishmentManager(message.client);
+            await punishmentManager.applyAutomaticPunishment(target.id, message.guildId!);
+
+            // Respond to moderator
+            message.reply({
+                embeds: [new EmbedBuilder()
+                    .setColor(0xffcc00)
+                    .setDescription(`⚠️ Warned ${target.tag}\n**Reason:** ${reason}`)
+                    .setFooter({ text: 'Automated punishments may apply based on warn count' })
+                ],
+            });
+        } catch (error) {
+            logger.error('Warn command failed:', error);
+            message.reply('❌ Failed to record warning.');
+        }
+    },
+
+    '!kick': async (message, args) => {
+        if (!message.member?.permissions.has(PermissionsBitField.Flags.KickMembers)) {
+            return message.reply('❌ You need Kick Members permission.');
+        }
+
+        const target = message.mentions.users.first();
+        if (!target) return message.reply('❌ Mention a user to kick.');
+
+        const reason = args.slice(1).join(' ') || 'No reason provided';
+
+        try {
+            const member = await message.guild!.members.fetch(target.id);
+            await member.kick(reason);
+
+            await infractionService.addInfraction({
+                user_id: target.id,
+                moderator_id: message.author.id,
+                type: 'KICK',
+                reason,
+            });
+
+            message.reply({
+                embeds: [new EmbedBuilder()
+                    .setColor(0xff5500)
+                    .setDescription(`👢 Kicked ${target.tag}\n**Reason:** ${reason}`)
+                ],
+            });
+        } catch (error) {
+            logger.error('Kick command failed:', error);
+            message.reply('❌ Failed to kick user. Check bot permissions.');
+        }
+    },
+
+    '!ban': async (message, args) => {
+        if (!message.member?.permissions.has(PermissionsBitField.Flags.BanMembers)) {
+            return message.reply('❌ You need Ban Members permission.');
+        }
+
+        const target = message.mentions.users.first();
+        if (!target) return message.reply('❌ Mention a user to ban.');
+
+        const reason = args.slice(1).join(' ') || 'No reason provided';
+
+        try {
+            const member = await message.guild!.members.fetch(target.id);
+            await member.ban({ reason });
+
+            await infractionService.addInfraction({
+                user_id: target.id,
+                moderator_id: message.author.id,
+                type: 'BAN',
+                reason,
+            });
+
+            message.reply({
+                embeds: [new EmbedBuilder()
+                    .setColor(0xff0000)
+                    .setDescription(`🔨 Banned ${target.tag}\n**Reason:** ${reason}`)
+                ],
+            });
+        } catch (error) {
+            logger.error('Ban command failed:', error);
+            message.reply('❌ Failed to ban user. Check bot permissions.');
+        }
+    },
+
+    '!infractions': async (message) => {
+        const target = message.mentions.users.first() || message.author;
+        const [warns, kicks, bans] = await Promise.all([
+            infractionService.getInfractionCount(target.id, 'WARN'),
+            infractionService.getInfractionCount(target.id, 'KICK'),
+            infractionService.getInfractionCount(target.id, 'BAN'),
+        ]);
+
+        const embed = new EmbedBuilder()
+            .setColor(0x0099ff)
+            .setTitle(`Infractions for ${target.tag}`)
+            .addFields(
+                { name: 'Warnings', value: warns.toString(), inline: true },
+                { name: 'Kicks', value: kicks.toString(), inline: true },
+                { name: 'Bans', value: bans.toString(), inline: true },
+            );
+
+        message.reply({ embeds: [embed] });
+    },
 
     '!help': async (message) => {
         try {
@@ -177,6 +302,11 @@ export const replies: Record<string, ReplyFunction> = {
                 '🔧 Utilities': {
                     '!help': 'Show this help message',
                     '!greet [user]': 'Greet a user or everyone',
+                }, '🛠 Moderation': {
+                    '!warn @user [reason]': 'Issue warning to user',
+                    '!kick @user [reason]': 'Kick user from server',
+                    '!ban @user [reason]': 'Ban user from server',
+                    '!infractions @user': 'View user infractions',
                 },
             };
 
@@ -185,10 +315,10 @@ export const replies: Record<string, ReplyFunction> = {
                 .setTitle('🌟 Bot Command Help')
                 .setDescription(
                     '**Syntax Guide:**\n' +
-                        '`<required>` `[optional]` `[attachment]`\n\n' +
-                        '**Puppet Syntax:**\n' +
-                        '`[suffix]:  Message` - Regular message (space after colon)\n' +
-                        '`[suffix]::  Action` - *Italic action message* (space after double colon)',
+                    '`<required>` `[optional]` `[attachment]`\n\n' +
+                    '**Puppet Syntax:**\n' +
+                    '`[suffix]:  Message` - Regular message (space after colon)\n' +
+                    '`[suffix]::  Action` - *Italic action message* (space after double colon)',
                 )
                 .setThumbnail(message.client.user?.displayAvatarURL() || null)
                 .setTimestamp()

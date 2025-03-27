@@ -9,7 +9,7 @@ import logger from '@utils/logger';
 import { env } from '@config/env';
 
 // Configure PostgreSQL client with environment variables
-const db = new Client({
+export const db = new Client({
     user: env.DB_USER,
     host: env.DB_HOST,
     database: env.DB_NAME,

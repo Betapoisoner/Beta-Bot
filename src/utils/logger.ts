@@ -1,7 +1,3 @@
-/**
- * Winston logger configuration with rotating file transport and custom levels
- * Provides structured logging for both console and file output
- */
 import winston, { Logger } from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
 import path from 'path';
@@ -18,22 +14,17 @@ const logLevels = {
     debug: 7,
 };
 
-// Add custom color configuration
 const logColors = {
-    // Custom color only for silly
     silly: 'rainbow',
-
-    // Standard Winston colors for other levels
-    fatal: 'magenta',  // Standard default for highest severity
+    fatal: 'magenta',
     error: 'red',
     warn: 'yellow',
     info: 'green',
-    http: 'cyan',      // Matches default verbose color
+    http: 'cyan',
     verbose: 'gray',
-    debug: 'blue'
+    debug: 'blue',
 };
 
-// Register custom colors
 winston.addColors(logColors);
 
 const LOG_DIRECTORY = path.join(__dirname, '../../logs');
@@ -42,6 +33,41 @@ const LOG_FILE_PATTERN = 'DD-MM-YYYY';
 const MAX_FILE_SIZE = '20m';
 const MAX_FILES = '30d';
 
+const errorReplacer = (_key: string, value: unknown): unknown => {
+    if (value instanceof Error) {
+        return {
+            message: value.message,
+            stack: value.stack,
+            name: value.name,
+        };
+    }
+    // Handle circular references in HTTP request/response objects
+    if (value && typeof value === 'object' && 'req' in value && 'res' in value) {
+        const reqResObject = value as { req: unknown; res: unknown };
+        const req = reqResObject.req;
+        const res = reqResObject.res;
+
+        const safeReq =
+            req && typeof req === 'object' && 'method' in req && 'url' in req
+                ? { method: (req as { method: unknown }).method, url: (req as { url: unknown }).url }
+                : undefined;
+
+        const safeRes =
+            res && typeof res === 'object' && 'statusCode' in res && 'statusMessage' in res
+                ? {
+                    statusCode: (res as { statusCode: unknown }).statusCode,
+                    statusMessage: (res as { statusMessage: unknown }).statusMessage,
+                }
+                : undefined;
+
+        return {
+            req: safeReq,
+            res: safeRes,
+        };
+    }
+    return value;
+};
+
 const formatConsoleOutput = (info: TransformableInfo): string => {
     const metadata = info.metadata as Record<string, unknown>;
     const metaString = Object.keys(metadata).length > 0 ? JSON.stringify(metadata, errorReplacer) : '';
@@ -49,20 +75,20 @@ const formatConsoleOutput = (info: TransformableInfo): string => {
 };
 
 const consoleFormat = winston.format.combine(
-    // Apply custom colors through colorize
     winston.format.colorize({ colors: logColors }),
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
     winston.format.metadata({ fillExcept: ['message', 'level', 'timestamp'] }),
     winston.format.printf(formatConsoleOutput),
 );
 
-// Rest of the configuration remains the same...
-const errorReplacer = (_key: string, value: unknown): unknown =>
-    value instanceof Error ? { message: value.message, stack: value.stack, name: value.name } : value;
-
 const logger: Logger = winston.createLogger({
     levels: logLevels,
     level: process.env.LOG_LEVEL || DEFAULT_LOG_LEVEL,
+    format: winston.format.combine(
+        winston.format.errors({ stack: true }), // Safely serialize errors
+        winston.format.timestamp(),
+        winston.format.json({ replacer: errorReplacer }),
+    ),
     transports: [
         new winston.transports.Console({ format: consoleFormat }),
         new DailyRotateFile({
@@ -73,7 +99,11 @@ const logger: Logger = winston.createLogger({
             maxSize: MAX_FILE_SIZE,
             maxFiles: MAX_FILES,
             utc: true,
-            format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
+            format: winston.format.combine(
+                winston.format.errors({ stack: true }), // Safely serialize errors
+                winston.format.timestamp(),
+                winston.format.json({ replacer: errorReplacer }),
+            ),
         }),
     ],
     exceptionHandlers: [
@@ -86,12 +116,15 @@ const logger: Logger = winston.createLogger({
             maxSize: MAX_FILE_SIZE,
             maxFiles: MAX_FILES,
             utc: true,
-            format: winston.format.combine(winston.format.timestamp(), winston.format.json({ replacer: errorReplacer })),
+            format: winston.format.combine(
+                winston.format.errors({ stack: true }), // Safely serialize errors
+                winston.format.timestamp(),
+                winston.format.json({ replacer: errorReplacer }),
+            ),
         }),
     ],
 });
 
-// Handle process termination and error logging remains the same...
 ['SIGINT', 'SIGTERM'].forEach((signal) => {
     process.on(signal, () => {
         logger.close();

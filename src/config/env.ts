@@ -29,4 +29,6 @@ export const env = cleanEnv(process.env, {
     DISCORD_TOKEN: str({ desc: 'Discord bot token' }),
     APPLICATION_ID: str({ desc: 'Discord application ID' }),
     GUILD_ID: str({ default: '', desc: 'Development server ID' }),
+    AIMLAPI_API_KEY: str({ desc: 'Ai API key' }),
+    SUMMARY_CHANNEL_ID: str({ desc: 'Channel ID for posting summaries' }),
 });
