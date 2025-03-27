@@ -5,10 +5,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.x-blue)](https://www.postgresql.org/)
 [![Discord.js](https://img.shields.io/badge/Discord.js-14.x-blue)](https://discord.js.org/)
 
-A feature-rich Discord bot with puppet system integration, enabling users to create and manage alternate personas
-through intuitive chat commands. Built with modern TypeScript architecture and PostgreSQL persistence.
-
-_Add actual screenshot/video here_
+A feature-rich Discord bot with puppet system integration **and advanced moderation capabilities**, enabling users to create/manage personas and moderators to enforce server rules through automated sanctions.
 
 ## Table of Contents 📚
 
@@ -27,6 +24,7 @@ _Add actual screenshot/video here_
 - [Usage](#usage-📖)
   - [Development](#development)
   - [Key Commands](#key-commands-🔑)
+  - [Moderation System](#soderation-system-⚖️)
 - [Architecture](#architecture-🏗️)
 - [Logging](#logging-📝)
 - [Contributing](#contributing-🤝)
@@ -42,10 +40,17 @@ _Add actual screenshot/video here_
 - 💬 **Contextual Messaging**:
   - `puppet: Message` for standard communication
   - `puppet:: Action` for roleplay-style emotes
-- 🔄 **Webhook Integration**: Automatic message proxying with avatar support
+- ⚖️ **Moderation System**:
+  - Progressive warnings system
+  - Automatic punishments (mute/kick/ban)
+  - Infraction tracking with !infractions command
 
 ### Technical Features
 
+- 🚨 **Automated Sanctions**:
+  - 3 warns in 24h = 7-day temp ban
+  - 5+ warns = automatic mutes
+  - 10+ warns = permanent ban
 - 🛡️ **Type-Safe Core**: Full TypeScript implementation with strict type checking
 - 📊 **PostgreSQL Backend**: Relational data model for persistent storage
 - 📈 **Advanced Logging**:
@@ -58,6 +63,7 @@ _Add actual screenshot/video here_
 - ⚡ **Efficient Commands**:
   - Modular command architecture
   - Automatic help generation
+- 🔄 **Webhook Integration**: Automatic message proxying with avatar support
 
 ## Installation 🚀
 
@@ -133,12 +139,13 @@ LOG_LEVEL=debug
 psql -U postgres
 ```
 
-### 2. Create database and table:
+### 2. Create database and tables:
 
 ```sql
 CREATE DATABASE puppetdb;
 \c puppetdb
 
+-- Puppet System
 CREATE TABLE puppets (
     id SERIAL PRIMARY KEY,
     user_id VARCHAR(255) NOT NULL,
@@ -146,6 +153,27 @@ CREATE TABLE puppets (
     suffix VARCHAR(20) UNIQUE NOT NULL,
     avatar TEXT,
     description TEXT
+);
+
+-- Moderation System
+CREATE TABLE infractions (
+    id SERIAL PRIMARY KEY,
+    user_id VARCHAR(255) NOT NULL,
+    moderator_id VARCHAR(255) NOT NULL,
+    type VARCHAR(4) NOT NULL CHECK (type IN ('WARN', 'KICK', 'BAN')),
+    reason TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE server_sanctions (
+    user_id VARCHAR(255) PRIMARY KEY,
+    mute_count INT DEFAULT 0,
+    kick_count INT DEFAULT 0,
+    ban_count INT DEFAULT 0,
+    last_kick TIMESTAMP,
+    kick_expires TIMESTAMP,
+    return_date TIMESTAMP,
+    perma_banned BOOLEAN DEFAULT false
 );
 ```
 
@@ -202,27 +230,76 @@ pnpm start
 
 ### Key Commands 🔑
 
-| Command                             | Description       | Example                                |
-| ----------------------------------- | ----------------- | -------------------------------------- |
-| `!addpuppet <name> <suffix> [desc]` | Create new puppet | `!addpuppet Merlin mrln A wise wizard` |
-| `!mypuppets`                        | List your puppets | `!mypuppets`                           |
-| `[suffix]: Message`                 | Speak as puppet   | `mrln: Greetings travelers!`           |
-| `[suffix]:: Action`                 | Emote as puppet   | `mrln:: waves his staff`               |
-| `!help`                             | Show help menu    | `!help`                                |
-| `!roll [max]`                       | Random number     | `!roll 20`                             |
+| Command                             | Description                     | Example                                |
+| ----------------------------------- | --------------------------------| -------------------------------------- |
+| `!addpuppet <name> <suffix> [desc]` | Create new puppet               | `!addpuppet Merlin mrln A wise wizard` |
+| `!mypuppets`                        | List your puppets               | `!mypuppets`                           |
+| `[suffix]: Message`                 | Speak as puppet                 | `mrln: Greetings travelers!`           |
+| `[suffix]:: Action`                 | Emote as puppet                 | `mrln:: waves his staff`               |
+| `!help`                             | Show help menu                  | `!help`                                |
+| `!roll [max]`                       | Random number                   | `!roll 20`                             |
+| `!warn @user [reason]`              | Issue warning                   | `!warn @spammer Stop flooding`         |
+| `!kick @user [reason]`              | Remove user from server         | `!kick @harasser No NSFW`              |
+| `!ban @user [reason]`               | Permanent ban                   | `!ban @scammer Phishing links`         |
+| `!infractions [@user]`              | View punishment history         | `!infractions @troublemaker`           |
+
+### Moderation System ⚖️
+
+```mermaid
+graph TD
+    A[Warn Received] --> B{Check Warn Count}
+    B -->|3 Warns| C[10m Mute]
+    B -->|5 Warns| D[30m Mute]
+    B -->|3 Warns in 24h| E[1-Week Kick]
+    E --> F{Returns Within Week}
+    F -->|Yes + New Warn| G[Permanent Ban]
+    B -->|7 Warns| H[1-Week Kick]
+    B -->|10 Warns| I[Permanent Ban]
+    B -->|11 Warns Post-Ban| J[IP Ban]
+```
+Here's the markdown for each changed section:
+
+### 1. Enhanced Moderation System
+```markdown
+## Enhanced Moderation System ⚖️
+
+```mermaid
+graph TD
+    A[Warn Received] --> B{Check Warn Count}
+    B -->|3 Warns| C[10m Mute]
+    B -->|5 Warns| D[30m Mute]
+    B -->|3 Warns in 24h| E[1-Week Kick]
+    E --> F{Returns Within Week}
+    F -->|Yes + New Warn| G[Permanent Ban]
+    B -->|7 Warns| H[1-Week Kick]
+    B -->|10 Warns| I[Permanent Ban]
+    B -->|11 Warns Post-Ban| J[IP Ban]
+```
+
+### Punishment Thresholds
+
+| Warns | Time Frame          | Action                     | Duration       |
+|-------|---------------------|----------------------------|----------------|
+| 3     | Any                 | Mute                       | 10 minutes     |
+| 5     | Any                 | Mute                       | 30 minutes     |
+| 3     | 24 hours            | Kick                       | 7 days         |
+| 4     | Post-kick return    | Permanent Ban              | ∞              |
+| 7     | Any                 | Kick                       | 7 days         |
+| 10    | Any                 | Permanent Ban              | ∞              |
+| 11    | Post-ban return     | IP Ban*                    | ∞              |
 
 ## Architecture 🏗️
 
 ```mermaid
 graph TD
-    A[Discord Client] --> B[Message Parser]
-    B --> C{Suffix Pattern?}
-    C -->|Yes| D[Webhook Proxy]
-    C -->|No| E[Command Router]
-    D --> F[Database Lookup]
-    E --> G[Execute Command]
-    F --> H[PostgreSQL]
-    G --> I[Response Handler]
+    A[Message] --> B{Mod Command?}
+    B -->|Yes| C[Moderation Flow]
+    B -->|No| D{Puppet Syntax?}
+    C --> E[Check Permissions]
+    E --> F[Apply Sanctions]
+    F --> G[Update Infractions DB]
+    D -->|Yes| H[Webhook Proxy]
+    D -->|No| I[Standard Commands]
 ```
 
 ## Logging 📝
@@ -275,3 +352,5 @@ logs/
 - ### Found an issue? [Open a ticket](https://github.com/betapoisoner/beta-bot/issues)
 
 ### Made with ❤️ by 𝕭𝖊𝖙𝖆 | [Contribution Guidelines](CONTRIBUTING.md) | [Code of Conduct](CODE_OF_CONDUCT.md)
+
+

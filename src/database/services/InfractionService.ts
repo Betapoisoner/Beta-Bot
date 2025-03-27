@@ -79,5 +79,41 @@ export const infractionService = {
             `DELETE FROM server_sanctions WHERE user_id = $1`,
             [userId]
         );
+    }, async recordKick(userId: string, duration: string): Promise<void> {
+        await db.query(
+            `INSERT INTO server_sanctions (user_id, last_kick, kick_expires)
+             VALUES ($1, NOW(), NOW() + INTERVAL '${duration}')
+             ON CONFLICT (user_id) DO UPDATE
+             SET last_kick = NOW(), kick_expires = NOW() + INTERVAL '${duration}'`,
+            [userId]
+        );
+    },
+
+    async updateReturnDate(userId: string): Promise<void> {
+        await db.query(
+            `UPDATE server_sanctions 
+             SET return_date = NOW()
+             WHERE user_id = $1`,
+            [userId]
+        );
+    },
+
+    async recordBan(userId: string): Promise<void> {
+        await db.query(
+            `UPDATE server_sanctions 
+             SET ban_count = ban_count + 1
+             WHERE user_id = $1`,
+            [userId]
+        );
+    },
+
+    async recordPermaBan(userId: string): Promise<void> {
+        await db.query(
+            `INSERT INTO server_sanctions (user_id, perma_banned)
+             VALUES ($1, true)
+             ON CONFLICT (user_id) DO UPDATE
+             SET perma_banned = true`,
+            [userId]
+        );
     }
 };
