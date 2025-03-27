@@ -402,11 +402,22 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
+    participant Member
+    participant Puppet
+    participant Database
+    participant Chat
+    participant Webhook
+
     Member->>+Puppet: Create with !addpuppet
-    Puppet->>-Database: Store metadata
+    Puppet->>+Database: Store metadata
+    Database-->>-Puppet: Confirmation
+    Puppet-->>-Member: Success message
+    
     Member->>+Chat: Use puppet: syntax
-    Chat->>Database: Verify suffix
-    Database->>-Webhook: Proxy message
+    Chat->>+Database: Verify suffix
+    Database-->>-Chat: Valid suffix
+    Chat->>+Webhook: Proxy message
+    Webhook-->>-Chat: Message posted
 ```
 
 ## Logging
