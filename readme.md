@@ -1,9 +1,24 @@
 # BetaPoisoner Discord Bot 🤖
+*Empower your Discord community with seamless moderation.*
 
-[![Node.js](https://img.shields.io/badge/Node.js-18.x-green)](https://nodejs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.x-blue)](https://www.postgresql.org/)
-[![Discord.js](https://img.shields.io/badge/Discord.js-14.x-blue)](https://discord.js.org/)
+![Last Commit](https://img.shields.io/github/last-commit/betapoisoner/beta-bot)
+![Top Language](https://img.shields.io/github/languages/top/betapoisoner/beta-bot?color=green)
+
+[![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=betapoisoner&repo=beta-bot&layout=compact&theme=dark)](https://github.com/betapoisoner/beta-bot)
+
+**Built with the tools and technologies:**
+
+![JSON](https://img.shields.io/badge/-JSON-000000?logo=json&logoColor=white)
+![pnpm](https://img.shields.io/badge/-pnpm-CB3837?logo=npm&logoColor=white)
+![Pretter](https://img.shields.io/badge/-Pretter-F7B93E?logo=prettier&logoColor=black)
+![ENV](https://img.shields.io/badge/-ENV-ECD53F?logo=.env&logoColor=000000)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
+
+![tsnode](https://img.shields.io/badge/-tsnode-000000?style=flat)
+![Discord](https://img.shields.io/badge/-Discord-5865F2?logo=discord&logoColor=white)
+![ESLint](https://img.shields.io/badge/-ESLint-4B32C3?logo=eslint&logoColor=white)
+![Axios](https://img.shields.io/badge/-Axios-5A29E4?logo=axios&logoColor=white)
+![YAML](https://img.shields.io/badge/-YAML-CB171E?logo=yaml&logoColor=white)
 
 A feature-rich Discord bot with puppet system integration **and advanced moderation capabilities**, enabling users to
 create/manage personas and moderators to enforce server rules through automated sanctions.

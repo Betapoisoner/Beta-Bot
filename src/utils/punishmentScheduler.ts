@@ -36,8 +36,14 @@ export class PunishmentManager {
                 await this.applyBan(member, '4th warn after return');
             } else {
                 await this.applyTimedKick(member, '7 days', '3 warns in 24 hours');
-                await infractionService.incrementKickCount(member.id);
-            }
+                if (member) {
+                    await infractionService.incrementKickCount(member.id);
+                    logger.debug('Incremented kick count for member', { "Member ID: ":member.id });
+                } else {
+                    // Member likely left the server
+                    await infractionService.incrementKickCount(userId);
+                    logger.debug('Incremented kick count for departed member', { userId });
+                }          }
         } else if (totalWarns >= 5) {
             await this.applyMute(member, 1800, '5 warns threshold');
         } else if (totalWarns >= 3) {
