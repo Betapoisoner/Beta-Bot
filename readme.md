@@ -1,10 +1,9 @@
 # BetaPoisoner Discord Bot 🤖
-*Empower your Discord community with seamless moderation.*
+
+_Empower your Discord community with seamless moderation._
 
 ![Last Commit](https://img.shields.io/github/last-commit/betapoisoner/beta-bot)
-![Top Language](https://img.shields.io/github/languages/top/betapoisoner/beta-bot?color=green)
-
-[![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=betapoisoner&repo=beta-bot&layout=compact&theme=dark)](https://github.com/betapoisoner/beta-bot)
+![Top Language](https://img.shields.io/github/languages/top/betapoisoner/beta-bot)
 
 **Built with the tools and technologies:**
 
@@ -204,11 +203,11 @@ CREATE TABLE members (
 );
 
 -- Enforce unique suffixes per user
-CREATE UNIQUE INDEX idx_puppet_suffix 
+CREATE UNIQUE INDEX idx_puppet_suffix
 ON puppets(user_id, suffix);
 
 -- Prevent duplicate puppet names
-CREATE UNIQUE INDEX idx_puppet_names 
+CREATE UNIQUE INDEX idx_puppet_names
 ON puppets(user_id, name);
 
 -- Relations
@@ -235,13 +234,13 @@ erDiagram
     members ||--o{ puppets : "owns"
     members ||--o{ infractions : "moderates"
     members ||--o{ server_sanctions : "track"
-    
+
     members {
         VARCHAR(255) user_id PK
         VARCHAR(32) username
         TIMESTAMP last_updated
     }
-    
+
     puppets {
         SERIAL id PK
         VARCHAR(255) user_id FK
@@ -251,7 +250,7 @@ erDiagram
         TEXT description
         TIMESTAMP created_at
     }
-    
+
     infractions {
         SERIAL id PK
         VARCHAR(255) user_id FK
@@ -261,7 +260,7 @@ erDiagram
         TEXT reason
         TIMESTAMP created_at
     }
-    
+
     server_sanctions {
         VARCHAR(255) user_id PK
         INT mute_count
@@ -427,7 +426,7 @@ sequenceDiagram
     Puppet->>+Database: Store metadata
     Database-->>-Puppet: Confirmation
     Puppet-->>-Member: Success message
-    
+
     Member->>+Chat: Use puppet: syntax
     Chat->>+Database: Verify suffix
     Database-->>-Chat: Valid suffix
